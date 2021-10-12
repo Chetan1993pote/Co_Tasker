@@ -1,15 +1,16 @@
+
 import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, TouchableOpacity, Button } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 
 
-var app_Design = require('./AppDesign.png');
-var welcomeBack = require('./welcomeback.png');
+var app_Design = require('../Login/AppDesign.png');
+var welcomeBack = require('../Login/welcomeback.png');
 
 const win = Dimensions.get('window');
 
-const Login = () => {
+const SignUp = () => {
 
     const navigation = useNavigation();
     const [text, setText] = useState('');
@@ -30,23 +31,21 @@ const Login = () => {
     }
 
     return (
-        <View style={styles.container}>
-
+        <View>
             <ImageBackground
                 source={app_Design}
                 style={{ height: '100%', width: '100%' }}>
 
-                <Text style={styles.titleStyle} > Welcome Back
+                <Text style={styles.titleStyle} > Join Co-Tasker
                 </Text>
+
                 <View style={styles.containerEmail}>
                     <Image source={welcomeBack}
                         resizeMode={'contain'}
-                        style={{ height: win.height + 30, width: win.width }}></Image>
-
+                        style={{ height: win.height + 60, width: win.width }}></Image>
                 </View>
 
-                <Text style={styles.emailTitle} > Email Address
-                </Text>
+                <Text style={styles.emailTitle} > Email Address </Text>
 
                 <TextInput
                     style={styles.inputText}
@@ -54,6 +53,12 @@ const Login = () => {
                     onChangeText={text => setText(text)}
                     defaultValue={text}
                 />
+
+                <Text style={styles.termsPolicy} > I hereby accept the general <Text style={{textDecorationLine: 'underline',color:'#000'}}>terms & conditions</Text> of Co-Tasker, the cancellation policy and confirm that I am over 18 years of age.
+                    Please note our <Text style={{textDecorationLine: 'underline',color:'#000'}}>privacy policy. </Text></Text>
+
+                <Text style={styles.termsPolicySecond} >   I would like to receive helpful information, updates, news and promotions through the Co-Tasker newsletter </Text>
+
 
                 <TouchableOpacity style={styles.button}
 
@@ -68,26 +73,23 @@ const Login = () => {
                 </TouchableOpacity>
 
                 <View style={styles.signUpTextCont}>
-                    <Text style={styles.signUpTextStyle}>Not a member of Co-Tasker yet?</Text>
+                    <Text style={styles.signUpTextStyle}>Already registered on Co-Tasker?</Text>
                     <Button
-                    color="#000"
-                        onPress={() => navigation.navigate('SignUp')}
-                        title="Register here"
+                        color="#000"
+                        onPress={() => navigation.navigate('Login')}
+                        title="SIGN IN"
                     />
                 </View>
 
+
             </ImageBackground>
-
-
         </View>
-
-
     );
-
 
 }
 
-export default Login;
+export default SignUp;
+
 
 const styles = StyleSheet.create({
     container: {
@@ -102,6 +104,22 @@ const styles = StyleSheet.create({
 
     },
 
+    termsPolicy: {
+
+        marginTop: 60,
+        color: 'grey',
+        marginLeft: 35,
+        marginRight: 35,
+
+    },
+
+    termsPolicySecond: {
+        marginTop: 20,
+        color: 'grey',
+        marginLeft: 35,
+        marginRight: 35,
+    },
+
     titleStyle: {
         marginTop: 100,
         marginLeft: 35,
@@ -111,11 +129,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     emailTitle: {
-        marginTop: 220,
+        marginTop: 180,
         marginLeft: 29,
         fontSize: 15,
         color: 'grey',
-        fontWeight: 'normal'
+        fontWeight: 'normal',
+        flexGrow: 1,
 
     },
 
@@ -126,7 +145,7 @@ const styles = StyleSheet.create({
 
     inputText:
     {
-        marginTop: 5,
+        marginTop: -50,
         marginRight: 30,
         borderBottomColor: '#000',
         borderBottomWidth: 0.8,
@@ -140,7 +159,7 @@ const styles = StyleSheet.create({
         marginRight: 30,
         backgroundColor: '#ffbf00',
         borderRadius: 12,
-        marginVertical: 150,
+        marginVertical: 40,
         paddingVertical: 16
 
     },
@@ -152,10 +171,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     signUpTextCont: {
-        position: 'relative',
-        flexGrow: 10,
-        justifyContent: 'flex-start',
-        alignItems: "center",
+       
+        flexGrow: 1,
+        justifyContent: 'flex-end',
+        flexDirection:'row',
+        alignItems: 'center',
+        justifyContent:'center'
+
     },
     signUpTextStyle:
     {
@@ -166,9 +188,9 @@ const styles = StyleSheet.create({
 
     buttonSignUP:
     {
-        fontSize: 15,
+        fontSize: 14,
         marginVertical: 10,
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         color: 'black',
     },
 

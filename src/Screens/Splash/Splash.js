@@ -1,6 +1,6 @@
 
 import { View,Image ,StyleSheet} from 'react-native';
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 var logo = require('./logo.png');
