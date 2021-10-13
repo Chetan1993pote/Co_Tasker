@@ -16,7 +16,7 @@ const Login = () => {
 
     validate = (text) => {
         console.log(text);
-        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+        let reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!text.trim()) {
             Alert.alert("Please enter email address");
 
@@ -25,7 +25,8 @@ const Login = () => {
             return false;
         }
         else {
-            Alert.alert("Email is Incorrect");
+           // Alert.alert("Email is Correct");
+            navigation.navigate('PasswordLogin')
         }
     }
 
@@ -51,6 +52,10 @@ const Login = () => {
                 <TextInput
                     style={styles.inputText}
                     placeholder="Enter your email address"
+                    autoCapitalize='none'
+                    keyboardType='email-address'
+                    autoCorrect={false}
+                    autoCompleteType='email'
                     onChangeText={text => setText(text)}
                     defaultValue={text}
                 />
@@ -119,11 +124,6 @@ const styles = StyleSheet.create({
 
     },
 
-    welcomeBaseImg: {
-        width: '100%',
-        height: 400
-    },
-
     inputText:
     {
         marginTop: 5,
@@ -152,8 +152,8 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     signUpTextCont: {
-        position: 'relative',
-        flexGrow: 10,
+      
+        flexGrow: 1,
         justifyContent: 'flex-start',
         alignItems: "center",
     },
