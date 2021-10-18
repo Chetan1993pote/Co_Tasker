@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import React, { useState } from 'react';
 //import RadioButtonRN from 'radio-buttons-react-native';
-//import Tabber from '../../Navigation/Tabber';
 
 var backImg = require('../DetailsForm/icon_back_black.png');
 
