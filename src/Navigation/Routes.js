@@ -1,7 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Splash,Login,SignUp,PasswordLogin ,VerifyEmail,DetailsForm, CreatePwd} from '../Screens';
+import { Splash,Login,SignUp,PasswordLogin ,VerifyEmail,DetailsForm, CreatePwd,LoginOption, ChooseIntrest} from '../Screens';
+import Tabber from '../Navigation/Tabber'
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,9 @@ function Routes() {
         <Stack.Screen name="VerifyEmail"  component={VerifyEmail} options={{ headerShown: false }}/>
         <Stack.Screen name="DetailsForm"  component={DetailsForm} options={{ headerShown: false }}/>
         <Stack.Screen name="CreatePwd"  component={CreatePwd} options={{ headerShown: false }}/>
+        <Stack.Screen name="LoginOption"  component={LoginOption} options={{ headerShown: false }}/>
+        <Stack.Screen name="ChooseIntrest"  component={ChooseIntrest} options={{ headerShown: false }}/>
+        <Stack.Screen name="Tabber"  component={Tabber} options={{ headerShown: false }}/>
 
 
         </Stack.Navigator>

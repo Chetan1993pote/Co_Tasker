@@ -6,6 +6,8 @@ import { Dimensions } from 'react-native';
 
 var app_Design = require('./AppDesign.png');
 var welcomeBack = require('./welcomeback.png');
+var backImg = require('../Login/back_white.png');
+
 
 const win = Dimensions.get('window');
 
@@ -25,7 +27,7 @@ const Login = () => {
             return false;
         }
         else {
-           // Alert.alert("Email is Correct");
+            // Alert.alert("Email is Correct");
             navigation.navigate('PasswordLogin')
         }
     }
@@ -36,6 +38,19 @@ const Login = () => {
             <ImageBackground
                 source={app_Design}
                 style={{ height: '100%', width: '100%' }}>
+
+                <TouchableOpacity
+                    onPress={() => {
+                        navigation.goBack()
+                    }}>
+                    <Image source={backImg}
+                        resizeMode={'contain'}
+                        style={{
+                            marginTop: 60,
+                            marginLeft: 35, height: 25, width: 25
+                        }} />
+
+                </TouchableOpacity>
 
                 <Text style={styles.titleStyle} > Welcome Back
                 </Text>
@@ -75,7 +90,7 @@ const Login = () => {
                 <View style={styles.signUpTextCont}>
                     <Text style={styles.signUpTextStyle}>Not a member of Co-Tasker yet?</Text>
                     <Button
-                    color="#000"
+                        color="#000"
                         onPress={() => navigation.navigate('SignUp')}
                         title="Register here"
                     />
@@ -96,19 +111,19 @@ export default Login;
 
 const styles = StyleSheet.create({
     container: {
-        position: 'relative',
+       
         flexGrow: 1,
 
     },
 
     containerEmail: {
-        position: 'relative',
+        
         flex: 1,
 
     },
 
     titleStyle: {
-        marginTop: 100,
+        marginTop: 40,
         marginLeft: 35,
         textAlign: 'left',
         fontSize: 25,
@@ -152,9 +167,9 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     signUpTextCont: {
-      
+
         flexGrow: 1,
-        justifyContent: 'flex-start',
+        justifyContent: 'flex-end',
         alignItems: "center",
     },
     signUpTextStyle:

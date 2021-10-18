@@ -59,8 +59,7 @@ const PasswordLogin = () => {
                             onPress={() => {
                                 console.log(text)
                                 // Alert.alert(text)
-                                navigation.navigate('VerifyEmail')
-
+                                navigation.navigate('Tabber');
                             }}>
 
                             <Text style={styles.buttonText}>Log in</Text>
@@ -153,10 +152,10 @@ const styles = StyleSheet.create({
         marginVertical: 300,
         paddingVertical: 16,
 
-       // alignContent:'flex-start',
-        justifyContent:'flex-end'
-       
-       
+        // alignContent:'flex-start',
+        justifyContent: 'flex-end'
+
+
 
     },
 

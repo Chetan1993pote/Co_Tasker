@@ -8,10 +8,13 @@ var backImg = require('../DetailsForm/icon_back_black.png');
 
 const win = Dimensions.get('window');
 
+const defaultValue = '';
+
 const DetailsForm = () => {
 
     const navigation = useNavigation();
     const [firstName, lastName, city, phone, setText] = useState('');
+
 
     return (
         <View style={styles.container}>
@@ -78,24 +81,25 @@ const DetailsForm = () => {
                     placeholder="Phone"
                     autoCorrect={false}
                     //onChangeText={text3 => setText(text3)}
-                    defaultValue={phone}
+                    value={phone}
                 />
 
-
-                <TouchableOpacity style={styles.button}
-
-                    onPress={() => {
-
-                       // Alert.alert('text')
-                       navigation.navigate('CreatePwd');
-
-
-                    }}>
-
-                    <Text style={styles.buttonText}>Next</Text>
-                </TouchableOpacity>
-
             </ScrollView>
+
+            <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.button}
+
+                        onPress={() => {
+
+                            // Alert.alert('text')
+                            navigation.navigate('ChooseIntrest');
+
+
+                        }}>
+
+                        <Text style={styles.buttonText}>Next</Text>
+                    </TouchableOpacity>
+                </View>
 
 
 
@@ -110,13 +114,14 @@ export default DetailsForm;
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        // alignItems: "center",
+
     },
 
     scrollView: {
         marginHorizontal: 10,
 
     },
+
 
     titleStyle: {
         marginTop: 20,
@@ -209,16 +214,24 @@ const styles = StyleSheet.create({
         paddingLeft: 3
     },
 
+    buttonContainer: {
+
+        justifyContent: 'flex-end',
+        marginBottom: 50,
+        flexGrow: 1
+
+    },
+
+
     button: {
-        width: win.width - 30,
+
+        paddingVertical: 14,
+        justifyContent: 'flex-end',
+        width: win.width - 40,
         backgroundColor: '#ffbf00',
         borderRadius: 12,
-        marginVertical: 150,
         paddingVertical: 12,
-        marginBottom: 30,
         alignSelf: 'center',
-        justifyContent: 'flex-end',
-        flexGrow: 1
 
     },
 
