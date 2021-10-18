@@ -92,7 +92,7 @@ const DetailsForm = () => {
                         onPress={() => {
 
                             // Alert.alert('text')
-                            navigation.navigate('ChooseIntrest');
+                            navigation.navigate('PickIntrest');
 
 
                         }}>

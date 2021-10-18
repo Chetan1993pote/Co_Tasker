@@ -30,7 +30,7 @@ const Tabber = () => {
               <Image
               resizeMode='contain'
                   source={image}
-                  style={{height:25, width:25}}
+                  style={{height:20, width:20}}
               />
           )
       }}}/>
@@ -43,7 +43,7 @@ const Tabber = () => {
               <Image
               resizeMode='contain'
                   source={image}
-                  style={{height:25, width:25}}
+                  style={{height:20, width:20}}
               />
           )
       }}}/>
@@ -56,7 +56,7 @@ const Tabber = () => {
               <Image
               resizeMode='contain'
                   source={image}
-                  style={{height:60, width:60,marginBottom:30}}
+                  style={{height:55, width:55,marginBottom:25}}
               />
           )
       }}}/>
@@ -69,7 +69,7 @@ const Tabber = () => {
               <Image
               resizeMode='contain'
                   source={image}
-                  style={{height:25, width:25}}
+                  style={{height:20, width:20}}
               />
           )
       }}}/>
@@ -82,7 +82,7 @@ const Tabber = () => {
               <Image
               resizeMode='contain'
                   source={image}
-                  style={{height:25, width:25}}
+                  style={{height:20, width:20}}
               />
           )
       }}}/>

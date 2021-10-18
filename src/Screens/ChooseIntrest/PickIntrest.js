@@ -1,39 +1,60 @@
-import { View, Text, ScrollView, StyleSheet, Image, FlatList, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TouchableWithoutFeedback, StyleSheet, Alert, Image, FlatList, TouchableOpacity, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import React, { useState } from 'react';
-//import RadioButtonRN from 'radio-buttons-react-native';
+import RadioButtonRN from 'radio-buttons-react-native';
+
 
 var backImg = require('../DetailsForm/icon_back_black.png');
+var unselected_Img = require('../../Screens/ChooseIntrest/unselected.png');
+var selected_Img = require('../../Screens/ChooseIntrest/selected.png');
+
 
 const win = Dimensions.get('window');
 
 const defaultValue = '';
 
-const DetailsForm = () => {
+const PickIntrest = () => {
 
     const navigation = useNavigation();
-    const [firstName, lastName, city, phone, setText] = useState('');
+    const [isSelected, setSelected] = useState(false)
 
 
     const arr_Data = [
         {
             id: '1',
             title: 'Getting Help',
-            desc: 'I want to post tasks and find help'
+            desc: 'I want to post tasks and find help',
+            selected: false
         },
         {
             id: '2',
             title: 'Making money',
-            desc: 'I want to help people,earn money and do it flexible tasks'
+            desc: 'I want to help people,earn money and do it flexible tasks',
+            selected: false
         },
         {
             id: '3',
             title: 'Both',
-            desc: 'I want to do everything:find help and earn money on Co-tasker'
+            desc: 'I want to do everything:find help and earn money on Co-tasker',
+            selected: false
         },
     ];
 
+    actionOnRow = (item, index) => {
+        console.log('Selected Item :', item.id);
+        Alert.alert("Selected Item :", item.title);
+        let data = arr_Data[index]
+
+        if (item.isSelected){
+            data.isSelected = false 
+        }else{
+            data.isSelected = true 
+
+        }
+
+    }
+ 
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -49,8 +70,6 @@ const DetailsForm = () => {
 
             </TouchableOpacity>
 
-
-
             <Text style={styles.titleStyle} > What are you more
             </Text>
 
@@ -62,23 +81,34 @@ const DetailsForm = () => {
 
             <View style={styles.tableList}>
                 <FlatList
+
                     data={arr_Data}
+                    extraData={this.state}
                     keyExtractor={item => item.id}
                     ItemSeparatorComponent={(props) => {
                         console.log('props', props); // here you can access the trailingItem with props.trailingItem
-                        return (<View style={{height: 1, backgroundColor:'grey',width:win.width - 40,alignSelf:'center'}} />);
-                      }}
-                    renderItem={({ item }) => (
-                        <View >
-                            <Text style={styles.titleAtribute}>{item.title}</Text>
-                            <Text style={styles.descAtribute}>{item.desc}</Text>
-                        </View>
+                        return (<View style={{ height: 1, backgroundColor: 'grey', width: win.width - 40, alignSelf: 'center' }} />);
+                    }}
+
+                    renderItem={({ item, index }) => (
+
+                        <TouchableWithoutFeedback onPress={() => this.actionOnRow(item, index)}>
+                            <View style={styles.containerRadio}>
+
+                                <Image source={item.isSelected ? selected_Img : unselected_Img}
+                                    resizeMode='contain'
+                                    style={{ marginLeft: 20, height: 25, width: 25 }} />
+
+                                <Text style={styles.titleAtribute}>{item.title}</Text>
+                                {/* <View style={styles.containerSecondRow}>                         */}
+                                {/* <Text style={styles.descAtribute}>{item.desc}</Text>  */}
+                                {/* </View>     */}
+                            </View>
+
+                        </TouchableWithoutFeedback>
                     )}
 
                 ></FlatList>
-
-
-
             </View>
 
             {/* <RadioButtonRN
@@ -96,11 +126,8 @@ const DetailsForm = () => {
                 <TouchableOpacity style={styles.button}
 
                     onPress={() => {
-
                         // Alert.alert('text')
                         navigation.navigate('Tabber');
-                        
-
                     }}>
 
                     <Text style={styles.buttonText}>Submit</Text>
@@ -115,7 +142,7 @@ const DetailsForm = () => {
 
 }
 
-export default DetailsForm;
+export default PickIntrest;
 
 const styles = StyleSheet.create({
     container: {
@@ -123,35 +150,45 @@ const styles = StyleSheet.create({
     },
 
     tableList: {
-        //backgroundColor: 'green',
         marginTop: 25,
         flexGrow: 1,
-        
+
     },
 
-    titleAtribute:{
+    containerRadio: {
+        padding: 10,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    containerSecondRow: {
+        flexGrow: 1,
+        alignItems: 'center',
+        flexDirection: 'column',
+    },
+
+    titleAtribute: {
         fontSize: 20,
         color: 'black',
         fontWeight: 'normal',
-        marginLeft:40,
-        paddingTop:10,
-        marginVertical:10
+        marginLeft: 20,
+        marginVertical: 10
     },
 
-    descAtribute:{
+    descAtribute: {
         fontSize: 16,
         color: 'grey',
         fontWeight: 'normal',
-        marginLeft:40,
-        paddingBottom:10
+        marginLeft: 20,
+        paddingBottom: 10
     },
 
     seperator: {
-        flex: 1, 
-        borderWidth: 1, 
+        flex: 1,
+        borderWidth: 1,
         borderColor: 'grey'
 
-       },
+    },
 
     titleStyle: {
         marginTop: 20,
@@ -205,7 +242,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center'
     },
-
-
-
 });
