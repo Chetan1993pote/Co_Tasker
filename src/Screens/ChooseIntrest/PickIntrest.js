@@ -100,9 +100,9 @@ const PickIntrest = () => {
                                     style={{ marginLeft: 20, height: 25, width: 25 }} />
 
                                 <Text style={styles.titleAtribute}>{item.title}</Text>
-                                {/* <View style={styles.containerSecondRow}>                         */}
-                                {/* <Text style={styles.descAtribute}>{item.desc}</Text>  */}
-                                {/* </View>     */}
+                               {/* <View style={styles.containerSecondRow}>                        
+                                <Text style={styles.descAtribute}>{item.desc}</Text> 
+                                </View>     */}
                             </View>
 
                         </TouchableWithoutFeedback>
