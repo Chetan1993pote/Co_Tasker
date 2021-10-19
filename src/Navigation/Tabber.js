@@ -16,8 +16,8 @@ const Tab = createBottomTabNavigator();
 const Tabber = () => {
   return (
     <Tab.Navigator
-    tabBarOptions={{
-      showLabel:false
+    screenOptions={{
+        tabBarShowLabel:false
     }}
     
     >

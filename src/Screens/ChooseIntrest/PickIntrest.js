@@ -17,44 +17,34 @@ const defaultValue = '';
 const PickIntrest = () => {
 
     const navigation = useNavigation();
-    const [isSelected, setSelected] = useState(false)
-
+    const [selectedIndex, setSelectedIndex] = useState(0)
 
     const arr_Data = [
         {
             id: '1',
             title: 'Getting Help',
             desc: 'I want to post tasks and find help',
-            selected: false
         },
         {
             id: '2',
             title: 'Making money',
             desc: 'I want to help people,earn money and do it flexible tasks',
-            selected: false
         },
         {
             id: '3',
             title: 'Both',
             desc: 'I want to do everything:find help and earn money on Co-tasker',
-            selected: false
         },
     ];
 
     actionOnRow = (item, index) => {
         console.log('Selected Item :', item.id);
-        Alert.alert("Selected Item :", item.title);
-        let data = arr_Data[index]
+        setSelectedIndex(index)
+        console.log('Selected Item 1:', selectedIndex);
 
-        if (item.isSelected){
-            data.isSelected = false 
-        }else{
-            data.isSelected = true 
-
-        }
 
     }
- 
+
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -87,22 +77,27 @@ const PickIntrest = () => {
                     keyExtractor={item => item.id}
                     ItemSeparatorComponent={(props) => {
                         console.log('props', props); // here you can access the trailingItem with props.trailingItem
-                        return (<View style={{ height: 1, backgroundColor: 'grey', width: win.width - 40, alignSelf: 'center' }} />);
+                        return (<View style={{ height: 1, backgroundColor: 'grey', width: win.width - 40, alignSelf: 'center', marginBottom: 10 }} />);
                     }}
 
                     renderItem={({ item, index }) => (
 
                         <TouchableWithoutFeedback onPress={() => this.actionOnRow(item, index)}>
-                            <View style={styles.containerRadio}>
-
-                                <Image source={item.isSelected ? selected_Img : unselected_Img}
+                            <View style={{ flexDirection: 'row'}}>
+                                <Image source={(selectedIndex == index) ? selected_Img : unselected_Img}
                                     resizeMode='contain'
-                                    style={{ marginLeft: 20, height: 25, width: 25 }} />
+                                    style={{ height: 25, width: 25, margin: 20, marginTop: 0 }} />
+                                <View style={{flexDirection:'column'}}>
+                                    <Text style={{
+                                        fontSize: 20,
+                                        color: (selectedIndex == index) ? '#ffbf00' : 'black',
+                                        fontWeight: 'normal',
+                                    }}>{item.title}</Text>
 
-                                <Text style={styles.titleAtribute}>{item.title}</Text>
-                               {/* <View style={styles.containerSecondRow}>                        
-                                <Text style={styles.descAtribute}>{item.desc}</Text> 
-                                </View>     */}
+                                    <Text style={styles.descAtribute}
+                                   
+                                    >{item.desc}</Text>
+                                </View>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -110,16 +105,6 @@ const PickIntrest = () => {
 
                 ></FlatList>
             </View>
-
-            {/* <RadioButtonRN
-                    data={data}
-                    box={false}
-                    activeColor='#ffbf00'
-                    deactiveColor='grey'
-                    selectedBtn={(e) => console.log(e)}
-            
-                /> */}
-
 
 
             <View style={styles.buttonContainer}>
@@ -156,31 +141,21 @@ const styles = StyleSheet.create({
     },
 
     containerRadio: {
-        padding: 10,
+
+        //padding: 10,
         flexDirection: 'row',
-        alignItems: 'center'
-    },
-
-    containerSecondRow: {
-        flexGrow: 1,
-        alignItems: 'center',
-        flexDirection: 'column',
-    },
-
-    titleAtribute: {
-        fontSize: 20,
-        color: 'black',
-        fontWeight: 'normal',
-        marginLeft: 20,
-        marginVertical: 10
+        // alignItems: 'center',
+        justifyContent: 'space-evenly',
+        marginBottom: 10
     },
 
     descAtribute: {
-        fontSize: 16,
+        marginVertical:15,
+        fontSize: 18,
         color: 'grey',
         fontWeight: 'normal',
-        marginLeft: 20,
-        paddingBottom: 10
+        paddingRight:90
+        //textAlign:'auto'
     },
 
     seperator: {
