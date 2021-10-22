@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 
-var logo = require('./splash.png');
 var backImg = require('../Login/back_white.png');
 
 

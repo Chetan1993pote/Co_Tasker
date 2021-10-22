@@ -145,7 +145,6 @@
 				1F76E87B40FEEEEC2EA865AB /* Pods-Co_Tasker-Co_TaskerTests.debug.xcconfig */,
 				E299A2505F0F199D038D43B3 /* Pods-Co_Tasker-Co_TaskerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

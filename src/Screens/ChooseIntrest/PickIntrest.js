@@ -2,7 +2,6 @@ import { View, Text, TouchableWithoutFeedback, StyleSheet, Alert, Image, FlatLis
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import React, { useState } from 'react';
-import RadioButtonRN from 'radio-buttons-react-native';
 
 
 var backImg = require('../DetailsForm/icon_back_black.png');
@@ -11,8 +10,6 @@ var selected_Img = require('../../Screens/ChooseIntrest/selected.png');
 
 
 const win = Dimensions.get('window');
-
-const defaultValue = '';
 
 const PickIntrest = () => {
 
