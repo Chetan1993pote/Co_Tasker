@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, Touch
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 var app_Design = require('../Login/AppDesign.png');
@@ -14,6 +15,19 @@ const PasswordLogin = () => {
 
     const navigation = useNavigation();
     const [text, setText] = useState('');
+
+    validate = (text) => {
+        console.log(text);
+        
+        if (!text.trim()) {
+            Alert.alert("Please enter Password");
+
+        } 
+        else {
+            // Alert.alert("Email is Correct");
+            navigation.navigate('Tabber')
+        }
+    }
 
 
     return (
@@ -29,7 +43,7 @@ const PasswordLogin = () => {
                     <Image source={backImg}
                         resizeMode={'contain'}
                         style={{
-                            marginTop: 65,
+                            marginTop: 55,
                             marginLeft: 35, height: 25, width: 25
                         }} />
 
@@ -38,83 +52,72 @@ const PasswordLogin = () => {
                 </Text>
 
                 <View style={styles.containerEmail}>
-
                     <ImageBackground source={welcomeBack}
                         resizeMode={'contain'}
-                        style={{ height: win.height, width: win.width }}>
-
-                        <Text style={styles.passwordTitle} > Enter Password
-                        </Text>
-
-                        <TextInput
-                            style={styles.inputText}
-                            placeholder="Password"
-                            autoCorrect={false}
-                            onChangeText={text => setText(text)}
-                            defaultValue={text}
-                        />
-
-                        <TouchableOpacity style={styles.button}
-
-                            onPress={() => {
-                                console.log(text)
-                                // Alert.alert(text)
-                                navigation.navigate('Tabber');
-                            }}>
-
-                            <Text style={styles.buttonText}>Log in</Text>
-                        </TouchableOpacity>
-                    </ImageBackground>
-
-
+                        style={{ height: win.height, width: win.width }}></ImageBackground>
 
                 </View>
 
+                <View style={{ flexDirection: 'column', flexGrow: 1, paddingStart: 25, marginBottom: 150 }}>
+                    <Text style={styles.passwordTitle} > Enter Password
+                    </Text>
 
+                    <TextInput
+                        style={styles.inputText}
+                        placeholder="Password"
+                        autoCorrect={false}
+                        onChangeText={text => setText(text)}
+                        defaultValue={text}
+                    />
 
+                    <TouchableOpacity
 
+                        onPress={() => {
+                            console.log(text)
+                             Alert.alert("Forgot Password Coming Soon")
+                            //navigation.navigate('Tabber');
+                        }}>
 
+                        <Text style={styles.btnForgotPwd}>Forgot Password?</Text>
+                    </TouchableOpacity>
+
+                </View>
+
+                <TouchableOpacity style={styles.button}
+
+                    onPress={() => {
+                        console.log(text)
+                        // Alert.alert(text)
+                        this.validate(text)
+                    }}>
+
+                    <Text style={styles.buttonText}>Log in</Text>
+                </TouchableOpacity>
 
 
             </ImageBackground>
 
-            <View>
-
-
-            </View>
-
 
         </View>
 
-
-
-
     );
-
-
 }
 
 export default PasswordLogin;
 
 const styles = StyleSheet.create({
     container: {
-        // position: 'relative',
-        //padding:100,
         flexGrow: 1,
-        //flexDirection: 'row',
-        // marginTop:150
-
-
     },
 
     containerEmail: {
-        //position: 'relative',
-        flexGrow: 1,
+        flex: 1,
+        marginTop: 20
 
     },
 
     titleStyle: {
-        marginTop: 30,
+        marginTop: 25,
         marginLeft: 35,
         textAlign: 'left',
         fontSize: 25,
@@ -123,40 +126,29 @@ const styles = StyleSheet.create({
     },
 
     passwordTitle: {
-
-        marginTop: 200,
-        marginLeft: 29,
         fontSize: 15,
         color: 'grey',
         fontWeight: 'normal'
-
     },
 
     inputText:
     {
-        marginTop: 5,
+
         marginRight: 30,
         borderBottomColor: '#000',
         borderBottomWidth: 0.8,
         height: 40,
-        marginLeft: 30,
         paddingLeft: 3
     },
 
     button: {
-
-        marginLeft: 30,
-        marginRight: 30,
         backgroundColor: '#ffbf00',
         borderRadius: 12,
-        marginVertical: 300,
-        paddingVertical: 16,
-
-        // alignContent:'flex-start',
-        justifyContent: 'flex-end'
-
-
-
+        marginBottom: 30,
+        paddingVertical: 14,
+        justifyContent: 'flex-end',
+        alignSelf: 'center',
+        width: win.width - 40,
     },
 
     buttonText: {
@@ -165,6 +157,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center'
     },
+
+    btnForgotPwd:{
+        color: '#000',
+        fontSize: 16,
+        fontWeight: '400',
+        textAlign: 'right',
+        paddingRight:30,
+        marginTop:10
+    }
+    
 
 
 });

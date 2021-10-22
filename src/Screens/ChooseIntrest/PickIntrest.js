@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
 
         justifyContent: 'flex-end',
         alignItems: 'center',
-        marginBottom: 50,
+        marginBottom: 40,
         flexGrow: 1
 
     },

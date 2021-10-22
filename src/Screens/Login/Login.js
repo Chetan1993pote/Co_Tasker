@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, TouchableOpacity, Button } from 'react-native';
+import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, TouchableOpacity, Button, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
@@ -14,21 +14,42 @@ const win = Dimensions.get('window');
 const Login = () => {
 
     const navigation = useNavigation();
-    const [text, setText] = useState('');
+    const [values, setText] = useState({ email: '' });
 
-    validate = (text) => {
-        console.log(text);
+    const [submitted, setSubmitted] = useState(false);
+    const [valid, setValid] = useState(false);
+
+    const handleEmailChange = (inputText) => {
+
+        console.log(inputText)
+        setText({
+            ...values,
+            email: inputText,
+        });
+    }
+
+    const handleSubmit = (inputText) => {
+        //inputText.preventDefault();
+        setSubmitted(true);
+        if (values.email) {
+            setValid(true)
+            validate(values.email)
+
+        }
+
+    }
+
+
+    const validate = (emailValue) => {
+        console.log(emailValue);
         let reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!text.trim()) {
-            Alert.alert("Please enter email address");
-
-        } else if (reg.test(text) === false) {
+        if (reg.test(emailValue) === false) {
             Alert.alert("Please enter Valid Email address");
             return false;
         }
         else {
             // Alert.alert("Email is Correct");
-            navigation.navigate('PasswordLogin')
+             navigation.navigate('PasswordLogin')
         }
     }
 
@@ -55,37 +76,40 @@ const Login = () => {
                 <Text style={styles.titleStyle} > Welcome Back
                 </Text>
                 <View style={styles.containerEmail}>
-                    <Image source={welcomeBack}
+                    <ImageBackground source={welcomeBack}
                         resizeMode={'contain'}
-                        style={{ height: win.height + 30, width: win.width }}></Image>
+                        style={{ height: win.height, width: win.width }}></ImageBackground>
+
 
                 </View>
 
-                <Text style={styles.emailTitle} > Email Address
-                </Text>
+                <View style={{ flexDirection: 'column', paddingStart: 25, flexGrow: 1, marginTop: 135 }}>
+                    <Text style={styles.emailTitle} > Email Address
+                    </Text>
 
-                <TextInput
-                    style={styles.inputText}
-                    placeholder="Enter your email address"
-                    autoCapitalize='none'
-                    keyboardType='email-address'
-                    autoCorrect={false}
-                    autoCompleteType='email'
-                    onChangeText={text => setText(text)}
-                    defaultValue={text}
-                />
+                    <TextInput
+                        style={styles.inputText}
+                        placeholder="Enter your email address"
+                        autoCapitalize='none'
+                        keyboardType='email-address'
+                        autoCorrect={false}
+                        autoCompleteType='email'
+                        onChangeText={handleEmailChange}
+                        value={values.email} />
 
-                <TouchableOpacity style={styles.button}
+                {submitted && valid && !values.email ? <Text style={styles.errorMsgStyle} > Please enter email address
+                    </Text> : null} 
 
-                    onPress={() => {
-                        console.log(text)
-                        // Alert.alert(text)
-                        this.validate(text)
+                    <TouchableOpacity style={styles.button}
 
-                    }}>
+                        onPress={() => {
+                            handleSubmit()
+                        }}>
 
-                    <Text style={styles.buttonText}>Continue</Text>
-                </TouchableOpacity>
+                        <Text style={styles.buttonText}>Continue</Text>
+                    </TouchableOpacity>
+                </View>
+
 
                 <View style={styles.signUpTextCont}>
                     <Text style={styles.signUpTextStyle}>Not a member of Co-Tasker yet?</Text>
@@ -111,28 +135,27 @@ export default Login;
 
 const styles = StyleSheet.create({
     container: {
-       
         flexGrow: 1,
-
     },
 
     containerEmail: {
-        
+
         flex: 1,
+        marginTop: 20
 
     },
 
     titleStyle: {
-        marginTop: 40,
+        marginTop: 25,
         marginLeft: 35,
         textAlign: 'left',
         fontSize: 25,
         color: 'white',
         fontWeight: "bold"
     },
+
     emailTitle: {
-        marginTop: 220,
-        marginLeft: 29,
+
         fontSize: 15,
         color: 'grey',
         fontWeight: 'normal'
@@ -141,21 +164,19 @@ const styles = StyleSheet.create({
 
     inputText:
     {
-        marginTop: 5,
         marginRight: 30,
         borderBottomColor: '#000',
         borderBottomWidth: 0.8,
         height: 40,
-        marginLeft: 30,
         paddingLeft: 3
     },
 
     button: {
-        marginLeft: 30,
-        marginRight: 30,
+        alignSelf: 'center',
+        width: win.width - 40,
         backgroundColor: '#ffbf00',
         borderRadius: 12,
-        marginVertical: 150,
+        marginVertical: 100,
         paddingVertical: 16
 
     },
@@ -167,11 +188,12 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     signUpTextCont: {
-
-        flexGrow: 1,
+        marginBottom: 20,
         justifyContent: 'flex-end',
-        alignItems: "center",
+        alignItems: 'center',
+        flexGrow: 1
     },
+
     signUpTextStyle:
     {
         fontSize: 15,
@@ -186,5 +208,15 @@ const styles = StyleSheet.create({
         fontWeight: 'normal',
         color: 'black',
     },
+
+    errorMsgStyle: {
+
+        fontSize: 15,
+        color: 'red',
+        textAlign: 'right',
+        marginEnd: 30,
+        paddingTop: 5
+
+    }
 
 });

@@ -2,6 +2,7 @@ import { View, Text, ScrollView, StyleSheet, Image, Alert, TextInput, TouchableO
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import React, { useState } from 'react';
+import * as rn from 'react-native'
 
 
 var backImg = require('../DetailsForm/icon_back_black.png');
@@ -13,7 +14,63 @@ const defaultValue = '';
 const DetailsForm = () => {
 
     const navigation = useNavigation();
-    const [firstName, lastName, city, phone, setText] = useState('');
+    const [values, setValue] = useState({
+        firstName: '',
+        lastName: '',
+        city: '',
+        phone: ''
+    });
+
+    const [submitted, setSubmitted] = useState(false);
+    const [valid, setValid] = useState(false);
+
+    const handleFirstNameChange = (inputText) => {
+
+        console.log(inputText)
+        setValue({
+            ...values,
+            firstName: inputText,
+        });
+    }
+
+
+
+    const handleLastNameChange = (inputText) => {
+
+        console.log(inputText)
+        setValue({
+            ...values,
+            lastName: inputText,
+        });
+    }
+
+    const handleCityNameChange = (inputText) => {
+
+        console.log(inputText)
+        setValue({
+            ...values,
+            city: inputText,
+        });
+    }
+
+    const handlePhoneNumChange = (inputText) => {
+
+        console.log(inputText)
+        setValue({
+            ...values,
+            phone: inputText,
+        });
+    }
+
+    const handleSubmit = (inputText) => {
+         //inputText.preventDefault();
+        setSubmitted(true);
+        if (values.firstName && values.lastName && values.city && values.phone){
+            setValid(true)
+            navigation.navigate('PickIntrest');
+        }
+        
+    }
 
 
     return (
@@ -42,64 +99,86 @@ const DetailsForm = () => {
                 <Text style={styles.firstNameTitle} > First Name*
                 </Text>
 
-                <TextInput
+                <rn.TextInput
                     style={styles.firstNameInputText}
                     placeholder="First Name"
                     autoCorrect={false}
-                    //onChangeText={text1 => setText(text1)}
-                    defaultValue={firstName}
-                />
+                    autoCompleteType='off'
+                    onChangeText={handleFirstNameChange}
+                    value={values.firstName}
+                    returnKeyType={"next"}
 
+                // onEndEditing={() => this.lastName.focus()}
+                />
+                {submitted && valid && !values.firstName ? <Text style={styles.errorMsgStyle} > Please enter first name
+                </Text> : null}
                 <Text style={styles.lastNameTitle} > Last Name*
                 </Text>
 
-                <TextInput
+                <rn.TextInput
                     style={styles.lastNameInputText}
                     placeholder="Last Name"
                     autoCorrect={false}
-                    //onChangeText={text2 => setText(text2)}
-                    defaultValue={lastName}
+                    autoCompleteType='off'
+                    onChangeText={handleLastNameChange}
+                    value={values.lastName}
+                    returnKeyType={"next"}
+                //ref={(input) => this.lastName = input} 
+                //onEndEditing={() => this.city.focus()}
+
                 />
+                {submitted && valid && !values.lastName ? <Text style={styles.errorMsgStyle} > Please enter last name
+                </Text> : null}
 
 
                 <Text style={styles.cityNameTitle} > City
                 </Text>
 
-                <TextInput
+                <rn.TextInput
                     style={styles.cityNameInputText}
                     placeholder="City"
                     autoCorrect={false}
-                    //onChangeText={text3 => setText(text3)}
-                    defaultValue={city}
+                    autoCompleteType='off'
+                    onChangeText={handleCityNameChange}
+                    value={values.city}
+                    returnKeyType={"next"}
+                //ref={(input) => this.city = input} 
+                //onEndEditing={() => this.phone.focus()}
+
                 />
+                {submitted && valid && !values.city ? <Text style={styles.errorMsgStyle} > Please enter city name
+                </Text> : null}
 
                 <Text style={styles.phoneTitle} > Phone Number(Optional)
                 </Text>
 
-                <TextInput
+                <rn.TextInput
                     style={styles.phoneNumInputText}
                     placeholder="Phone"
                     autoCorrect={false}
-                    //onChangeText={text3 => setText(text3)}
-                    value={phone}
+                    autoCompleteType='off'
+                    onChangeText={handlePhoneNumChange}
+                    value={values.phone}
+                    returnKeyType={"done"}
+                //ref={(input) => this.phone = input} 
                 />
+                {submitted && valid && !values.phone ? <Text style={styles.errorMsgStyle} > Please enter phone number
+                </Text> : null}
 
             </ScrollView>
 
             <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button}
+                <TouchableOpacity style={styles.button}
 
-                        onPress={() => {
+                    onPress={() => {
+                        // Alert.alert('text')
+                         handleSubmit()
 
-                            // Alert.alert('text')
-                            navigation.navigate('PickIntrest');
+                    }}>
 
-
-                        }}>
-
-                        <Text style={styles.buttonText}>Next</Text>
-                    </TouchableOpacity>
-                </View>
+                    <Text style={styles.buttonText}>Next</Text>
+                </TouchableOpacity>
+            </View>
 
 
 
@@ -217,7 +296,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
 
         justifyContent: 'flex-end',
-        marginBottom: 50,
+        marginBottom: 40,
         flexGrow: 1
 
     },
@@ -241,5 +320,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center'
     },
+    errorMsgStyle: {
+
+        fontSize: 15,
+        color: 'red',
+        textAlign: 'right',
+        marginEnd: 30,
+        paddingTop: 5
+
+    }
 
 });

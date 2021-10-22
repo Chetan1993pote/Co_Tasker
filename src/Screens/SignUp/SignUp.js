@@ -1,5 +1,5 @@
 
-import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, TouchableOpacity, Button } from 'react-native';
+import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, TouchableOpacity, Button, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
@@ -32,6 +32,7 @@ const SignUp = () => {
     }
 
     return (
+       
         <View>
             <ImageBackground
                 source={app_Design}
@@ -44,10 +45,11 @@ const SignUp = () => {
                     <Image source={welcomeBack}
                         resizeMode={'contain'}
                         style={{ height: win.height + 60, width: win.width }}></Image>
+                    
                 </View>
+                <ScrollView>
 
                 <Text style={styles.emailTitle} > Email Address </Text>
-
                 <TextInput
                     style={styles.inputText}
                     placeholder="Enter your email address"
@@ -86,9 +88,11 @@ const SignUp = () => {
                     />
                 </View>
 
+                </ScrollView>
 
             </ImageBackground>
         </View>
+       
     );
 
 }
@@ -134,18 +138,17 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     emailTitle: {
-        marginTop: 180,
+        marginTop: 150,
         marginLeft: 29,
         fontSize: 15,
         color: 'grey',
         fontWeight: 'normal',
-        flexGrow: 1,
 
     },
 
     inputText:
     {
-        marginTop: -50,
+       
         marginRight: 30,
         borderBottomColor: '#000',
         borderBottomWidth: 0.8,
