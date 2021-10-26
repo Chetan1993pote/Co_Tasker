@@ -2,14 +2,12 @@ import { View, Text, ScrollView, StyleSheet, Image, Alert, TextInput, TouchableO
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import React, { useState } from 'react';
-import * as rn from 'react-native'
-
+import * as rn from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 
 var backImg = require('../DetailsForm/icon_back_black.png');
 
 const win = Dimensions.get('window');
-
-const defaultValue = '';
 
 const DetailsForm = () => {
 
@@ -62,12 +60,28 @@ const DetailsForm = () => {
         });
     }
 
-    const handleSubmit = (inputText) => {
+    const handleSubmit = async () => {
          //inputText.preventDefault();
         setSubmitted(true);
         if (values.firstName && values.lastName && values.city && values.phone){
             setValid(true)
-            navigation.navigate('PickIntrest');
+            try {
+
+                let obj = {
+                    fName:values.firstName,
+                    lName:values.lastName,
+                    cityName: values.city,
+                    phoneNum:values.phone
+                }
+                await AsyncStorage.setItem('userInfo', JSON.stringify(obj));
+              
+                navigation.navigate('PickIntrest');
+              } catch (e) {
+                // saving error
+                console.log(e)
+              }
+          
+           
         }
         
     }

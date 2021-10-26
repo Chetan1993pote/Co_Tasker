@@ -1,17 +1,60 @@
-import { View,Text ,StyleSheet} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import { View, Text, StyleSheet, Alert } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 const TabMyTasksVC = () => {
 
-    const navigation = useNavigation();
+
+    const [userDetails, setUserDetails] = useState({});
+
+    useEffect(() => {
+        getLocalData()
+
+    }, []);
+
+    const getLocalData = async () => {
+        AsyncStorage.getItem('userInfo').then(savedData => {
+            if (savedData) {
+                try {
+                    const savedUserDetails = JSON.parse(savedData);
+                    if (savedUserDetails) {
+
+                        //Alert.alert(savedUserDetails.lName)
+                        setUserDetails(savedUserDetails);
+                    }
+                } catch (error) { }
+            }
+        });
+    }
+
+    const { fName,
+        lName,
+        cityName,
+        phoneNum } = userDetails;
+
+
+    // AsyncStorage.getAllKeys((err, keys) => {
+    //     AsyncStorage.multiGet(keys, (error, stores) => {
+    //       stores.map((result, i, store) => {
+    //         console.log({ [store[i][0]]: store[i][1] });
+    //         return true;
+    //       });
+    //     });
+    //   });
+
+    // }
 
     return (
         <View style={styles.container}>
-             <View>
-                    <Text style={styles.screenText}> My Tasks</Text>
-                </View>
+            <View style={styles.localContainer}>
+
+                <Text style={styles.textStyle}>Name: {fName} {lName}</Text>
+                <Text style={styles.textStyle}>City: {cityName}</Text>
+                <Text style={styles.textStyle}>Phone: {phoneNum}</Text>
+
+            </View>
         </View>
     );
 
@@ -23,15 +66,24 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         backgroundColor: 'orange',
-        justifyContent:'center'
+       
     },
 
-    screenText:{
-        fontSize:20,
-        color:'white',
-        alignContent:'center'
-        
+    localContainer: {
+        alignItems:'flex-start',
+        marginHorizontal:20,
+        marginTop:50
+
+    },
+
+    textStyle: {
+
+        color: '#000',
+        fontSize: 25,
+        fontWeight: 'bold',
+       
+
     }
-  
+
 
 });

@@ -14,7 +14,31 @@ const win = Dimensions.get('window');
 const PasswordLogin = () => {
 
     const navigation = useNavigation();
-    const [text, setText] = useState('');
+   // const [text, setText] = useState('');
+    const [values, setText] = useState({ password: '' });
+
+    const [submitted, setSubmitted] = useState(false);
+    const [valid, setValid] = useState(false);
+
+    const handlePwdChange = (inputText) => {
+
+        console.log(inputText)
+        setText({
+            ...values,
+            password: inputText,
+        });
+    }
+
+    const handleSubmit = (inputText) => {
+        //inputText.preventDefault();
+        setSubmitted(true);
+        if (values.password) {
+            setValid(true)
+            navigation.navigate('Tabber');
+        }
+
+    }
+
 
     validate = (text) => {
         console.log(text);
@@ -66,14 +90,16 @@ const PasswordLogin = () => {
                         style={styles.inputText}
                         placeholder="Password"
                         autoCorrect={false}
-                        onChangeText={text => setText(text)}
-                        defaultValue={text}
+                        onChangeText={handlePwdChange}
+                        value={values.password}
                     />
+                    {submitted && valid && !values.password ? <Text style={styles.errorMsgStyle} > Please enter Password
+                    </Text> : null} 
 
                     <TouchableOpacity
 
                         onPress={() => {
-                            console.log(text)
+                            //console.log(text)
                              Alert.alert("Forgot Password Coming Soon")
                             //navigation.navigate('Tabber');
                         }}>
@@ -86,9 +112,7 @@ const PasswordLogin = () => {
                 <TouchableOpacity style={styles.button}
 
                     onPress={() => {
-                        console.log(text)
-                        // Alert.alert(text)
-                        this.validate(text)
+                        handleSubmit()
                     }}>
 
                     <Text style={styles.buttonText}>Log in</Text>
@@ -165,6 +189,15 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         paddingRight:30,
         marginTop:10
+    },
+    errorMsgStyle: {
+
+        fontSize: 15,
+        color: 'red',
+        textAlign: 'right',
+        marginEnd: 30,
+        paddingTop: 5
+
     }
     
 

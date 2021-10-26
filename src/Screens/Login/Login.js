@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, Touch
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
-import { isInvalid } from 'redux-form';
 
 
 var app_Design = require('./AppDesign.png');
@@ -19,7 +18,6 @@ const Login = () => {
 
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
-    const [inValid, setInValid] = useState(false);
 
     const handleEmailChange = (inputText) => {
 
