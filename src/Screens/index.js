@@ -7,6 +7,9 @@ export {default as DetailsForm} from './DetailsForm/DetailsForm';
 export {default as CreatePwd} from './CreatePassword/CreatePwd';
 export {default as LoginOption} from './LoginOption/LoginOptions';
 export {default as ChooseIntrest} from './ChooseIntrest/PickIntrest';
+export {default as PwdConfirmPwd} from './SignUp/PwdConfirmPwd';
+
+
 
 
 

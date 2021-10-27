@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, Touch
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 var app_Design = require('../Login/AppDesign.png');
@@ -192,7 +191,7 @@ const styles = StyleSheet.create({
     },
     errorMsgStyle: {
 
-        fontSize: 15,
+        fontSize: 12,
         color: 'red',
         textAlign: 'right',
         marginEnd: 30,

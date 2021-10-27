@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, Touch
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
-
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 var app_Design = require('../Login/AppDesign.png');
 var welcomeBack = require('../Login/welcomeback.png');
@@ -27,8 +28,49 @@ const SignUp = () => {
         }
         else {
             //Alert.alert("Email is Correct");
-            navigation.navigate('VerifyEmail');
+            
+         // callAPIforCheckEmailRegistered_orNot(text)
+
+            navigation.navigate('ConfirmPwd');
         }
+    }
+
+    const callAPIforCheckEmailRegistered_orNot = (email) => {
+
+        let userEmail = { 'email': email}
+
+        const headers = { 
+            'x-auth': '',
+            'Content-Type': 'application/json'
+        };
+
+          console.log(userEmail)
+
+        //Calling Api
+        axios.post('https://api.staging.co-tasker.com/api/V10/isEmailRegistered?',userEmail,{headers})
+            .then(function (response) {
+                //  alert(JSON.stringify(response.data));
+
+                if (response != null) {
+                   
+               // AsyncStorage.setItem('userEmail', email);
+
+                   let statusCode = response.status
+                  // alert(statusCode)
+                   navigation.navigate('ConfirmPwd');
+                   
+                }
+
+            })
+            .catch(err => {
+                res = {status: err.response.status, message: err.response.data};
+               // alert(res.status)
+
+                if (res.status == 400){
+                    navigation.navigate('ConfirmPwd');
+                }
+              });
+
     }
 
     return (

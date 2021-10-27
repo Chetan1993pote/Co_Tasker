@@ -86,7 +86,7 @@ const PickIntrest = () => {
                                     style={{ height: 25, width: 25, margin: 20, marginTop: 0 }} />
                                 <View style={{flexDirection:'column'}}>
                                     <Text style={{
-                                        fontSize: 20,
+                                        fontSize: 16,
                                         color: (selectedIndex == index) ? '#ffbf00' : 'black',
                                         fontWeight: 'normal',
                                     }}>{item.title}</Text>
@@ -139,20 +139,18 @@ const styles = StyleSheet.create({
 
     containerRadio: {
 
-        //padding: 10,
         flexDirection: 'row',
-        // alignItems: 'center',
+     
         justifyContent: 'space-evenly',
         marginBottom: 10
     },
 
     descAtribute: {
         marginVertical:15,
-        fontSize: 18,
+        fontSize: 14,
         color: 'grey',
         fontWeight: 'normal',
         paddingRight:90
-        //textAlign:'auto'
     },
 
     seperator: {
@@ -164,7 +162,7 @@ const styles = StyleSheet.create({
 
     titleStyle: {
         marginTop: 20,
-        fontSize: 30,
+        fontSize: 25,
         color: 'black',
         fontWeight: 'bold',
         marginVertical: 15,
@@ -173,7 +171,7 @@ const styles = StyleSheet.create({
 
     titleDesc: {
         marginTop: 20,
-        fontSize: 16,
+        fontSize: 14,
         color: 'grey',
         fontWeight: 'normal',
         marginLeft: 25
@@ -182,7 +180,7 @@ const styles = StyleSheet.create({
     titleStyle2: {
         marginLeft: 25,
         alignItems: 'center',
-        fontSize: 30,
+        fontSize: 25,
         color: 'black',
         fontWeight: 'bold'
     },

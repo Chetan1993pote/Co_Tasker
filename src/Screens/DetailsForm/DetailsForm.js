@@ -63,7 +63,14 @@ const DetailsForm = () => {
     const handleSubmit = async () => {
          //inputText.preventDefault();
         setSubmitted(true);
-        if (values.firstName && values.lastName && values.city && values.phone){
+
+        if (!values.firstName.trim()){
+            Alert.alert('First Name','Please enter first name')
+        }else if (!values.lastName.trim()){
+            Alert.alert('Last Name','Please enter last name')
+        }else if (!values.city.trim()){
+            Alert.alert('City','Please enter where you live')
+        }else{
             setValid(true)
             try {
 
@@ -81,8 +88,8 @@ const DetailsForm = () => {
                 console.log(e)
               }
           
-           
         }
+ 
         
     }
 
@@ -110,7 +117,7 @@ const DetailsForm = () => {
                 <Text style={styles.titleStyle2} > yourself
                 </Text>
 
-                <Text style={styles.firstNameTitle} > First Name*
+                <Text style={styles.firstNameTitle} > First Name
                 </Text>
 
                 <rn.TextInput
@@ -124,9 +131,10 @@ const DetailsForm = () => {
 
                 // onEndEditing={() => this.lastName.focus()}
                 />
-                {submitted && valid && !values.firstName ? <Text style={styles.errorMsgStyle} > Please enter first name
-                </Text> : null}
-                <Text style={styles.lastNameTitle} > Last Name*
+                {/* {submitted && valid && !values.firstName ? <Text style={styles.errorMsgStyle} > Please enter first name
+                </Text> : null} */}
+                
+                <Text style={styles.lastNameTitle} > Last Name
                 </Text>
 
                 <rn.TextInput
@@ -141,16 +149,16 @@ const DetailsForm = () => {
                 //onEndEditing={() => this.city.focus()}
 
                 />
-                {submitted && valid && !values.lastName ? <Text style={styles.errorMsgStyle} > Please enter last name
-                </Text> : null}
+                {/* {submitted && valid && !values.lastName ? <Text style={styles.errorMsgStyle} > Please enter last name
+                </Text> : null} */}
 
 
-                <Text style={styles.cityNameTitle} > City
+                <Text style={styles.cityNameTitle} > Where Are You Located?
                 </Text>
 
                 <rn.TextInput
                     style={styles.cityNameInputText}
-                    placeholder="City"
+                    placeholder="What city do you live in"
                     autoCorrect={false}
                     autoCompleteType='off'
                     onChangeText={handleCityNameChange}
@@ -160,15 +168,15 @@ const DetailsForm = () => {
                 //onEndEditing={() => this.phone.focus()}
 
                 />
-                {submitted && valid && !values.city ? <Text style={styles.errorMsgStyle} > Please enter city name
-                </Text> : null}
+                {/* {submitted && valid && !values.city ? <Text style={styles.errorMsgStyle} > Please enter city name
+                </Text> : null} */}
 
-                <Text style={styles.phoneTitle} > Phone Number(Optional)
+                <Text style={styles.phoneTitle} > Phone Number (Optional)
                 </Text>
 
                 <rn.TextInput
                     style={styles.phoneNumInputText}
-                    placeholder="Phone"
+                    placeholder="Enter your phone number"
                     autoCorrect={false}
                     autoCompleteType='off'
                     onChangeText={handlePhoneNumChange}
@@ -176,8 +184,8 @@ const DetailsForm = () => {
                     returnKeyType={"done"}
                 //ref={(input) => this.phone = input} 
                 />
-                {submitted && valid && !values.phone ? <Text style={styles.errorMsgStyle} > Please enter phone number
-                </Text> : null}
+                {/* {submitted && valid && !values.phone ? <Text style={styles.errorMsgStyle} > Please enter phone number
+                </Text> : null} */}
 
             </ScrollView>
 
@@ -336,7 +344,7 @@ const styles = StyleSheet.create({
     },
     errorMsgStyle: {
 
-        fontSize: 15,
+        fontSize: 12,
         color: 'red',
         textAlign: 'right',
         marginEnd: 30,

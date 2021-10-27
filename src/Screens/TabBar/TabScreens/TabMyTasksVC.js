@@ -24,7 +24,9 @@ const TabMyTasksVC = () => {
                         //Alert.alert(savedUserDetails.lName)
                         setUserDetails(savedUserDetails);
                     }
-                } catch (error) { }
+                } catch (error) { 
+                    Alert.alert('No Local data found')
+                }
             }
         });
     }

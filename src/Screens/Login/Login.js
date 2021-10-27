@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
 
     errorMsgStyle: {
 
-        fontSize: 15,
+        fontSize: 12,
         color: 'red',
         textAlign: 'right',
         marginEnd: 30,
