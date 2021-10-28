@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.9",
     "@react-native-community/checkbox": "^0.5.9",
+    "@react-native-community/slider": "^4.1.10",
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.5",
     "@react-navigation/native-stack": "^6.2.3",
@@ -19,8 +20,10 @@
     "radio-buttons-react-native": "^1.0.4",
     "react": "17.0.2",
     "react-native": "0.66.0",
+    "react-native-paper": "^4.9.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
+    "react-native-slider-text": "^0.0.10",
     "redux-form": "^8.3.7"
   },
   "devDependencies": {

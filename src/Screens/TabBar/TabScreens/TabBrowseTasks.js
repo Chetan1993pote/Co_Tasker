@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import React from 'react';
 import { Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 var userImg = require('../TabIcons/userIcon.jpeg');
 var user2 = require('../TabIcons/user2.jpeg');
@@ -16,6 +18,8 @@ const win = Dimensions.get('window');
 
 
 const TabBrowseTasks = () => {
+
+    const navigation = useNavigation();
 
     const arrHeader_Data = [
         {
@@ -99,15 +103,15 @@ const TabBrowseTasks = () => {
 
     actionOnTab = (item, index) => {
         console.log('Selected Item :', item.id);
-        // setSelectedIndex(index)
-        //console.log('Selected Item 1:', selectedIndex);
-
+       if (item.id == 1){
+        navigation.navigate('filterTasks');
+       }
 
     }
 
     return (
         <View style={styles.container}>
-            <View style={{  paddingTop:0, marginLeft: 10}}>
+            <View style={{ paddingTop: 0, marginLeft: 10 }}>
                 <FlatList
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
@@ -121,7 +125,7 @@ const TabBrowseTasks = () => {
 
                         } key={item}>
 
-                            {item.id == 1 ? <View style={{ borderRadius: 10, backgroundColor: '#ffbf00', padding:8 }}>
+                            {item.id == 1 ? <View style={{ borderRadius: 10, backgroundColor: '#ffbf00', padding: 8 }}>
 
                                 <Image
                                     resizeMode='contain'
@@ -129,75 +133,86 @@ const TabBrowseTasks = () => {
                                     style={{ height: 20, width: 20 }}
                                 />
 
-                            </View> : <View style={{ borderRadius: 10, backgroundColor: '#0E203A', justifyContent:'center', marginLeft:8 ,padding:9}}>
+                            </View> : <View style={{ borderRadius: 10, backgroundColor: '#0E203A', justifyContent: 'center', marginLeft: 8, padding: 9 }}>
 
-                                <Text style={{ color: 'white' ,paddingHorizontal:10}}>{item.title}</Text>
+                                <Text style={{ color: 'white', paddingHorizontal: 10 }}>{item.title}</Text>
 
 
                             </View>
                             }
 
 
+
+
+                        </TouchableOpacity>
+                    )}
+
+                ></FlatList>
+
+            </View>
+            <View
+                style={{marginTop: 8,borderBottomColor: '#C5C5C5',borderBottomWidth: 1,
+                    width: win.width
+                }}
+            />
+
+            <View style={{ marginTop: 3 ,flexGrow: 1}}>
+                <FlatList
+
+                    data={arr_Data}
+                    extraData={this.state}
+                    keyExtractor={item => item.id}
+
+                    renderItem={({ item, index }) => (
+
+                        <TouchableOpacity onPress={() => this.actionOnRow(item, index)}>
+                            <View style={styles.cellContainer}>
+                                <Image source={item.userIcon}
+                                    resizeMode='contain'
+                                    style={styles.image} />
+
+                                <View style={{ flexDirection: 'row' }}>
+                                    <View style={{ flexDirection: 'column', margin: win.width * 0.03, marginLeft: win.width * 0.02, justifyContent: 'space-between', marginVertical: 15 }}>
+
+                                        <Text style={{
+                                            fontSize: 15,
+                                            color: '#0E203A',
+                                            fontWeight: '600',
+                                            marginVertical: 3,
+                                        }}>{item.title}</Text>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Image source={locIcon}
+                                                resizeMode='contain'
+                                                style={styles.locIcon} />
+
+                                            <Text style={{ color: 'gray', fontSize: 12, marginVertical: 3 }}> {item.location}</Text>
+                                        </View>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Image source={taskIcon}
+                                                resizeMode='contain'
+                                                style={styles.locIcon} />
+
+                                            <Text style={{ color: 'gray', fontSize: 12 }}> {item.taskTitle}</Text>
+                                        </View>
+                                    </View>
+                                    <View style={{ flexDirection: 'column', marginTop: 16, marginLeft: -30 }}>
+
+                                        <Text style={{
+                                            fontSize: 13,
+                                            color: '#000',
+                                            fontWeight: '600',
+
+
+                                        }}>{item.status}</Text>
+                                    </View>
+                                </View>
+                            </View>
+
                         </TouchableOpacity>
                     )}
 
                 ></FlatList>
             </View>
-            <FlatList
-
-                data={arr_Data}
-                extraData={this.state}
-                keyExtractor={item => item.id}
-
-                renderItem={({ item, index }) => (
-
-                    <TouchableOpacity onPress={() => this.actionOnRow(item, index)}>
-                        <View style={styles.cellContainer}>
-                            <Image source={item.userIcon}
-                                resizeMode='contain'
-                                style={styles.image} />
-
-                            <View style={{ flexDirection: 'row' }}>
-                                <View style={{ flexDirection: 'column', margin: win.width * 0.03, marginLeft: win.width * 0.02, justifyContent: 'space-between', marginVertical: 15 }}>
-
-                                    <Text style={{
-                                        fontSize: 15,
-                                        color: '#0E203A',
-                                        fontWeight: '600',
-                                        marginVertical: 3,
-                                    }}>{item.title}</Text>
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <Image source={locIcon}
-                                            resizeMode='contain'
-                                            style={styles.locIcon} />
-
-                                        <Text style={{ color: 'gray', fontSize: 12, marginVertical: 3 }}> {item.location}</Text>
-                                    </View>
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <Image source={taskIcon}
-                                            resizeMode='contain'
-                                            style={styles.locIcon} />
-
-                                        <Text style={{ color: 'gray', fontSize: 12 }}> {item.taskTitle}</Text>
-                                    </View>
-                                </View>
-                                <View style={{ flexDirection: 'column', marginTop: 16, marginLeft: -30 }}>
-
-                                    <Text style={{
-                                        fontSize: 13,
-                                        color: '#000',
-                                        fontWeight: '600',
-
-
-                                    }}>{item.status}</Text>
-                                </View>
-                            </View>
-                        </View>
-
-                    </TouchableOpacity>
-                )}
-
-            ></FlatList>
         </View>
 
     );
@@ -209,7 +224,7 @@ export default TabBrowseTasks;
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        marginTop: 20
+        marginTop: 10
 
     },
 
@@ -233,7 +248,7 @@ const styles = StyleSheet.create({
         shadowRadius: 0.1,
         flexDirection: 'row',
         alignItems: 'center',
-        //height:80
+
     },
 
     image: {
@@ -243,7 +258,7 @@ const styles = StyleSheet.create({
         height: 55,
         borderRadius: 55 / 2,
         overflow: 'hidden',
-        borderWidth: 2,
+        borderWidth: 1,
         borderColor: '#0E203A'
     },
 

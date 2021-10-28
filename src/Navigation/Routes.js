@@ -1,13 +1,19 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Splash,Login,SignUp,PasswordLogin ,VerifyEmail,DetailsForm, CreatePwd,LoginOption, PwdConfirmPwd} from '../Screens';
+import { Splash,Login,SignUp,PasswordLogin ,VerifyEmail,DetailsForm, CreatePwd,LoginOption, PwdConfirmPwd, filterTasks} from '../Screens';
 import Tabber from '../Navigation/Tabber'
 import PickIntrest from '../Screens/ChooseIntrest/PickIntrest';
+import { Image,TouchableOpacity,Modal} from 'react-native';
+
+
+var backImg = require('../Screens/TabBar/TabIcons/back_white.png');
+
 
 const Stack = createNativeStackNavigator();
 
-function Routes() {
+const Routes = () => {
+
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName = "Splash">
@@ -22,6 +28,22 @@ function Routes() {
         <Stack.Screen name="PickIntrest"  component={PickIntrest} options={{ headerShown: false }}/>
         <Stack.Screen name="Tabber"  component={Tabber} options={{ headerShown: false }}/>
         <Stack.Screen name="ConfirmPwd"  component={PwdConfirmPwd} options={{ headerShown: false }}/>
+        <Stack.Screen name="filterTasks"  component={filterTasks} options={{ title: 'Filter Task',
+                headerTintColor: 'white',
+                presentation:'fullScreenModal',
+                headerStyle: {
+                    backgroundColor: '#0E203A'
+                },
+                headerLeft: () => <TouchableOpacity>
+              <Image
+                resizeMode='contain'
+                source={backImg}
+                style={{ height: 18, width: 18,marginRight:15}}/>
+                </TouchableOpacity>
+                
+
+                
+                }}/>
 
 
         </Stack.Navigator>
