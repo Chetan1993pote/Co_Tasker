@@ -9,14 +9,13 @@ var searchIcon = require('../TabBar/TabIcons/searchIcon.png');
 const win = Dimensions.get('window');
 
 
-const selectCategory = () => {
+const selectLocation = () => {
 
     const navigation = useNavigation();
 
-    const arr_FilterData = ["Cleaning", "Handy Person", "Assembly", "Transport & Removals", "Repairs", "Painting", "Electrical", "Plumbing", "Shopping", "Delivery", "Packing & Lifting", "Pet care", "Design", "Cooking", "Events", "Alterations"];
 
-    const [data, setData] = React.useState(arr_FilterData);
-    const [search, setSearch] = React.useState("");
+    // const [data, setData] = React.useState(arr_FilterData);
+    // const [search, setSearch] = React.useState("");
     
 
     actionOnRow = (item, index) => {
@@ -57,48 +56,16 @@ const selectCategory = () => {
     
 
                     onChangeText={e => {
-                        filterSearchData(e)
+                        //filterSearchData(e)
                       }}
-                      type="text"
-                      value={search}
+                      
                     />
 
                 </View>
 
             </View>
 
-            <View style={styles.tableList}>
-                <FlatList
-
-                    data={data}
-                    extraData={this.state}
-                    keyExtractor={item => item.toString()}
-                    ItemSeparatorComponent={(props) => {
-                        console.log('props', props); // here you can access the trailingItem with props.trailingItem
-                        return (<View style={{ height: 1, backgroundColor: 'grey', width: win.width, opacity: 0.5 }} />);
-                    }}
-                   
-                    renderItem={({ item, index }) => (
-
-                        <TouchableOpacity onPress={() => this.actionOnRow(item, index)}>
-
-                            <Text style={{
-                                marginVertical: 14,
-                                marginHorizontal: win.width * 0.05,
-                                fontSize: 15,
-                                color: 'black',
-                                fontWeight: 'normal',
-                            }}>{item}</Text>
-
-
-
-                        </TouchableOpacity>
-                    )}
-
-                ></FlatList>
-
-                
-            </View>
+           
 
             <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.button}
@@ -108,7 +75,7 @@ const selectCategory = () => {
                             navigation.goBack()
                         }}>
 
-                        <Text style={styles.buttonText}>Save</Text>
+                        <Text style={styles.buttonText}>Submit</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -120,7 +87,7 @@ const selectCategory = () => {
 }
 
 
-export default selectCategory;
+export default selectLocation;
 
 const styles = StyleSheet.create({
     container: {
@@ -131,13 +98,7 @@ const styles = StyleSheet.create({
     searchContainer: {
 
         height: 50,
-        backgroundColor: '#0E203A'
-
-    },
-
-    tableList: {
-       // flexGrow: 1,
-       height:win.height - 220
+       // backgroundColor: '#0E203A'
 
     },
 
@@ -161,7 +122,7 @@ const styles = StyleSheet.create({
         paddingVertical: 14,
         justifyContent: 'flex-end',
         width: win.width - 40,
-        backgroundColor: '#0E203A',
+        backgroundColor: '#ffbf00',
         borderRadius: 12,
         paddingVertical: 13,
         alignSelf: 'center',
@@ -171,7 +132,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#ffffff',
         fontSize: 16,
-        fontWeight: '500',
+        fontWeight: '600',
         textAlign: 'center'
     },
 

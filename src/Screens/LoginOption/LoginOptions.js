@@ -38,7 +38,7 @@ const LoginOptions = () => {
 
                     onPress={() => {
                         // Alert.alert('text')
-                        navigation.navigate('Login')
+                        navigation.navigate('Login')//
 
                     }}>
 
