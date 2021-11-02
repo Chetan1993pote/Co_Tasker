@@ -4,7 +4,7 @@ import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 var searchIcon = require('../TabBar/TabIcons/searchIcon.png');
-
+var backImg = require('../TabBar/TabIcons/back_white.png');
 
 const win = Dimensions.get('window');
 
@@ -17,6 +17,24 @@ const selectCategory = () => {
 
     const [data, setData] = React.useState(arr_FilterData);
     const [search, setSearch] = React.useState("");
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            title: 'Select Category',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#0E203A'
+          },
+          headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              resizeMode='contain'
+              source={backImg}
+              style={{ height: 18, width: 18, marginRight: 15 }} />
+
+          </TouchableOpacity>
+        });
+       
+    }, [navigation]);
     
 
     actionOnRow = (item, index) => {

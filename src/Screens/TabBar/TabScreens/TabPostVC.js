@@ -3,16 +3,44 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const win = Dimensions.get('window');
-
+const numColumns = 3;
 
 const TabPostVC = () => {
 
     const [arr_News, setNews] = useState([]);
 
     useEffect(() => {
-        getNewsfromApi()
+        //  getNewsfromApi()
 
     }, []);
+
+    const data = [
+
+        { title: 'Translation', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Translation' },
+        { title: 'Packing & Lifting', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Packing%20%26%20Lifting' },
+        { title: 'Cleaning', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Cleaning' },
+        { title: 'Online', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Online' },
+        { title: 'Errands', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Errands' },
+        { title: 'Custom', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Custom' },
+        { title: 'Photography', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Photography' },
+        { title: 'Electrical', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Electrical' },
+        { title: 'Delivery', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Delivery' },
+        { title: 'Transport & Removals', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Transport%20%26%20Removals' },
+        { title: 'Handy Person', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Handy%20Person' },
+        { title: 'Painting', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Painting' },
+        { title: 'Repairs', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Repairs' },
+        { title: 'Assembly', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/4609.7567456980505_Assembly' },
+        { title: 'Shopping', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Shopping' },
+        { title: 'Events', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Events' },
+        { title: 'Alterations', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Alterations' },
+        { title: 'Design', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Design' },
+        { title: 'Gardening & Plant Care', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Gardening%20%26%20Plant%20Care' },
+        { title: 'Plumbing', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Plumbing' },
+        { title: 'Ironing', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Ironing' },
+        { title: 'Cooking', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Cooking' },
+        { title: 'Tutoring', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Tutoring' },
+        { title: 'Pet Care', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Pet%20Care' }];
+
 
     function getNewsfromApi() {
 
@@ -31,25 +59,49 @@ const TabPostVC = () => {
 
     }
 
+    const ListHeader = () => {
+        //View to set in Header
+        return (
+            <View style={{ margin: 20, flexDirection: 'column', marginVertical: 10 }}>
+                <Text style={{ fontSize: 18, fontWeight: '600' }}> Good Afternoon Sudhir, </Text>
+                <Text style={{ fontSize: 15, fontWeight: '600', marginTop: 5 }}> What do you need help with? </Text>
+            </View>
+        );
+    };
+
     return (
-        <View style={{ marginTop: 20 }}>
-            <FlatList
-                data={arr_News.articles}
-                keyExtractor={(item, index) => 'key' + index}
 
-                renderItem={({ item, index }) => (
-                    <View style={styles.cellContainer}>
-                        <Text style={styles.title}> {item.title} </Text>
-                        <Text style={styles.author}> {item.author}</Text>
-                        <Image style={styles.image} source = {{uri: item.urlToImage}}/>
-                        <Text style={styles.description}> {item.description}</Text>
 
+        <View style={styles.container}>
+
+
+            {console.log(data.length)}
+            <FlatList style={{ height: win.height - 300 }}
+                data={data}
+                keyExtractor={item => item.title.toString()}
+                numColumns={numColumns}
+
+                ListHeaderComponent={ListHeader}
+
+                renderItem={({ item }) => (
+
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                        <View style={styles.viewContainer}>
+                            <View style={{ flexDirection: 'column', flexWrap: 'wrap', alignItems: 'center' }}>
+                                <View style={{ backgroundColor: '#0E203A', height: 88, width: 88, borderRadius: 44, alignItems: 'center', justifyContent: 'center' }}>
+                                    <Image style={styles.image} source={{ uri: item.imgIcon }} />
+                                </View>
+                                <Text style={styles.titleStyle}
+                                    numberOfLines={2}
+                                >{item.title}</Text>
+                            </View>
+
+                        </View>
                     </View>
 
-                )}
-
-            ></FlatList>
+                )} />
         </View>
+
     );
 
 }
@@ -57,48 +109,35 @@ const TabPostVC = () => {
 export default TabPostVC;
 
 const styles = StyleSheet.create({
-    cellContainer: {
-        marginVertical: 6,
-        backgroundColor: 'white',
-        margin: win.width * 0.03,
-        borderRadius: win.width * 0.05,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.3,
-        shadowRadius: 3
+
+    container: {
+        flexGrow: 1,
+        backgroundColor: 'white'
     },
 
-    title: {
-        margin: win.width * 0.03,
-        color: 'black',
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'justify'
-    },
-    description: {
-        marginVertical: win.width * 0.03,
-        marginHorizontal: win.width * 0.03,
-        color: 'gray',
-        fontSize: 16,
-        fontWeight: 'normal',
-        textAlign: 'justify'
+    viewContainer: {
 
+        height: win.width / numColumns,
+        width: win.width / numColumns,
+        alignItems: 'center'
     },
+
     image: {
-        height: win.height / 6,
-        marginLeft: win.width * 0.03,
-        marginRight: win.width * 0.03,
-        marginVertical: win.height * 0.02,
-       
+        height: 45,
+        width: 45,
     },
 
-    author: {
-        marginVertical: win.height * 0.01,
-        marginHorizontal: win.width * 0.03,
-        color: 'red',
-        fontSize: 15,
-        textAlign: 'right',
-        fontWeight: '500',
+    titleStyle: {
+
+        marginTop: 5,
+        fontSize: 13,
+        color: '#696969',
+        fontWeight: 'normal',
+        alignSelf: 'center',
+        textAlign: 'center'
+
+
     },
+
 
 });

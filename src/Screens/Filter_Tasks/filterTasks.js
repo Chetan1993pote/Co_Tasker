@@ -11,7 +11,7 @@ var downArw = require('../TabBar/TabIcons/down_arrow.png');
 var locationPin = require('../TabBar/TabIcons/pinLocation.png');
 var unselected_Img = require('../ChooseIntrest/unselected.png');
 var selected_Img = require('../ChooseIntrest/selected.png');
-var backImg = require('../Screens/TabBar/TabIcons/back_white.png');
+var backImg = require('../TabBar/TabIcons/back_white.png');
 
 
 const win = Dimensions.get('window');
@@ -24,6 +24,34 @@ const filterTasks = () => {
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [isSwitchOn, setIsSwitchOn] = React.useState(false);
     const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            title: 'Filter Task',
+          headerTintColor: 'white',
+          //: 'fullScreenModal',
+          headerStyle: {
+            backgroundColor: '#0E203A'
+          },
+          headerLeft: () => <TouchableOpacity onPress={() => {
+            navigation.goBack()
+          //  navigation.addListener('dismiss')
+          }}>
+            <Image
+              resizeMode='contain'
+              source={backImg}
+              style={{ height: 18, width: 18, marginRight: 15 }} />
+
+          </TouchableOpacity>
+        });
+
+        // const unsubscribe = navigation.addListener('appear', e => {
+        //     alert('alert');
+        //   });
+      
+        //   return unsubscribe;
+    
+    }, [navigation]);
 
     const arr_Data = [
         {
@@ -56,7 +84,7 @@ const filterTasks = () => {
             <TouchableOpacity style={{
                 flexDirection: 'row', justifyContent: 'space-between'}}
 
-                onPress={() => { navigation.navigate('selectCategory') }}>
+                onPress={() => navigation.navigate('selectCategory')}>
 
                 <Text style={{ color: 'gray', marginTop: 1, marginLeft: 15 }}>Select Category</Text>
 

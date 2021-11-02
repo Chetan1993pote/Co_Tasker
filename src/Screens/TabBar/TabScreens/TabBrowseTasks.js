@@ -103,9 +103,9 @@ const TabBrowseTasks = () => {
 
     actionOnTab = (item, index) => {
         console.log('Selected Item :', item.id);
-       if (item.id == 1){
-        navigation.navigate('filterTasks');
-       }
+        if (item.id == 1) {
+            navigation.navigate('filterTasks');
+        }
 
     }
 
@@ -151,12 +151,13 @@ const TabBrowseTasks = () => {
 
             </View>
             <View
-                style={{marginTop: 8,borderBottomColor: '#C5C5C5',borderBottomWidth: 1,
+                style={{
+                    marginTop: 8, borderBottomColor: '#C5C5C5', borderBottomWidth: 1,
                     width: win.width
                 }}
             />
 
-            <View style={{ marginTop: 3 ,flexGrow: 1}}>
+            <View style={{ marginTop: 3, flexGrow: 1 }}>
                 <FlatList
 
                     data={arr_Data}
@@ -166,14 +167,19 @@ const TabBrowseTasks = () => {
                     renderItem={({ item, index }) => (
 
                         <TouchableOpacity onPress={() => this.actionOnRow(item, index)}>
+
+                            
                             <View style={styles.cellContainer}>
+
+                                
                                 <Image source={item.userIcon}
                                     resizeMode='contain'
                                     style={styles.image} />
 
                                 <View style={{ flexDirection: 'row' }}>
+                                    
                                     <View style={{ flexDirection: 'column', margin: win.width * 0.03, marginLeft: win.width * 0.02, justifyContent: 'space-between', marginVertical: 15 }}>
-
+                                
                                         <Text style={{
                                             fontSize: 15,
                                             color: '#0E203A',

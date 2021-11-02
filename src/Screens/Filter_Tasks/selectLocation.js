@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, TextInput, Alert } from 'react-native';
-import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import React, { useState, useEffect, useRef } from 'react'
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 var searchIcon = require('../TabBar/TabIcons/searchIcon.png');
-
+var backImg = require('../TabBar/TabIcons/back_white.png');
 
 const win = Dimensions.get('window');
 
@@ -13,10 +15,23 @@ const selectLocation = () => {
 
     const navigation = useNavigation();
 
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            title: 'Select Location',
+          headerTintColor: 'white',
+         
+          headerStyle: {
+            backgroundColor: '#0E203A'
+          },
+          headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              resizeMode='contain'
+              source={backImg}
+              style={{ height: 18, width: 18, marginRight: 15 }} />
 
-    // const [data, setData] = React.useState(arr_FilterData);
-    // const [search, setSearch] = React.useState("");
-    
+          </TouchableOpacity>
+        });
+    }, [navigation]);
 
     actionOnRow = (item, index) => {
 
@@ -29,17 +44,42 @@ const selectLocation = () => {
 
         const test = arr_FilterData.filter(data => {
             return data.toLowerCase().includes(text.toLowerCase());
-          });
-          console.log("test: ", test);
+        });
+        console.log("test: ", test);
 
-          // uncomment line below and teams is logged as I want
-          setData(test);
-          setSearch(text);
+        // uncomment line below and teams is logged as I want
+        setData(test);
+        setSearch(text);
 
     }
 
+    const [region, setRegion] = useState({
+        latitude: 51.5079145,
+        longitude: -0.0899163,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01
+      });
+
     return (
         <View style={styles.container}>
+
+            {/* <MapView
+                initialRegion={{
+                    latitude: 37.78825,
+                    longitude: -122.4324,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                }} /> */}
+
+            <MapView
+                provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+                style={styles.map}
+               // style={{ flexGrow: 1 }}
+      region={region}
+      onRegionChangeComplete={region => setRegion(region)}
+            >
+            </MapView>
+
 
             <View style={styles.searchContainer}>
 
@@ -48,7 +88,18 @@ const selectLocation = () => {
                         resizeMode='contain'
                         style={{ height: 20, width: 20, marginLeft: 10 }} />
 
-                    <TextInput
+                    <GooglePlacesAutocomplete
+                        placeholder='Search'
+                        onPress={(data, details = null) => {
+                            // 'details' is provided when fetchDetails = true
+                            console.log(data, details);
+                        }}
+                        query={{
+                            key: 'AIzaSyDdH0riKzhxpsF6XhteiAZd1joMmDT3194',
+                            language: 'en',
+                        }}
+                    />
+                    {/* <TextInput
                         style={styles.inputText}
                         placeholder="Select Category"
                         placeholderTextColor='gray'
@@ -59,25 +110,27 @@ const selectLocation = () => {
                         //filterSearchData(e)
                       }}
                       
-                    />
+                    /> */}
 
                 </View>
+
+
 
             </View>
 
-           
+
 
             <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button}
+                <TouchableOpacity style={styles.button}
 
-                        onPress={() => {
-                            // Alert.alert('text')
-                            navigation.goBack()
-                        }}>
+                    onPress={() => {
+                        // Alert.alert('text')
+                        navigation.goBack()
+                    }}>
 
-                        <Text style={styles.buttonText}>Submit</Text>
-                    </TouchableOpacity>
-                </View>
+                    <Text style={styles.buttonText}>Submit</Text>
+                </TouchableOpacity>
+            </View>
 
 
 
@@ -98,7 +151,8 @@ const styles = StyleSheet.create({
     searchContainer: {
 
         height: 50,
-       // backgroundColor: '#0E203A'
+        marginTop:10
+        // backgroundColor: '#0E203A'
 
     },
 
@@ -136,6 +190,9 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
 
+    map: {
+        ...StyleSheet.absoluteFillObject,
+      },
 
 
 

@@ -34,6 +34,8 @@ const PasswordLogin = () => {
         if (values.password) {
             setValid(true)
             navigation.navigate('Tabber');
+        }else{
+            Alert.alert('Please enter password')
         }
 
     }
@@ -92,8 +94,8 @@ const PasswordLogin = () => {
                         onChangeText={handlePwdChange}
                         value={values.password}
                     />
-                    {submitted && valid && !values.password ? <Text style={styles.errorMsgStyle} > Please enter Password
-                    </Text> : null} 
+                    {/* {submitted && valid && !values.password ? <Text style={styles.errorMsgStyle} > Please enter Password
+                    </Text> : null}  */}
 
                     <TouchableOpacity
 

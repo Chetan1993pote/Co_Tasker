@@ -1,10 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Splash, Login,selectCategory, SignUp, PasswordLogin, VerifyEmail, DetailsForm, CreatePwd, LoginOption, PwdConfirmPwd, filterTasks, selectLocation } from '../Screens';
+import { Splash, Login, selectCategory, SignUp, PasswordLogin, VerifyEmail, DetailsForm, CreatePwd, LoginOption, PwdConfirmPwd, filterTasks, selectLocation, TaskAd } from '../Screens';
 import Tabber from '../Navigation/Tabber'
 import PickIntrest from '../Screens/ChooseIntrest/PickIntrest';
 import { Image, TouchableOpacity } from 'react-native';
+//import { TaskAd } from '../Screens/Notifications/TaskAd';
 
 var backImg = require('../Screens/TabBar/TabIcons/back_white.png');
 
@@ -27,59 +28,13 @@ const Routes = () => {
         <Stack.Screen name="Tabber" component={Tabber} options={{ headerShown: false }} />
         <Stack.Screen name="ConfirmPwd" component={PwdConfirmPwd} options={{ headerShown: false }} />
 
-        <Stack.Screen name="filterTasks" component={filterTasks} options={{
-          title: 'Filter Task',
-          headerTintColor: 'white',
-          presentation: 'fullScreenModal',
-          headerStyle: {
-            backgroundColor: '#0E203A'
-          },
-          headerLeft: () => <TouchableOpacity onPress={() => {
-          
-            
-        } }>
-            <Image
-              resizeMode='contain'
-              source={backImg}
-              style={{ height: 18, width: 18, marginRight: 15 }} />
+        <Stack.Screen name="filterTasks" component={filterTasks} options={{}} />
 
-          </TouchableOpacity>
+        <Stack.Screen name="selectCategory" component={selectCategory} options={{}}/>
+      
+        <Stack.Screen name="selectLocation" component={selectLocation} options={{}} />
 
-        }} />
-
-        <Stack.Screen name="selectCategory" component={selectCategory} options={{
-          title: 'Select Category',
-          headerTintColor: 'white',
-          presentation: 'fullScreenModal',
-          headerStyle: {
-            backgroundColor: '#0E203A'
-          },
-          headerLeft: () => <TouchableOpacity>
-            <Image
-              resizeMode='contain'
-              source={backImg}
-              style={{ height: 18, width: 18, marginRight: 15 }} />
-
-          </TouchableOpacity>
-
-        }} />
-
-<Stack.Screen name="selectLocation" component={selectLocation} options={{
-          title: 'Select Location',
-          headerTintColor: 'white',
-          presentation: 'fullScreenModal',
-          headerStyle: {
-            backgroundColor: '#0E203A'
-          },
-          headerLeft: () => <TouchableOpacity>
-            <Image
-              resizeMode='contain'
-              source={backImg}
-              style={{ height: 18, width: 18, marginRight: 15 }} />
-
-          </TouchableOpacity>
-
-        }} />
+        <Stack.Screen name="TaskAd" component={TaskAd} options={{}} />
 
 
       </Stack.Navigator>
