@@ -34,7 +34,7 @@ const PickIntrest = () => {
         },
     ];
 
-    actionOnRow = (item, index) => {
+    actionOnRowPick = (item, index) => {
         console.log('Selected Item :', item.id);
         setSelectedIndex(index)
         console.log('Selected Item 1:', selectedIndex);
@@ -79,7 +79,7 @@ const PickIntrest = () => {
 
                     renderItem={({ item, index }) => (
 
-                        <TouchableWithoutFeedback onPress={() => this.actionOnRow(item, index)}>
+                        <TouchableWithoutFeedback onPress={() => this.actionOnRowPick(item, index)}>
                             <View style={{ flexDirection: 'row'}}>
                                 <Image source={(selectedIndex == index) ? selected_Img : unselected_Img}
                                     resizeMode='contain'

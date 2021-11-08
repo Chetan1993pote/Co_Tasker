@@ -8,6 +8,9 @@ var backImg = require('.././TabBar/TabIcons/back_white.png');
 var user2 = require('../TabBar/TabIcons/user2.jpeg');
 var user3 = require('../TabBar/TabIcons/user3.jpeg');
 
+var icon_Help = require('../TabBar/TabIcons/icon_helpCenter.png')
+
+
 const TaskAd = () => {
 
     const navigation = useNavigation();
@@ -23,9 +26,17 @@ const TaskAd = () => {
                 <Image
                     resizeMode='contain'
                     source={backImg}
-                    style={{ height: 18, width: 18, marginRight: 15 }} />
+                    style={{ height: 18, width: 18 }} />
 
 
+
+            </TouchableOpacity>,
+
+             headerRight: () => <TouchableOpacity onPress={() => navigation.navigate('HelpCenter')}>
+                <Image
+                    resizeMode='contain'
+                    source={icon_Help}
+                    style={{ height: 18, width: 20, marginEnd: 5 }} />
 
             </TouchableOpacity>
         });
@@ -47,15 +58,24 @@ const TaskAd = () => {
 
         }];
 
+    const ListHeader = () => {
+        //View to set in Header
+        return (
+            <View style={{ marginHorizontal: win.width * 0.02, marginVertical: win.height * 0.010, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 13, fontWeight: 'normal' }}> I have office in gandhinagar to clean this sunday. </Text>
+            </View>
+        );
+    };
+
     return (
         <View style={styles.container}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#FAFAFA' }}>
                 <View style={styles.topView}>
                     <Text style={styles.screenText}> Task Adfwefwefwe</Text>
                 </View>
-                <Text style={styles.statusText}>  Cancelled </Text>
+                <Text style={styles.statusText}>  Assigned </Text>
             </View>
-            <View style={{ marginTop: 15, flexGrow: 1 }}>
+            <View style={{ marginTop: 10, flexGrow: 1 }}>
                 <FlatList
 
                     data={arr_Data}
@@ -66,6 +86,7 @@ const TaskAd = () => {
                         return (<View style={{ height: 10, backgroundColor: 'white', width: win.width }} />);
                     }}
 
+                    ListHeaderComponent={ListHeader}
                     renderItem={({ item, index }) => (
 
                         <View style={styles.cellBorder}>
@@ -80,7 +101,7 @@ const TaskAd = () => {
                             <View style={{ flexDirection: 'row' }}>
 
                                 <Image source={item.userIcon}
-                                    resizeMode='contain'
+                                   // resizeMode='contain'
 
                                     style={styles.image} />
 
@@ -89,7 +110,7 @@ const TaskAd = () => {
                                     marginHorizontal: win.width * 0.05,
                                     color: '#0E203A',
                                     fontWeight: '500',
-                                    alignSelf:'center'
+                                    alignSelf: 'center'
                                 }}>{item.userName}</Text>
 
 
@@ -148,11 +169,11 @@ const styles = StyleSheet.create({
     },
 
     cellBorder: {
-        borderTopColor: 'gray',
-        borderBottomColor: 'gray',
+        borderTopColor: '#D3D3D3',
+        borderBottomColor: '#D3D3D3',
         borderBottomWidth: 0.8,
         borderTopWidth: 0.8,
-
+        backgroundColor: '#FAFAFA'
 
     },
 

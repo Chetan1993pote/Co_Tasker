@@ -1,15 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Splash, Login, selectCategory, SignUp, PasswordLogin, VerifyEmail, DetailsForm, CreatePwd, LoginOption, PwdConfirmPwd, filterTasks, selectLocation, TaskAd } from '../Screens';
+import { Splash, Login, selectCategory, SignUp, PasswordLogin, VerifyEmail, DetailsForm, CreatePwd, LoginOption, PwdConfirmPwd, filterTasks, selectLocation, TaskAd, HelpCenter } from '../Screens';
 import Tabber from '../Navigation/Tabber'
 import PickIntrest from '../Screens/ChooseIntrest/PickIntrest';
-import { Image, TouchableOpacity } from 'react-native';
-//import { TaskAd } from '../Screens/Notifications/TaskAd';
+import PostATask from '../Screens/Post_A_Task/PostATask';
+
 
 var backImg = require('../Screens/TabBar/TabIcons/back_white.png');
 
 const Stack = createNativeStackNavigator();
+
 
 const Routes = () => {
 
@@ -35,7 +36,8 @@ const Routes = () => {
         <Stack.Screen name="selectLocation" component={selectLocation} options={{}} />
 
         <Stack.Screen name="TaskAd" component={TaskAd} options={{}} />
-
+        <Stack.Screen name="HelpCenter" component={HelpCenter} options={{}} />
+        <Stack.Screen name="PostATask" component={PostATask} options={{}} />
 
       </Stack.Navigator>
     </NavigationContainer>
@@ -43,3 +45,4 @@ const Routes = () => {
 }
 
 export default Routes;
+

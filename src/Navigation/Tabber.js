@@ -62,7 +62,7 @@ const Tabber = () => {
                 }
             }} />
             <Tab.Screen name="PostTasks" component={TabPostVC} options={{
-                title: 'Post Tasks',
+                title: 'Post a Task',
                 headerTintColor: 'white',
                 headerStyle: {
                     backgroundColor: '#0E203A'

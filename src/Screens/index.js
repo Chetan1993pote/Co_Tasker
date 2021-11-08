@@ -12,6 +12,12 @@ export {default as filterTasks} from './Filter_Tasks/filterTasks';
 export {default as selectCategory} from './Filter_Tasks/selectCategory';
 export {default as selectLocation} from './Filter_Tasks/selectLocation';
 export {default as TaskAd} from './Notifications/TaskAd';
+export {default as HelpCenter} from './Notifications/HelpCenter';
+export {default as PostATask} from './Post_A_Task/PostATask';
+
+
+
+
 
 
 

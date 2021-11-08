@@ -1,10 +1,9 @@
 
-import { View, Text, StyleSheet, Image, Icon, TouchableOpacity, FlatList, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, Icon, Pressable, TouchableOpacity, FlatList, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import SliderText from 'react-native-slider-text';
-import { Switch } from 'react-native-paper';
 
 
 var downArw = require('../TabBar/TabIcons/down_arrow.png');
@@ -13,44 +12,49 @@ var unselected_Img = require('../ChooseIntrest/unselected.png');
 var selected_Img = require('../ChooseIntrest/selected.png');
 var backImg = require('../TabBar/TabIcons/back_white.png');
 
+var switch_On = require('../TabBar/TabIcons/switch_On.png');
+var switch_Off = require('../TabBar/TabIcons/switch_Off.png');
+
 
 const win = Dimensions.get('window');
-
-
 
 const filterTasks = () => {
     const navigation = useNavigation();
     const [sliderValue, setSliderValue] = useState(0);
     const [selectedIndex, setSelectedIndex] = useState(0)
-    const [isSwitchOn, setIsSwitchOn] = React.useState(false);
-    const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+
+    const [isSwitchOn, setIsSwitchOn] = useToggle();
+
+    const image = isSwitchOn
+        ? switch_On
+        : switch_Off
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
             title: 'Filter Task',
-          headerTintColor: 'white',
-          //: 'fullScreenModal',
-          headerStyle: {
-            backgroundColor: '#0E203A'
-          },
-          headerLeft: () => <TouchableOpacity onPress={() => {
-            navigation.goBack()
-          //  navigation.addListener('dismiss')
-          }}>
-            <Image
-              resizeMode='contain'
-              source={backImg}
-              style={{ height: 18, width: 18, marginRight: 15 }} />
+            headerTintColor: 'white',
+            //: 'fullScreenModal',
+            headerStyle: {
+                backgroundColor: '#0E203A'
+            },
+            headerLeft: () => <TouchableOpacity onPress={() => {
+                navigation.goBack()
+                //  navigation.addListener('dismiss')
+            }}>
+                <Image
+                    resizeMode='contain'
+                    source={backImg}
+                    style={{ height: 18, width: 18, marginRight: 15 }} />
 
-          </TouchableOpacity>
+            </TouchableOpacity>
         });
 
         // const unsubscribe = navigation.addListener('appear', e => {
         //     alert('alert');
         //   });
-      
+
         //   return unsubscribe;
-    
+
     }, [navigation]);
 
     const arr_Data = [
@@ -68,21 +72,29 @@ const filterTasks = () => {
         },
     ];
 
-    actionOnRow = (item, index) => {
+
+    actionOnTab = (item, index) => {
         console.log('Selected Item :', item.id);
         setSelectedIndex(index)
         console.log('Selected Item :', selectedIndex);
 
-
     }
 
+    function useToggle(initialValue = false) {
+        const [value, setValue] = React.useState(initialValue);
+        const toggle = React.useCallback(() => {
+            setValue(v => !v);
+        }, []);
+        return [value, toggle];
+    }
 
     return (
         <View style={styles.container}>
 
             <Text style={{ color: 'gray', margin: 15, fontWeight: '500' }}>Category</Text>
             <TouchableOpacity style={{
-                flexDirection: 'row', justifyContent: 'space-between'}}
+                flexDirection: 'row', justifyContent: 'space-between'
+            }}
 
                 onPress={() => navigation.navigate('selectCategory')}>
 
@@ -114,9 +126,9 @@ const filterTasks = () => {
             <Text style={{ color: 'gray', margin: 15, fontWeight: '500' }}>Where would you like to find tasks?</Text>
 
             <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            
-            onPress={() => { navigation.navigate('selectLocation') }}>
-            
+
+                onPress={() => { navigation.navigate('selectLocation') }}>
+
 
                 <Text style={{ color: '#000', fontWeight: '500', marginLeft: 15 }}>Gandhinagar,Gujrat,Maharashtra</Text>
 
@@ -218,8 +230,17 @@ const filterTasks = () => {
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginRight: 10 }}>
 
                 <Text style={{ color: 'gray', margin: 15, fontWeight: '500' }}>Show available tasks only</Text>
-                <Switch value={isSwitchOn} onValueChange={onToggleSwitch} style={{ transform: [{ scaleX: .7 }, { scaleY: .7 }] }} thumbColor='#ffbf00' />
 
+
+                <TouchableOpacity onPress={setIsSwitchOn}>
+
+                    <Image
+                        resizeMode='contain'
+                        source={image}
+                        style={{ height: 40, width: 38, marginEnd: 20 }}
+                    />
+
+                </TouchableOpacity>
 
             </View>
 

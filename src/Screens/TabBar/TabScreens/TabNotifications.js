@@ -1,14 +1,12 @@
 import { View,Text, Dimensions,StyleSheet,Image, FlatList, TouchableOpacity,} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { placeholder } from '@babel/types';
 
 
 var userImg = require('../TabIcons/userIcon.jpeg');
 var user2 = require('../TabIcons/user2.jpeg');
 var user3 = require('../TabIcons/user3.jpeg');
 var user4 = require('../TabIcons/user4.jpeg');
-
 
 
 const win = Dimensions.get('window');
@@ -51,7 +49,7 @@ const TabNotifications = () => {
         },
     ];
 
-    actionOnRow = (item, index) => {
+    actionOnRowNotification = (item, index) => {
         console.log('Selected Item :', item.id);
         console.log('Selected Item 1:', selectedIndex);
 
@@ -70,12 +68,12 @@ const TabNotifications = () => {
                     keyExtractor={item => item.id}
                     ItemSeparatorComponent={(props) => {
                         console.log('props', props); // here you can access the trailingItem with props.trailingItem
-                        return (<View style={{ height: 1, backgroundColor: 'grey', width: win.width , alignSelf: 'center', marginBottom: 10 }} />);
+                        return (<View style={{ height: 0.8, backgroundColor: '#bbbbbb', width: win.width , alignSelf: 'center', marginBottom: 10 }} />);
                     }}
 
                     renderItem={({ item, index }) => (
 
-                        <TouchableOpacity onPress={() => this.actionOnRow(item, index)}>
+                        <TouchableOpacity onPress={() => this.actionOnRowNotification(item, index)}>
                                <><Text style={{
                                         fontSize: 11,
                                         marginEnd:15,
@@ -84,14 +82,14 @@ const TabNotifications = () => {
                                         fontWeight: '500'}}>{item.time}</Text></> 
                             <View style={styles.cellContainer}>
                                 <Image source={item.userIcon}
-                                    resizeMode='contain'
+                                    //resizeMode='contain'
                                     
                                     style={styles.image} />
                                 <View style={{flexDirection:'column',marginHorizontal:win.width * 0.02}}>
                                     <Text style={{
-                                        fontSize: 16,
+                                        fontSize: 15,
                                         color:'black',
-                                        fontWeight: 'bold',
+                                        fontWeight: '500',
                                     }}>{item.userName}</Text>
 
                                     <Text style={styles.descAtribute}

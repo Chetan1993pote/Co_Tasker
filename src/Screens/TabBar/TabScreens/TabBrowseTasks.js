@@ -93,10 +93,11 @@ const TabBrowseTasks = () => {
         },
     ];
 
-    actionOnRow = (item, index) => {
+    actionOnRowBrowse = (item, index) => {
         console.log('Selected Item :', item.id);
         // setSelectedIndex(index)
         //console.log('Selected Item 1:', selectedIndex);
+        navigation.navigate('TaskAd');
 
 
     }
@@ -166,7 +167,7 @@ const TabBrowseTasks = () => {
 
                     renderItem={({ item, index }) => (
 
-                        <TouchableOpacity onPress={() => this.actionOnRow(item, index)}>
+                        <TouchableOpacity onPress={() => this.actionOnRowBrowse(item, index)}>
 
                             
                             <View style={styles.cellContainer}>

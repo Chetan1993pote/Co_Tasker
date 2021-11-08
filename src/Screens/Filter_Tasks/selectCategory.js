@@ -37,7 +37,7 @@ const selectCategory = () => {
     }, [navigation]);
     
 
-    actionOnRow = (item, index) => {
+    actionOnRowCategory = (item, index) => {
 
         console.log('Selected Item 1:', item);
 

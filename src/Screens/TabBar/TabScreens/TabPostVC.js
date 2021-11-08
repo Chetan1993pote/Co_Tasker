@@ -1,19 +1,31 @@
-import { View, Text, Dimensions, FlatList, Image, StyleSheet } from 'react-native';
+import { View, Text, Dimensions, FlatList, Image, StyleSheet,TouchableOpacity,Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
+
+
+var menu = require('../TabIcons/menu.png')
+
 
 const win = Dimensions.get('window');
 const numColumns = 3;
 
 const TabPostVC = () => {
 
+    const navigation = useNavigation();
     const [arr_News, setNews] = useState([]);
 
-    useEffect(() => {
-        //  getNewsfromApi()
+    navigation.setOptions({
+        headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+                resizeMode='contain'
+                source={menu}
+                style={{ height: 18, width: 18 ,margin:15}} />
 
-    }, []);
+        </TouchableOpacity>
+    });
 
+  
     const data = [
 
         { title: 'Translation', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Translation' },
@@ -69,6 +81,13 @@ const TabPostVC = () => {
         );
     };
 
+    actionOnRowTap = (item, index) => {
+      
+        navigation.navigate('PostATask')
+
+
+    }
+
     return (
 
 
@@ -83,9 +102,10 @@ const TabPostVC = () => {
 
                 ListHeaderComponent={ListHeader}
 
-                renderItem={({ item }) => (
+                renderItem={({ item ,index}) => (
 
-                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                    <TouchableOpacity style={{ flexDirection: 'row', flexWrap: 'wrap' }} 
+                    onPress={() => this.actionOnRowTap(item, index)}>
                         <View style={styles.viewContainer}>
                             <View style={{ flexDirection: 'column', flexWrap: 'wrap', alignItems: 'center' }}>
                                 <View style={{ backgroundColor: '#0E203A', height: 88, width: 88, borderRadius: 44, alignItems: 'center', justifyContent: 'center' }}>
@@ -97,7 +117,7 @@ const TabPostVC = () => {
                             </View>
 
                         </View>
-                    </View>
+                    </TouchableOpacity>
 
                 )} />
         </View>
