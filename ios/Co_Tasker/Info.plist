@@ -37,6 +37,14 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App wants to access your Location</string>
+  <key>UIAppFonts</key>
+  <array>
+    <string>Lato-Regular.ttf</string>
+    <string>latobold.ttf</string>
+    <string>latosemibold.ttf</string>
+    <string>Montserrat-ExtraBold.ttf</string>
+    <string>Montserrat-Medium.ttf</string>
+  </array>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string></string>
 	<key>LSApplicationCategoryType</key>

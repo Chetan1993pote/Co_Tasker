@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
+
 import { View, Text, Dimensions, FlatList, Image, StyleSheet,TouchableOpacity,Alert } from 'react-native';
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/drawer';
 
 
 var menu = require('../TabIcons/menu.png')
@@ -16,7 +18,7 @@ const TabPostVC = () => {
     const [arr_News, setNews] = useState([]);
 
     navigation.setOptions({
-        headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
+        headerLeft: () => <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <Image
                 resizeMode='contain'
                 source={menu}
@@ -85,16 +87,11 @@ const TabPostVC = () => {
       
         navigation.navigate('PostATask')
 
-
     }
 
     return (
-
-
         <View style={styles.container}>
 
-
-            {console.log(data.length)}
             <FlatList style={{ height: win.height - 300 }}
                 data={data}
                 keyExtractor={item => item.title.toString()}

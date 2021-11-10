@@ -6,7 +6,6 @@ const win = Dimensions.get('window');
 
 var backImg = require('.././TabBar/TabIcons/back_white.png');
 var user2 = require('../TabBar/TabIcons/user2.jpeg');
-var user3 = require('../TabBar/TabIcons/user3.jpeg');
 
 const HelpCenter = () => {
 

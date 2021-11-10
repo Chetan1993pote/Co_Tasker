@@ -1,8 +1,10 @@
 
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
+import { Image} from 'react-native';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import 'react-native-gesture-handler';
 
 import TabMyTasksVC from '../Screens/TabBar/TabScreens/TabMyTasksVC';
 import TabMessagesVC from '../Screens/TabBar/TabScreens/TabMessagesVC';
@@ -11,12 +13,16 @@ import TabPostVC from '../Screens/TabBar/TabScreens/TabPostVC';
 import TabBrowseTasks from '../Screens/TabBar/TabScreens/TabBrowseTasks';
 
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
+
 
 var searchIcon = require('../Screens/TabBar/TabIcons/search.png');
 
 
 const Tabber = () => {
+    
     return (
+
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false
