@@ -11,6 +11,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		185B9E56273CF1F300E93296 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185B9E50273CF1F300E93296 /* Montserrat-ExtraBold.ttf */; };
+		185B9E57273CF1F300E93296 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185B9E51273CF1F300E93296 /* Lato-Italic.ttf */; };
+		185B9E58273CF1F300E93296 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185B9E52273CF1F300E93296 /* Montserrat-Medium.ttf */; };
+		185B9E59273CF1F300E93296 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185B9E53273CF1F300E93296 /* Lato-Semibold.ttf */; };
+		185B9E5A273CF1F400E93296 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185B9E54273CF1F300E93296 /* Lato-Bold.ttf */; };
+		185B9E5B273CF1F400E93296 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185B9E55273CF1F300E93296 /* Lato-Regular.ttf */; };
 		4EC474783614E63397D2B01F /* libPods-Co_Tasker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C7DB57740A84744295B89F /* libPods-Co_Tasker.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C29A68A87D1CB291F3AB3A4F /* libPods-Co_Tasker-Co_TaskerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BC79D79EFBC0FF210108C1 /* libPods-Co_Tasker-Co_TaskerTests.a */; };
@@ -37,6 +43,12 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Co_Tasker/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Co_Tasker/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Co_Tasker/main.m; sourceTree = "<group>"; };
+		185B9E50273CF1F300E93296 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraBold.ttf"; path = "../assets/fonts/Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		185B9E51273CF1F300E93296 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Italic.ttf"; path = "../assets/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; };
+		185B9E52273CF1F300E93296 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "../assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		185B9E53273CF1F300E93296 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Semibold.ttf"; path = "../assets/fonts/Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		185B9E54273CF1F300E93296 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		185B9E55273CF1F300E93296 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1F76E87B40FEEEEC2EA865AB /* Pods-Co_Tasker-Co_TaskerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Co_Tasker-Co_TaskerTests.debug.xcconfig"; path = "Target Support Files/Pods-Co_Tasker-Co_TaskerTests/Pods-Co_Tasker-Co_TaskerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		693447AEF9E14C39D5BA0B0E /* Pods-Co_Tasker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Co_Tasker.debug.xcconfig"; path = "Target Support Files/Pods-Co_Tasker/Pods-Co_Tasker.debug.xcconfig"; sourceTree = "<group>"; };
 		6F4B0CC0858A9A3460E4131E /* Pods-Co_Tasker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Co_Tasker.release.xcconfig"; path = "Target Support Files/Pods-Co_Tasker/Pods-Co_Tasker.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +101,12 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				185B9E54273CF1F300E93296 /* Lato-Bold.ttf */,
+				185B9E51273CF1F300E93296 /* Lato-Italic.ttf */,
+				185B9E55273CF1F300E93296 /* Lato-Regular.ttf */,
+				185B9E53273CF1F300E93296 /* Lato-Semibold.ttf */,
+				185B9E50273CF1F300E93296 /* Montserrat-ExtraBold.ttf */,
+				185B9E52273CF1F300E93296 /* Montserrat-Medium.ttf */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -240,8 +258,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185B9E5A273CF1F400E93296 /* Lato-Bold.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				185B9E58273CF1F300E93296 /* Montserrat-Medium.ttf in Resources */,
+				185B9E5B273CF1F400E93296 /* Lato-Regular.ttf in Resources */,
+				185B9E56273CF1F300E93296 /* Montserrat-ExtraBold.ttf in Resources */,
+				185B9E57273CF1F300E93296 /* Lato-Italic.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				185B9E59273CF1F300E93296 /* Lato-Semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

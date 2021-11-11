@@ -1,60 +1,40 @@
-import { View, Text, StyleSheet, Alert } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, StyleSheet, Alert, Dimensions, Pressable } from 'react-native';
+import React, { useState } from 'react';
+import FontTheme from '../../../FontTheme';
 
 
+const win = Dimensions.get('window');
 
 const TabMyTasksVC = () => {
 
+    const [selected, setSelected] = useState('0')
 
-    const [userDetails, setUserDetails] = useState({});
+    const onChangeTab = (index) => {
+        setSelected(index)
 
-    useEffect(() => {
-        getLocalData()
-
-    }, []);
-
-    const getLocalData = async () => {
-        AsyncStorage.getItem('userInfo').then(savedData => {
-            if (savedData) {
-                try {
-                    const savedUserDetails = JSON.parse(savedData);
-                    if (savedUserDetails) {
-
-                        //Alert.alert(savedUserDetails.lName)
-                        setUserDetails(savedUserDetails);
-                    }
-                } catch (error) { 
-                    Alert.alert('No Local data found')
-                }
-            }
-        });
-    }
-
-    const { fName,
-        lName,
-        cityName,
-        phoneNum } = userDetails;
-
-
-    // AsyncStorage.getAllKeys((err, keys) => {
-    //     AsyncStorage.multiGet(keys, (error, stores) => {
-    //       stores.map((result, i, store) => {
-    //         console.log({ [store[i][0]]: store[i][1] });
-    //         return true;
-    //       });
-    //     });
-    //   });
-
-    // }
+    };
 
     return (
         <View style={styles.container}>
-            <View style={styles.localContainer}>
+            <View style={styles.tabBackView}>
+                <Pressable style={{ backgroundColor: selected === '0' ? '#F6BF48' : '#00000000', flex: 1, justifyContent: 'center', borderRadius: 45 / 2 }}
 
-                <Text style={styles.textStyle}>Name: {fName} {lName}</Text>
-                <Text style={styles.textStyle}>City: {cityName}</Text>
-                <Text style={styles.textStyle}>Phone: {phoneNum}</Text>
+                    onPress={() => onChangeTab('0')}>
+
+                    <Text style={{ fontSize: 16, fontFamily: FontTheme.regularfont, color: selected === '0' ? 'white' : 'grey', textAlign: 'center' }}> As a Co-Tasker </Text>
+
+                </Pressable>
+
+                <Pressable style={{ backgroundColor: selected === '1' ? '#F6BF48' : '#00000000', flex: 1, justifyContent: 'center', borderRadius: 45 / 2, }}
+
+                    onPress={() => onChangeTab('1')}>
+                    <Text style={{ fontSize: 16, fontFamily: FontTheme.regularfont, color: selected === '1' ? 'white' : 'grey', textAlign: 'center' }}> As a Client </Text>
+
+
+                </Pressable>
+
+
+
 
             </View>
         </View>
@@ -67,23 +47,18 @@ export default TabMyTasksVC;
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        backgroundColor: 'orange',
-       
-    },
-
-    localContainer: {
-        alignItems:'flex-start',
-        marginHorizontal:20,
-        marginTop:50
+        backgroundColor: 'white',
 
     },
 
-    textStyle: {
+    tabBackView: {
+        flexDirection: 'row',
+        marginVertical: win.width * 0.03,
+        marginHorizontal: win.width * 0.05,
+        backgroundColor: '#EBECEE',
+        height: 45,
+        borderRadius: 50 / 2,
 
-        color: '#000',
-        fontSize: 25,
-        fontWeight: 'bold',
-       
 
     }
 

@@ -11,6 +11,7 @@ import TabMessagesVC from '../Screens/TabBar/TabScreens/TabMessagesVC';
 import TabNotifications from '../Screens/TabBar/TabScreens/TabNotifications';
 import TabPostVC from '../Screens/TabBar/TabScreens/TabPostVC';
 import TabBrowseTasks from '../Screens/TabBar/TabScreens/TabBrowseTasks';
+import FontTheme from '../FontTheme';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -31,6 +32,11 @@ const Tabber = () => {
         >
             <Tab.Screen name="MyTasks" component={TabMyTasksVC} options={{
                 title: 'My Tasks',
+                headerTitleStyle:{
+                    fontFamily:FontTheme.semiboldfont,
+                    fontSize:18
+                    
+                },
                 headerTintColor: 'white',
                 headerStyle: {
                     backgroundColor: '#0E203A'
@@ -51,6 +57,11 @@ const Tabber = () => {
             <Tab.Screen name="Messages" component={TabMessagesVC} options={{
                 title: 'Messages',
                 headerTintColor: 'white',
+                headerTitleStyle:{
+                    fontFamily:FontTheme.semiboldfont,
+                    fontSize:18
+                    
+                },
                 headerStyle: {
                     backgroundColor: '#0E203A'
                 },
@@ -69,6 +80,11 @@ const Tabber = () => {
             }} />
             <Tab.Screen name="PostTasks" component={TabPostVC} options={{
                 title: 'Post a Task',
+                headerTitleStyle:{
+                    fontFamily:FontTheme.semiboldfont,
+                    fontSize:18
+                    
+                },
                 headerTintColor: 'white',
                 headerStyle: {
                     backgroundColor: '#0E203A'
@@ -88,6 +104,11 @@ const Tabber = () => {
             }} />
             <Tab.Screen name="Notifications" component={TabNotifications} options={{
                 title: 'Notifications',
+                headerTitleStyle:{
+                    fontFamily:FontTheme.semiboldfont,
+                    fontSize:18
+                    
+                },
                 headerTintColor: 'white',
                 headerStyle: {
                     backgroundColor: '#0E203A'
@@ -108,6 +129,11 @@ const Tabber = () => {
             <Tab.Screen name="BrowseTasks" component={TabBrowseTasks} options={{
                 title: 'Browse Tasks',
                 headerTintColor: 'white',
+                headerTitleStyle:{
+                    fontFamily:FontTheme.semiboldfont,
+                    fontSize:18
+                    
+                },
                 headerStyle: {
                     backgroundColor: '#0E203A'
                 },

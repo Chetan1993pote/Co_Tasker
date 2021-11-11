@@ -26,7 +26,7 @@ const TaskAd = () => {
                 <Image
                     resizeMode='contain'
                     source={backImg}
-                    style={{ height: 18, width: 18 }} />
+                    style={{ height: 18, width: 18 ,margin:15}} />
 
 
 
@@ -36,7 +36,7 @@ const TaskAd = () => {
                 <Image
                     resizeMode='contain'
                     source={icon_Help}
-                    style={{ height: 18, width: 20, marginEnd: 5 }} />
+                    style={{ height: 18, width: 20, marginEnd: 15 }} />
 
             </TouchableOpacity>
         });

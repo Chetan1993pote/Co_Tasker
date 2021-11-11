@@ -32,8 +32,8 @@ function DrawerContents(props) {
                         style={styles.image} />
 
                     <View style={{ flexDirection: 'column', marginLeft: 10 }}>
-                        <Text style={{ fontSize: 20, color: 'white',fontFamily:FontTheme.semiboldfont }}> Sudhir D </Text>
-                        <Text style={{ fontSize: 15, color: '#ffbf00', marginTop: 3 ,fontFamily:FontTheme.regularfont}}> View profile </Text>
+                        <Text style={{ fontSize: 20, color: 'white' }}> Sudhir D </Text>
+                        <Text style={{ fontSize: 15, color: '#ffbf00', marginTop: 3 }}> View profile </Text>
 
                     </View>
                 </View>
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#ffbf00',
         fontWeight: '600',
-        fontFamily:FontTheme.boldfont
+       // fontFamily:FontTheme.boldfont
 
     },
 
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'white',
         fontWeight: '500',
-        fontFamily:FontTheme.semiboldfont
+       // fontFamily:FontTheme.semiboldfont
 
 
     }

@@ -2,6 +2,7 @@ import { View, Image, StyleSheet, Text, Alert, TouchableOpacity, ImageBackground
 import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
+import FontTheme from '../../FontTheme';
 
 var backImg = require('../Login/back_white.png');
 
@@ -42,7 +43,7 @@ const LoginOptions = () => {
 
                     }}>
 
-                    <Text style={styles.loginbtnText}>Login</Text>
+                    <Text style={styles.btnText}>Login</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.registerBtn}
@@ -53,7 +54,7 @@ const LoginOptions = () => {
 
                     }}>
 
-                    <Text style={styles.registerbtnText}>Register</Text>
+                    <Text style={styles.btnText}>Register</Text>
                 </TouchableOpacity>
             </View>
 
@@ -83,44 +84,35 @@ const styles = StyleSheet.create({
     appTitle: {
         marginTop: 50,
         alignSelf: 'center',
-        fontSize: 40,
+        fontSize: 38,
         color: 'white',
-        fontWeight: 'bold'
+        fontFamily :FontTheme.extraboldfont
     },
     loginBtn: {
 
         width: win.width - 30,
         borderRadius: 12,
-        paddingVertical: 14,
+        paddingVertical: 10,
         borderColor: 'white',
         borderWidth: 2,
         justifyContent: 'flex-end',
 
     },
 
-    loginbtnText: {
-        color: '#ffffff',
-        fontSize: 20,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    },
-
     registerBtn: {
 
         width: win.width - 30,
         borderRadius: 12,
-        marginVertical: 30,
-        borderColor: '#ffbf00',
-        paddingVertical: 14,
+        marginVertical: 20,
+        paddingVertical: 10,
         backgroundColor: '#ffbf00',
-        borderWidth: 2,
         justifyContent: 'flex-end',
     },
 
-    registerbtnText: {
+    btnText: {
         color: '#ffffff',
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontSize: 19,
+        fontFamily:FontTheme.boldfont,
         textAlign: 'center'
     },
 

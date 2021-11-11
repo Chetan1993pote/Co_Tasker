@@ -1,8 +1,10 @@
 import { View,Text, Dimensions,StyleSheet,Image, FlatList, TouchableOpacity,} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
+import { DrawerActions } from '@react-navigation/drawer';
 
 
+var menu = require('../TabIcons/menu.png')
 var userImg = require('../TabIcons/userIcon.jpeg');
 var user2 = require('../TabIcons/user2.jpeg');
 var user3 = require('../TabIcons/user3.jpeg');
@@ -14,6 +16,17 @@ const win = Dimensions.get('window');
 const TabNotifications = () => {
 
     const navigation = useNavigation();
+
+    navigation.setOptions({
+        headerLeft: () => <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+            <Image
+                resizeMode='contain'
+                source={menu}
+                style={{ height: 18, width: 18 ,margin:15}} />
+
+        </TouchableOpacity>
+    });
+
 
     const [selectedIndex, setSelectedIndex] = useState(0)
 

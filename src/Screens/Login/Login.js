@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, TouchableOpacity, Button, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, TouchableOpacity, Button, ScrollView, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
+import FontTheme from '../../FontTheme';
 
 
 var app_Design = require('./AppDesign.png');
@@ -34,7 +35,8 @@ const Login = () => {
         if (values.email) {
             setValid(true)
             validate(values.email)
-
+        } else {
+            Alert.alert('Please enter email')
         }
 
     }
@@ -49,7 +51,7 @@ const Login = () => {
         }
         else {
             // Alert.alert("Email is Correct");
-             navigation.navigate('PasswordLogin')
+            navigation.navigate('PasswordLogin')
         }
     }
 
@@ -68,7 +70,7 @@ const Login = () => {
                         resizeMode={'contain'}
                         style={{
                             marginTop: 60,
-                            marginLeft: 35, height: 25, width: 25
+                            marginLeft: 30, height: 25, width: 25
                         }} />
 
                 </TouchableOpacity>
@@ -97,28 +99,27 @@ const Login = () => {
                         onChangeText={handleEmailChange}
                         value={values.email} />
 
-               {submitted && valid && !values.email ? <Text style={styles.errorMsgStyle} > Please enter email address
-                    </Text> : null} 
-                   
-
-                    <TouchableOpacity style={styles.button}
-
-                        onPress={() => {
-                            handleSubmit()
-                        }}>
-
-                        <Text style={styles.buttonText}>Continue</Text>
-                    </TouchableOpacity>
+                    {/* {submitted && valid && !values.email ? <Text style={styles.errorMsgStyle} > Please enter email address
+                    </Text> : null}  */}
                 </View>
+
+                <TouchableOpacity style={styles.button}
+
+                    onPress={() => {
+                        handleSubmit()
+                    }}>
+
+                    <Text style={styles.buttonText}>Continue</Text>
+                </TouchableOpacity>
+
 
 
                 <View style={styles.signUpTextCont}>
                     <Text style={styles.signUpTextStyle}>Not a member of Co-Tasker yet?</Text>
-                    <Button
-                        color="#000"
-                        onPress={() => navigation.navigate('SignUp')}
-                        title="Register here"
-                    />
+                    <Pressable onPress={() => navigation.navigate('SignUp')}>
+                        <Text style={styles.registerHere}>Register Here</Text>
+
+                    </Pressable>
                 </View>
 
             </ImageBackground>
@@ -148,45 +149,50 @@ const styles = StyleSheet.create({
 
     titleStyle: {
         marginTop: 25,
-        marginLeft: 35,
+        marginLeft: 30,
         textAlign: 'left',
-        fontSize: 25,
+        fontSize: 23,
         color: 'white',
-        fontWeight: "bold"
+        fontFamily: FontTheme.boldfont
+
     },
 
     emailTitle: {
 
         fontSize: 15,
         color: 'grey',
-        fontWeight: 'normal'
+        fontFamily: FontTheme.regularfont
 
     },
 
     inputText:
     {
+        fontSize: 16,
         marginRight: 30,
         borderBottomColor: '#000',
         borderBottomWidth: 0.8,
         height: 40,
-        paddingLeft: 3
+        paddingLeft: 3,
+        fontFamily: FontTheme.regularfont
+
     },
 
     button: {
-        alignSelf: 'center',
-        width: win.width - 40,
+        marginStart: 20,
+        marginEnd: 20,
         backgroundColor: '#ffbf00',
         borderRadius: 12,
         marginVertical: 100,
-        paddingVertical: 16
+        height: 50,
+        justifyContent: 'center'
 
     },
 
     buttonText: {
         color: '#ffffff',
-        fontSize: 17,
-        fontWeight: 'bold',
-        textAlign: 'center'
+        fontSize: 19,
+        fontFamily: FontTheme.boldfont,
+        textAlign: 'center',
     },
     signUpTextCont: {
         marginBottom: 20,
@@ -197,8 +203,8 @@ const styles = StyleSheet.create({
 
     signUpTextStyle:
     {
-        fontSize: 15,
-        fontWeight: 'normal',
+        fontSize: 16,
+        fontFamily: FontTheme.regularfont,
         color: 'grey',
     },
 
@@ -218,6 +224,12 @@ const styles = StyleSheet.create({
         marginEnd: 30,
         paddingTop: 5
 
+    },
+
+    registerHere: {
+        fontFamily: FontTheme.semiboldfont,
+        fontSize: 17,
+        color: '#000'
     }
 
 });

@@ -43,7 +43,7 @@ function MenuDrawer(){
       width: win.width
     }}
     drawerContent={props => <DrawerContents {...props}/>} >
-     <Stack.Screen name="Tabber" component={Tabber} options={{ headerShown: false }} />
+     <Stack.Screen name="Tabbar" component={Tabber} options={{ headerShown: false }} />
 
       <Drawer.Screen name="HelpCenter" component={HelpCenter} />
       <Drawer.Screen name="TaskAd" component={TaskAd} />
@@ -67,7 +67,7 @@ const Routes = () => {
         <Stack.Screen name="CreatePwd" component={CreatePwd} options={{ headerShown: false }} />
         <Stack.Screen name="LoginOption" component={LoginOption} options={{ headerShown: false }} />
         <Stack.Screen name="PickIntrest" component={PickIntrest} options={{ headerShown: false }} />
-        <Stack.Screen name="Tabber" component={MenuDrawer} options={{ headerShown: false }} />
+        <Stack.Screen name="Tabbar" component={MenuDrawer} options={{ headerShown: false }} />
         <Stack.Screen name="ConfirmPwd" component={PwdConfirmPwd} options={{ headerShown: false }} />
 
         <Stack.Screen name="filterTasks" component={filterTasks} options={{}} />

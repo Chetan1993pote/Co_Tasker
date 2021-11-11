@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, Touch
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
+import FontTheme from '../../FontTheme';
 
 
 var app_Design = require('../Login/AppDesign.png');
@@ -13,7 +14,7 @@ const win = Dimensions.get('window');
 const PasswordLogin = () => {
 
     const navigation = useNavigation();
-   // const [text, setText] = useState('');
+    // const [text, setText] = useState('');
     const [values, setText] = useState({ password: '' });
 
     const [submitted, setSubmitted] = useState(false);
@@ -33,8 +34,8 @@ const PasswordLogin = () => {
         setSubmitted(true);
         if (values.password) {
             setValid(true)
-            navigation.navigate('Tabber');
-        }else{
+            navigation.navigate('Tabbar');
+        } else {
             Alert.alert('Please enter password')
         }
 
@@ -43,14 +44,14 @@ const PasswordLogin = () => {
 
     validate = (text) => {
         console.log(text);
-        
+
         if (!text.trim()) {
             Alert.alert("Please enter Password");
 
-        } 
+        }
         else {
             // Alert.alert("Email is Correct");
-            navigation.navigate('Tabber')
+            navigation.navigate('Tabbar')
         }
     }
 
@@ -79,45 +80,53 @@ const PasswordLogin = () => {
                 <View style={styles.containerEmail}>
                     <ImageBackground source={welcomeBack}
                         resizeMode={'contain'}
-                        style={{ height: win.height, width: win.width }}></ImageBackground>
+                        style={{ height: win.height + 20, width: win.width }}>
 
-                </View>
+                        <View style={{ flexDirection: 'column', marginTop: 190 , marginHorizontal:win.width * 0.06}}>
+                            <Text style={styles.passwordTitle} > Enter Password
+                            </Text>
 
-                <View style={{ flexDirection: 'column', flexGrow: 1, paddingStart: 25, marginBottom: 150 }}>
-                    <Text style={styles.passwordTitle} > Enter Password
-                    </Text>
-
-                    <TextInput
-                        style={styles.inputText}
-                        placeholder="Password"
-                        autoCorrect={false}
-                        onChangeText={handlePwdChange}
-                        value={values.password}
-                    />
-                    {/* {submitted && valid && !values.password ? <Text style={styles.errorMsgStyle} > Please enter Password
+                            <TextInput
+                                style={styles.inputText}
+                                placeholder="Password"
+                                autoCorrect={false}
+                                onChangeText={handlePwdChange}
+                                value={values.password}
+                            />
+                            {/* {submitted && valid && !values.password ? <Text style={styles.errorMsgStyle} > Please enter Password
                     </Text> : null}  */}
 
-                    <TouchableOpacity
+                            <TouchableOpacity
 
-                        onPress={() => {
-                            //console.log(text)
-                             Alert.alert("Forgot Password Coming Soon")
-                            //navigation.navigate('Tabber');
-                        }}>
+                                onPress={() => {
+                                    //console.log(text)
+                                    Alert.alert("Forgot Password Coming Soon")
+                                    //navigation.navigate('Tabber');
+                                }}>
 
-                        <Text style={styles.btnForgotPwd}>Forgot Password?</Text>
-                    </TouchableOpacity>
+                                <Text style={styles.btnForgotPwd}>Forgot Password?</Text>
+                            </TouchableOpacity>
+
+
+
+                        </View>
+
+                        <TouchableOpacity style={styles.button}
+
+                            onPress={() => {
+                                handleSubmit()
+                            }}>
+
+                            <Text style={styles.buttonText}>Log in</Text>
+                        </TouchableOpacity>
+
+                    </ImageBackground>
 
                 </View>
 
-                <TouchableOpacity style={styles.button}
 
-                    onPress={() => {
-                        handleSubmit()
-                    }}>
 
-                    <Text style={styles.buttonText}>Log in</Text>
-                </TouchableOpacity>
+
 
 
             </ImageBackground>
@@ -136,60 +145,62 @@ const styles = StyleSheet.create({
     },
 
     containerEmail: {
-        flex: 1,
-        marginTop: 20
+        flexGrow: 1,
+       
 
     },
 
     titleStyle: {
         marginTop: 25,
-        marginLeft: 35,
+        marginLeft: 30,
         textAlign: 'left',
-        fontSize: 25,
+        fontSize: 23,
         color: 'white',
-        fontWeight: "bold"
+        fontFamily: FontTheme.boldfont
     },
 
     passwordTitle: {
         fontSize: 15,
         color: 'grey',
-        fontWeight: 'normal'
+        fontFamily: FontTheme.regularfont
     },
 
     inputText:
     {
-
-        marginRight: 30,
+        fontFamily: FontTheme.regularfont,
+        fontSize: 16,
+       // marginRight: 30,
         borderBottomColor: '#000',
         borderBottomWidth: 0.8,
         height: 40,
-        paddingLeft: 3
+       // paddingLeft: 3
     },
 
     button: {
+
         backgroundColor: '#ffbf00',
         borderRadius: 12,
-        marginBottom: 30,
-        paddingVertical: 14,
+        paddingVertical:10,
+        marginStart: 20,
+        marginEnd: 20,
         justifyContent: 'flex-end',
-        alignSelf: 'center',
-        width: win.width - 40,
+        marginVertical:win.height * 0.40
+       
     },
 
     buttonText: {
         color: '#ffffff',
-        fontSize: 17,
-        fontWeight: 'bold',
+        fontSize: 19,
+        fontFamily: FontTheme.boldfont,
         textAlign: 'center'
     },
 
-    btnForgotPwd:{
+    btnForgotPwd: {
         color: '#000',
         fontSize: 16,
-        fontWeight: '400',
+        fontFamily: FontTheme.semiboldfont,
         textAlign: 'right',
-        paddingRight:30,
-        marginTop:10
+        marginTop: 10
     },
     errorMsgStyle: {
 
@@ -200,7 +211,7 @@ const styles = StyleSheet.create({
         paddingTop: 5
 
     }
-    
+
 
 
 });
