@@ -2,6 +2,7 @@ import { View,Text, Dimensions,StyleSheet,Image, FlatList, TouchableOpacity,} fr
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { DrawerActions } from '@react-navigation/drawer';
+import AppTheme from '../../../AppTheme';
 
 
 var menu = require('../TabIcons/menu.png')
@@ -88,21 +89,21 @@ const TabNotifications = () => {
 
                         <TouchableOpacity onPress={() => this.actionOnRowNotification(item, index)}>
                                <><Text style={{
-                                        fontSize: 11,
+                                        fontSize: 13,
                                         marginEnd:15,
                                         alignSelf:'flex-end',
                                         color:'gray',
-                                        fontWeight: '500'}}>{item.time}</Text></> 
+                                        fontFamily: AppTheme.regularfont
+                                    }}>{item.time}</Text></> 
                             <View style={styles.cellContainer}>
                                 <Image source={item.userIcon}
-                                    //resizeMode='contain'
                                     
                                     style={styles.image} />
                                 <View style={{flexDirection:'column',marginHorizontal:win.width * 0.02}}>
                                     <Text style={{
-                                        fontSize: 15,
+                                        fontSize: 16,
                                         color:'black',
-                                        fontWeight: '500',
+                                        fontFamily: AppTheme.semiboldfont,
                                     }}>{item.userName}</Text>
 
                                     <Text style={styles.descAtribute}
@@ -152,14 +153,14 @@ const styles = StyleSheet.create({
         borderRadius: 55 / 2,
         overflow: 'hidden',
         borderWidth: 0.2,
-        borderColor: '#0E203A'
+        borderColor: AppTheme.appThemeColor
     },
 
     descAtribute: {
         marginVertical:win.height * 0.003,
         fontSize: 14,
         color: 'grey',
-        fontWeight: 'normal',
+        fontFamily: AppTheme.regularfont,
         marginRight:70
         
     },

@@ -1,6 +1,7 @@
 import { View, Text, Dimensions, TouchableOpacity, FlatList, Image, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import AppTheme from '../../AppTheme';
 
 const win = Dimensions.get('window');
 
@@ -20,7 +21,7 @@ const TaskAd = () => {
             title: 'Task Ad',
             headerTintColor: 'white',
             headerStyle: {
-                backgroundColor: '#0E203A'
+                backgroundColor: AppTheme.appThemeColor
             },
             headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image
@@ -94,7 +95,7 @@ const TaskAd = () => {
                             <Text style={{
                                 fontSize: 14,
                                 margin: 15,
-                                color: '#0E203A',
+                                color: AppTheme.appThemeColor,
                                 fontWeight: '500'
                             }}>{item.desc}</Text>
 
@@ -108,7 +109,7 @@ const TaskAd = () => {
                                 <Text style={{
                                     fontSize: 16,
                                     marginHorizontal: win.width * 0.05,
-                                    color: '#0E203A',
+                                    color: AppTheme.appThemeColor,
                                     fontWeight: '500',
                                     alignSelf: 'center'
                                 }}>{item.userName}</Text>
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         height: 35,
         flexGrow: 1,
-        backgroundColor: '#0E203A',
+        backgroundColor: AppTheme.appThemeColor,
         borderRadius: 10,
         width: 250,//win.width-140,
         marginLeft: -10,
@@ -185,7 +186,7 @@ const styles = StyleSheet.create({
         borderRadius: 45 / 2,
         overflow: 'hidden',
         borderWidth: 0.2,
-        borderColor: '#0E203A',
+        borderColor: AppTheme.appThemeColor,
         marginVertical: win.width * 0.03,
     },
 

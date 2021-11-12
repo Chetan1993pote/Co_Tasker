@@ -21,7 +21,7 @@ const selectLocation = () => {
           headerTintColor: 'white',
          
           headerStyle: {
-            backgroundColor: '#0E203A'
+            backgroundColor: AppTheme.appThemeColor
           },
           headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image
@@ -152,7 +152,6 @@ const styles = StyleSheet.create({
 
         height: 50,
         marginTop:10
-        // backgroundColor: '#0E203A'
 
     },
 

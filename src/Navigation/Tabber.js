@@ -11,7 +11,7 @@ import TabMessagesVC from '../Screens/TabBar/TabScreens/TabMessagesVC';
 import TabNotifications from '../Screens/TabBar/TabScreens/TabNotifications';
 import TabPostVC from '../Screens/TabBar/TabScreens/TabPostVC';
 import TabBrowseTasks from '../Screens/TabBar/TabScreens/TabBrowseTasks';
-import FontTheme from '../FontTheme';
+import AppTheme from '../AppTheme';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -33,13 +33,13 @@ const Tabber = () => {
             <Tab.Screen name="MyTasks" component={TabMyTasksVC} options={{
                 title: 'My Tasks',
                 headerTitleStyle:{
-                    fontFamily:FontTheme.semiboldfont,
+                    fontFamily:AppTheme.semiboldfont,
                     fontSize:18
                     
                 },
                 headerTintColor: 'white',
                 headerStyle: {
-                    backgroundColor: '#0E203A'
+                    backgroundColor: AppTheme.appThemeColor
                 },
                 tabBarIcon: ({ focused }) => {
                     const image = focused
@@ -58,12 +58,12 @@ const Tabber = () => {
                 title: 'Messages',
                 headerTintColor: 'white',
                 headerTitleStyle:{
-                    fontFamily:FontTheme.semiboldfont,
+                    fontFamily:AppTheme.semiboldfont,
                     fontSize:18
                     
                 },
                 headerStyle: {
-                    backgroundColor: '#0E203A'
+                    backgroundColor: AppTheme.appThemeColor
                 },
                 tabBarIcon: ({ focused }) => {
                     const image = focused
@@ -81,13 +81,13 @@ const Tabber = () => {
             <Tab.Screen name="PostTasks" component={TabPostVC} options={{
                 title: 'Post a Task',
                 headerTitleStyle:{
-                    fontFamily:FontTheme.semiboldfont,
+                    fontFamily:AppTheme.semiboldfont,
                     fontSize:18
                     
                 },
                 headerTintColor: 'white',
                 headerStyle: {
-                    backgroundColor: '#0E203A'
+                    backgroundColor: AppTheme.appThemeColor
                 },
                 tabBarIcon: ({ focused }) => {
                     const image = focused
@@ -105,13 +105,13 @@ const Tabber = () => {
             <Tab.Screen name="Notifications" component={TabNotifications} options={{
                 title: 'Notifications',
                 headerTitleStyle:{
-                    fontFamily:FontTheme.semiboldfont,
+                    fontFamily:AppTheme.semiboldfont,
                     fontSize:18
                     
                 },
                 headerTintColor: 'white',
                 headerStyle: {
-                    backgroundColor: '#0E203A'
+                    backgroundColor: AppTheme.appThemeColor
                 },
                 tabBarIcon: ({ focused }) => {
                     const image = focused
@@ -130,12 +130,12 @@ const Tabber = () => {
                 title: 'Browse Tasks',
                 headerTintColor: 'white',
                 headerTitleStyle:{
-                    fontFamily:FontTheme.semiboldfont,
+                    fontFamily:AppTheme.semiboldfont,
                     fontSize:18
                     
                 },
                 headerStyle: {
-                    backgroundColor: '#0E203A'
+                    backgroundColor: AppTheme.appThemeColor
                 },
                 headerRight: () => <Image
                 resizeMode='contain'

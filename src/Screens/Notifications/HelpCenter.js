@@ -1,6 +1,7 @@
 import { View, Text, Dimensions, TextInput, TouchableOpacity, ScrollView, Image, StyleSheet, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import AppTheme from '../../AppTheme';
 
 const win = Dimensions.get('window');
 
@@ -19,7 +20,7 @@ const HelpCenter = () => {
             title: 'Help Center',
             headerTintColor: 'white',
             headerStyle: {
-                backgroundColor: '#0E203A'
+                backgroundColor: AppTheme.appThemeColor
             },
             headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image

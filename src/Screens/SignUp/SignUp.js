@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import axios from 'axios';
-import FontTheme from '../../FontTheme';
+import AppTheme from '../../AppTheme';
 
 var backImg = require('../Login/back_white.png');
 var app_Design = require('../Login/AppDesign.png');
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
         color: 'grey',
         marginLeft: 35,
         marginRight: 35,
-        fontFamily: FontTheme.regularfont
+        fontFamily: AppTheme.regularfont
 
 
     },
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
         marginLeft: 35,
         marginRight: 35,
         fontSize: 14,
-        fontFamily: FontTheme.regularfont
+        fontFamily: AppTheme.regularfont
 
     },
 
@@ -246,19 +246,19 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         fontSize: 23,
         color: 'white',
-        fontFamily: FontTheme.boldfont
+        fontFamily: AppTheme.boldfont
 
     },
     emailTitle: {
        // marginLeft: 30,
         fontSize: 15,
         color: 'grey',
-        fontFamily: FontTheme.regularfont
+        fontFamily: AppTheme.regularfont
     },
 
     inputText:
     {
-        fontFamily: FontTheme.regularfont,
+        fontFamily: AppTheme.regularfont,
         fontSize: 16,
        // marginRight: 30,
         borderBottomColor: '#000',
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         textAlign: 'center',
         fontSize: 19,
-        fontFamily: FontTheme.boldfont,
+        fontFamily: AppTheme.boldfont,
     },
     signUpTextCont: {
 
@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
     signUpTextStyle:
     {
         fontSize: 15,
-        fontFamily: FontTheme.regularfont,
+        fontFamily: AppTheme.regularfont,
         color: 'grey',
     },
 
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
     },
 
     signInBtn: {
-        fontFamily: FontTheme.semiboldfont,
+        fontFamily: AppTheme.semiboldfont,
         fontSize: 17,
         color: '#000'
     }

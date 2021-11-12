@@ -1,5 +1,9 @@
-const FontTheme = {
+
+
+const AppTheme = {
     // colors 
+    appThemeColor:'#0E203A',
+    yellowColor:'#F6BF48',
     lightbackgroundColor: "#F5F5F5",
     darkbackgroundColor: "#E9E9E9",
     moredarkBackgroundColor: "#00000029",
@@ -20,4 +24,4 @@ const FontTheme = {
 
 }
 
-export default FontTheme;
+export default AppTheme;

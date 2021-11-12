@@ -2,7 +2,7 @@ import { View, Image, StyleSheet, Text, Alert, TouchableOpacity, ImageBackground
 import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
-import FontTheme from '../../FontTheme';
+import AppTheme from '../../AppTheme';
 
 var backImg = require('../Login/back_white.png');
 
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 38,
         color: 'white',
-        fontFamily :FontTheme.extraboldfont
+        fontFamily :AppTheme.extraboldfont
     },
     loginBtn: {
 
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     btnText: {
         color: '#ffffff',
         fontSize: 19,
-        fontFamily:FontTheme.boldfont,
+        fontFamily:AppTheme.boldfont,
         textAlign: 'center'
     },
 

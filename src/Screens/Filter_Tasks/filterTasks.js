@@ -35,7 +35,7 @@ const filterTasks = () => {
             headerTintColor: 'white',
             //: 'fullScreenModal',
             headerStyle: {
-                backgroundColor: '#0E203A'
+                backgroundColor: AppTheme.appThemeColor
             },
             headerLeft: () => <TouchableOpacity onPress={() => {
                 navigation.goBack()

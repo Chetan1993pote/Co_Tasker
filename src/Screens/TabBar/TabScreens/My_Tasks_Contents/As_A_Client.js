@@ -1,63 +1,26 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
-import React from 'react';
-import { Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import AppTheme from '../../../AppTheme';
-
-
-var userImg = require('../TabIcons/userIcon.jpeg');
-var user2 = require('../TabIcons/user2.jpeg');
-var user3 = require('../TabIcons/user3.jpeg');
-var user4 = require('../TabIcons/user4.jpeg');
-var filterIcon = require('../TabIcons/filter.png');
-var locIcon = require('../TabIcons/Map_pin.png');
-var taskIcon = require('../TabIcons/task.png');
-
+import { View, Text, StyleSheet, Alert, Dimensions, TouchableOpacity, FlatList, Pressable, Image } from 'react-native';
+import React, { useState } from 'react';
+import AppTheme from '../../../../AppTheme';
 
 const win = Dimensions.get('window');
 
+var arrowImg = require('../../../../Images/icon_next_arrow.png')
+var userImg = require('../../TabIcons/userIcon.jpeg');
+var user2 = require('../..//TabIcons/user2.jpeg');
+var user3 = require('../../TabIcons/user3.jpeg');
+var locIcon = require('../../TabIcons/Map_pin.png');
+var taskIcon = require('../../TabIcons/task.png');
 
 
-const TabBrowseTasks = () => {
-
-    const navigation = useNavigation();
-
-    const arrHeader_Data = [
-        {
-            id: '1',
-            title: '',
-            icon: ''
-        },
-        {
-            id: '2',
-            title: 'Gandhinagar + 100 Km',
-            icon: ''
-
-        },
-        {
-            id: '3',
-            title: 'All tasks',
-            icon: ''
-        },
-        {
-            id: '4',
-            title: 'All categories',
-            icon: ''
-        },
-        {
-            id: '5',
-            title: 'In-Person & Remote',
-            icon: ''
-        },
-    ];
+const As_A_Client = () => {
 
     const arr_Data = [
         {
             id: '1',
             title: 'Plant Flowers In My Garden',
-            location: '1520/1,sector 2C,Sector 2,Gandhinagar...',
+            location: '1520/1,sector 2C',
             taskTitle: 'Gardening & Plant Care',
-            status: 'Assigned',
+            status: 'Expired',
             questionText: '',
             offerText: '2 Offers',
             userIcon: userImg
@@ -65,7 +28,7 @@ const TabBrowseTasks = () => {
         {
             id: '2',
             title: 'Clean My Office',
-            location: 'Ratnaraj Residency Rd, Vasana Hadm...',
+            location: 'Ratnaraj Residency Rd',
             taskTitle: 'Cleaning',
             status: 'Assigned',
             questionText: '',
@@ -75,91 +38,47 @@ const TabBrowseTasks = () => {
         {
             id: '3',
             title: 'Paint my office',
-            location: 'Unnamed Road,Sargasan,Gandhinagar...',
+            location: 'ASAP',
             taskTitle: 'Painting',
             status: 'Completed',
             questionText: '',
             offerText: '3 Offers',
             userIcon: user3
-        },
-        {
-            id: '4',
-            title: 'Wedding Photographer',
-            location: 'Sargasan,Gandhinagar,382006',
-            taskTitle: 'Translation',
-            status: 'Assigned',
-            questionText: '2 Questions',
-            offerText: '1 Offer',
-            userIcon: user4
-        },
-    ];
+        }]
 
-    actionOnRowBrowse = (item, index) => {
+    actionOnRowClientTask = (item, index) => {
         console.log('Selected Item :', item.id);
         // setSelectedIndex(index)
         //console.log('Selected Item 1:', selectedIndex);
-        navigation.navigate('TaskAd');
+        //navigation.navigate('TaskAd');
 
 
     }
 
-    actionOnTab = (item, index) => {
-        console.log('Selected Item :', item.id);
-        if (item.id == 1) {
-            navigation.navigate('filterTasks');
-        }
-
-    }
 
     return (
         <View style={styles.container}>
-            <View style={{ paddingTop: 0, marginLeft: 10 }}>
-                <FlatList
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                    data={arrHeader_Data}
-                    extraData={this.state}
-                    keyExtractor={item => item.id}
 
-                    renderItem={({ item, index }) => (
+            <Pressable style={styles.tabStyle}>
 
-                        <TouchableOpacity onPress={() => this.actionOnTab(item, index)
+                <View style={styles.rowStyle}>
+                    <Text style={styles.textStyle}>Posted Ads</Text>
+                    <Image
+                        source={arrowImg}
+                        style={{ height: 18, width: 14.5 }}></Image>
+                </View>
 
-                        } key={item}>
+            </Pressable>
+            <Pressable style={styles.tabStyle}>
+                <View style={styles.rowStyle}>
+                    <Text style={styles.textStyle}>Booked</Text>
+                    <Image
+                        source={arrowImg}
+                        style={{ height: 18, width: 14.5 }}></Image>
+                </View>
+            </Pressable>
 
-                            {item.id == 1 ? <View style={{ borderRadius: 10, backgroundColor: '#ffbf00', padding: 8 }}>
-
-                                <Image
-                                    resizeMode='contain'
-                                    source={filterIcon}
-                                    style={{ height: 20, width: 20 }}
-                                />
-
-                            </View> : <View style={{ borderRadius: 10, backgroundColor: AppTheme.appThemeColor, justifyContent: 'center', marginLeft: 8, padding: 9 }}>
-
-                                <Text style={{ color: 'white', paddingHorizontal: 10 }}>{item.title}</Text>
-
-
-                            </View>
-                            }
-
-
-
-
-                        </TouchableOpacity>
-                    )}
-
-                ></FlatList>
-
-            </View>
-            <View
-                style={{
-                    marginTop: 8, borderBottomColor: '#C5C5C5', borderBottomWidth: 1,
-                    width: win.width
-                }}
-            />
-
-            <View style={{ marginTop: 3, flexGrow: 1 }}>
+            <View style={{ marginTop: 2, height: win.height / 2 }}>
                 <FlatList
 
                     data={arr_Data}
@@ -168,10 +87,8 @@ const TabBrowseTasks = () => {
 
                     renderItem={({ item, index }) => (
 
-                        <TouchableOpacity onPress={() => this.actionOnRowBrowse(item, index)}>
+                        <TouchableOpacity onPress={() => this.actionOnRowTask(item, index)}>
                             <View style={styles.cellContainer}>
-
-
                                 <Image source={item.userIcon}
                                     style={styles.image} />
 
@@ -187,8 +104,8 @@ const TabBrowseTasks = () => {
                                             textAlign: 'right',
 
                                             fontSize: 14,
-                                            color: AppTheme.appThemeColor,
-                                            fontFamily: AppTheme.boldfont,
+                                            color: AppTheme.yellowColor,
+                                            fontFamily: AppTheme.regularfont,
                                         }}>{item.status}</Text>
                                     </View>
                                     <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginVertical: win.height * 0.008 }}>
@@ -213,29 +130,52 @@ const TabBrowseTasks = () => {
 
                 ></FlatList>
             </View>
-        </View>
 
+            <Pressable style={styles.tabStyle}>
+
+                <View style={styles.rowStyle}>
+                    <Text style={styles.textStyle}>Completed</Text>
+                    <Image
+                        source={arrowImg}
+                        style={{ height: 18, width: 14.5 }}></Image>
+                </View>
+
+            </Pressable>
+
+
+        </View>
     );
 
 }
 
-export default TabBrowseTasks;
+export default As_A_Client;
 
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        marginTop: 10
-
     },
 
-    screenText: {
-        fontSize: 20,
-        color: 'black',
-        alignContent: 'center',
-        alignSelf: 'center',
+    tabStyle: {
+        backgroundColor: AppTheme.appThemeColor,
+        justifyContent: 'center',
+        borderRadius: 8,
+        marginHorizontal: win.width * 0.05,
+        marginVertical: win.width * 0.01,
+        height: 40
+    },
+    textStyle: {
+        fontSize: 15,
+        fontFamily: AppTheme.semiboldfont,
+        color: 'white'
     },
 
+    rowStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: win.width * 0.04,
+    },
     cellContainer: {
+
         marginLeft: 40,
         marginVertical: 5,
         backgroundColor: 'white',
@@ -258,14 +198,12 @@ const styles = StyleSheet.create({
         height: 55,
         borderRadius: 55 / 2,
         borderWidth: 1,
-        borderColor: AppTheme.appThemeColor
+        borderColor: '#C5C5C5',
     },
 
     locIcon: {
-        width: 15,
-        height: 15,
+        width: 13,
+        height: 13,
     }
-
-
 
 });

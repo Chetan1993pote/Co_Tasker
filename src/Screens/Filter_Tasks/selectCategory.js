@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, TextInput, A
 import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AppTheme from '../../AppTheme';
 
 var searchIcon = require('../TabBar/TabIcons/searchIcon.png');
 var backImg = require('../TabBar/TabIcons/back_white.png');
@@ -23,7 +24,7 @@ const selectCategory = () => {
             title: 'Select Category',
           headerTintColor: 'white',
           headerStyle: {
-            backgroundColor: '#0E203A'
+            backgroundColor: AppTheme.appThemeColor
           },
           headerLeft: () => <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
     searchContainer: {
 
         height: 50,
-        backgroundColor: '#0E203A'
+        backgroundColor: AppTheme.appThemeColor
 
     },
 
@@ -179,7 +180,7 @@ const styles = StyleSheet.create({
         paddingVertical: 14,
         justifyContent: 'flex-end',
         width: win.width - 40,
-        backgroundColor: '#0E203A',
+        backgroundColor: AppTheme.appThemeColor,
         borderRadius: 12,
         paddingVertical: 13,
         alignSelf: 'center',

@@ -7,7 +7,7 @@ import {
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { DrawerActions } from '@react-navigation/routers';
 import { useNavigation } from '@react-navigation/native';
-import FontTheme from '../../FontTheme';
+import AppTheme from '../../AppTheme';
 
 const win = Dimensions.get('window');
 
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#ffbf00',
         fontWeight: '600',
-       // fontFamily:FontTheme.boldfont
+       // fontFamily:AppTheme.boldfont
 
     },
 
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'white',
         fontWeight: '500',
-       // fontFamily:FontTheme.semiboldfont
+       // fontFamily:AppTheme.semiboldfont
 
 
     }

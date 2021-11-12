@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Alert, ImageBackground, Image, TextInput, Touch
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
-import FontTheme from '../../FontTheme';
+import AppTheme from '../../AppTheme';
 
 
 var app_Design = require('./AppDesign.png');
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         fontSize: 23,
         color: 'white',
-        fontFamily: FontTheme.boldfont
+        fontFamily: AppTheme.boldfont
 
     },
 
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
 
         fontSize: 15,
         color: 'grey',
-        fontFamily: FontTheme.regularfont
+        fontFamily: AppTheme.regularfont
 
     },
 
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.8,
         height: 40,
         paddingLeft: 3,
-        fontFamily: FontTheme.regularfont
+        fontFamily: AppTheme.regularfont
 
     },
 
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#ffffff',
         fontSize: 19,
-        fontFamily: FontTheme.boldfont,
+        fontFamily: AppTheme.boldfont,
         textAlign: 'center',
     },
     signUpTextCont: {
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     signUpTextStyle:
     {
         fontSize: 16,
-        fontFamily: FontTheme.regularfont,
+        fontFamily: AppTheme.regularfont,
         color: 'grey',
     },
 
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     },
 
     registerHere: {
-        fontFamily: FontTheme.semiboldfont,
+        fontFamily: AppTheme.semiboldfont,
         fontSize: 17,
         color: '#000'
     }

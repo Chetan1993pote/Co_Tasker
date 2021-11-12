@@ -4,6 +4,7 @@ import { View, Text, Dimensions, FlatList, Image, StyleSheet,TouchableOpacity,Al
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerActions } from '@react-navigation/drawer';
+import AppTheme from '../../../AppTheme';
 
 
 var menu = require('../TabIcons/menu.png')
@@ -105,7 +106,7 @@ const TabPostVC = () => {
                     onPress={() => this.actionOnRowTap(item, index)}>
                         <View style={styles.viewContainer}>
                             <View style={{ flexDirection: 'column', flexWrap: 'wrap', alignItems: 'center' }}>
-                                <View style={{ backgroundColor: '#0E203A', height: 88, width: 88, borderRadius: 44, alignItems: 'center', justifyContent: 'center' }}>
+                                <View style={{ backgroundColor: AppTheme.appThemeColor, height: 88, width: 88, borderRadius: 44, alignItems: 'center', justifyContent: 'center' }}>
                                     <Image style={styles.image} source={{ uri: item.imgIcon }} />
                                 </View>
                                 <Text style={styles.titleStyle}
