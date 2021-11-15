@@ -1,12 +1,9 @@
 import React from 'react';
-import { Dimensions, Image, View, Text, FlatList, ImageBackground, TouchableOpacity, StyleSheet, Settings } from 'react-native';
+import { Dimensions, Image, View, Text, FlatList, ImageBackground, TouchableOpacity, StyleSheet, Settings, Pressable } from 'react-native';
 
-import {
-    drawerContentScrollView, DrawerItem
-} from '@react-navigation/drawer';
+
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { DrawerActions } from '@react-navigation/routers';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation ,DrawerActions} from '@react-navigation/native';
 import AppTheme from '../../AppTheme';
 
 const win = Dimensions.get('window');
@@ -32,8 +29,8 @@ function DrawerContents(props) {
                         style={styles.image} />
 
                     <View style={{ flexDirection: 'column', marginLeft: 10 }}>
-                        <Text style={{ fontSize: 20, color: 'white' }}> Sudhir D </Text>
-                        <Text style={{ fontSize: 15, color: '#ffbf00', marginTop: 3 }}> View profile </Text>
+                        <Text style={{ fontSize: 20, color: 'white' , fontFamily:AppTheme.semiboldfont}}> Sudhir D </Text>
+                        <Text style={{ fontSize: 15, color: '#ffbf00', marginTop: 3 ,fontFamily:AppTheme.regularfont }}> View profile </Text>
 
                     </View>
                 </View>
@@ -56,11 +53,11 @@ function DrawerContents(props) {
             <ImageBackground
                 source={menu_bg}
                 style={{ height: '100%', width: '100%' }}>
-                <TouchableOpacity onPress={() => DrawerActions.closeDrawer()}>
+                <Pressable onPress={() => navigation.dispatch(DrawerActions.closeDrawer())}>
                     <Image
                         source={menu_close}
                         style={{ height: 18, width: 18, alignSelf: 'flex-end', marginTop: 50, marginEnd: 20 }}></Image>
-                </TouchableOpacity>
+                </Pressable>
 
 
 
@@ -127,7 +124,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#ffbf00',
         fontWeight: '600',
-       // fontFamily:AppTheme.boldfont
+        fontFamily:AppTheme.boldfont
 
     },
 
@@ -135,7 +132,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'white',
         fontWeight: '500',
-       // fontFamily:AppTheme.semiboldfont
+        fontFamily:AppTheme.semiboldfont
 
 
     }

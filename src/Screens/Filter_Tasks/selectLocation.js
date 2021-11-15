@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import React, { useState, useEffect, useRef } from 'react'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import AppTheme from '../../AppTheme';
 
 var searchIcon = require('../TabBar/TabIcons/searchIcon.png');
 var backImg = require('../TabBar/TabIcons/back_white.png');

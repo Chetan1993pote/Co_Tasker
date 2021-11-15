@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList,Pressable } from 'react-native';
 import React from 'react';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -15,12 +15,25 @@ var taskIcon = require('../TabIcons/task.png');
 
 
 const win = Dimensions.get('window');
+var menu = require('../TabIcons/menu.png')
 
 
 
 const TabBrowseTasks = () => {
 
     const navigation = useNavigation();
+
+    navigation.setOptions({
+        headerLeft: () => <Pressable onPress={() => 
+        navigation.toggleDrawer()}>
+            <Image
+                resizeMode='contain'
+                source={menu}
+                style={{ height: 18, width: 18 ,margin:15}} />
+
+        </Pressable>
+    });
+
 
     const arrHeader_Data = [
         {

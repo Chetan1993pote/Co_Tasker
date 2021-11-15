@@ -26,7 +26,7 @@ const HelpCenter = () => {
                 <Image
                     resizeMode='contain'
                     source={backImg}
-                    style={{ height: 18, width: 18, margin: 15 }} />
+                    style={{ height: 18, width: 18 }} />
 
             </TouchableOpacity>
         });

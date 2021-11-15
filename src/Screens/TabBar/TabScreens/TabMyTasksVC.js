@@ -4,7 +4,6 @@ import AppTheme from '../../../AppTheme';
 import As_A_Client from './My_Tasks_Contents/As_A_Client';
 import As_A_Co_tasker from './My_Tasks_Contents/As_A_Co_tasker';
 import { useNavigation } from '@react-navigation/native';
-import { DrawerActions } from '@react-navigation/drawer';
 
 
 var menu = require('../TabIcons/menu.png')
@@ -17,8 +16,7 @@ const TabMyTasksVC = () => {
 
     navigation.setOptions({
         headerLeft: () => <Pressable onPress={() => 
-       // Alert.alert('Menu Pressed')
-        DrawerActions.openDrawer()}>
+        navigation.toggleDrawer()}>
             <Image
                 resizeMode='contain'
                 source={menu}

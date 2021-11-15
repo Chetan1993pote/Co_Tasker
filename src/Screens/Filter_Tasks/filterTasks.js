@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import SliderText from 'react-native-slider-text';
+import AppTheme from '../../AppTheme';
 
 
 var downArw = require('../TabBar/TabIcons/down_arrow.png');

@@ -14,6 +14,10 @@ var taskIcon = require('../../TabIcons/task.png');
 
 const As_A_Client = () => {
 
+    const [tap1, setTap1] = useState(false)
+    const [tap2, setTap2] = useState(false)
+    const [tap3, setTap3] = useState(false)
+
     const arr_Data = [
         {
             id: '1',
@@ -55,11 +59,37 @@ const As_A_Client = () => {
 
     }
 
+    tapOnAds = () => {
+        console.log('Offers');
+        setTap1(!tap1) 
+        setTap2(false)
+        setTap3(false)
+        
+
+
+    }
+
+    tapOnBooked = () => {
+        console.log('tapOnActiveTasks');
+        setTap2(!tap2)
+        setTap1(false)
+        setTap3(false)
+
+    }
+
+    tapOnCompletedClient = () => {
+        console.log('tapOnCompleted');
+        setTap3(!tap3)
+        setTap2(false)
+        setTap1(false)
+
+    }
+
 
     return (
         <View style={styles.container}>
 
-            <Pressable style={styles.tabStyle}>
+            <Pressable style={styles.tabStyle} onPress={() => this.tapOnAds()}>
 
                 <View style={styles.rowStyle}>
                     <Text style={styles.textStyle}>Posted Ads</Text>
@@ -69,7 +99,10 @@ const As_A_Client = () => {
                 </View>
 
             </Pressable>
-            <Pressable style={styles.tabStyle}>
+
+            <View style={{ marginTop: 2, height: tap1 ? win.height / 2 : 0, backgroundColor: 'orange' }}></View>
+
+            <Pressable style={styles.tabStyle} onPress={() => this.tapOnBooked()}>
                 <View style={styles.rowStyle}>
                     <Text style={styles.textStyle}>Booked</Text>
                     <Image
@@ -78,7 +111,7 @@ const As_A_Client = () => {
                 </View>
             </Pressable>
 
-            <View style={{ marginTop: 2, height: win.height / 2 }}>
+            <View style={{ marginTop: 2, height: tap2 ? win.height / 2 : 0 }}>
                 <FlatList
 
                     data={arr_Data}
@@ -131,7 +164,7 @@ const As_A_Client = () => {
                 ></FlatList>
             </View>
 
-            <Pressable style={styles.tabStyle}>
+            <Pressable style={styles.tabStyle} onPress={() => this.tapOnCompletedClient()}>
 
                 <View style={styles.rowStyle}>
                     <Text style={styles.textStyle}>Completed</Text>
@@ -141,6 +174,7 @@ const As_A_Client = () => {
                 </View>
 
             </Pressable>
+            <View style={{ marginTop: 2, height: tap3 ? win.height / 2 : 0, backgroundColor: 'yellow' }}></View>
 
 
         </View>

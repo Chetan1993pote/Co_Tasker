@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { View, Text, Dimensions, FlatList, Image, StyleSheet,TouchableOpacity,Alert } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
-import { DrawerActions } from '@react-navigation/drawer';
 import AppTheme from '../../../AppTheme';
 
 
@@ -19,7 +18,7 @@ const TabPostVC = () => {
     const [arr_News, setNews] = useState([]);
 
     navigation.setOptions({
-        headerLeft: () => <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+        headerLeft: () => <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
             <Image
                 resizeMode='contain'
                 source={menu}

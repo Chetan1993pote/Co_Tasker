@@ -15,6 +15,11 @@ const win = Dimensions.get('window');
 
 const As_A_Co_tasker = () => {
 
+    const [tap1, setTap1] = useState(false)
+    const [tap2, setTap2] = useState(false)
+    const [tap3, setTap3] = useState(false)
+
+
     const arr_Data = [
         {
             id: '1',
@@ -56,10 +61,36 @@ const As_A_Co_tasker = () => {
 
     }
 
+    tapOnOffers = () => {
+        console.log('Offers');
+        setTap1(!tap1) 
+        setTap2(false)
+        setTap3(false)
+        
+
+
+    }
+
+    tapOnActiveTasks = () => {
+        console.log('tapOnActiveTasks');
+        setTap2(!tap2)
+        setTap1(false)
+        setTap3(false)
+
+    }
+
+    tapOnCompleted = () => {
+        console.log('tapOnCompleted');
+        setTap3(!tap3)
+        setTap2(false)
+        setTap1(false)
+
+    }
+
     return (
         <View style={styles.container}>
 
-            <Pressable style={styles.tabStyle}>
+            <Pressable style={styles.tabStyle} onPress={() => this.tapOnOffers()}>
 
                 <View style={styles.rowStyle}>
                     <Text style={styles.textStyle}>Offers</Text>
@@ -70,7 +101,7 @@ const As_A_Co_tasker = () => {
 
             </Pressable>
 
-            <View style={{ marginTop: 2, height: win.height / 2 }}>
+            <View style={{ marginTop: 2, height: tap1 ? win.height / 2 : 0 }}>
                 <FlatList
 
                     data={arr_Data}
@@ -127,7 +158,7 @@ const As_A_Co_tasker = () => {
                 ></FlatList>
             </View>
 
-            <Pressable style={styles.tabStyle}>
+            <Pressable style={styles.tabStyle} onPress={() => this.tapOnActiveTasks(!tap2)}>
                 <View style={styles.rowStyle}>
                     <Text style={styles.textStyle}>Active Tasks</Text>
                     <Image
@@ -135,7 +166,9 @@ const As_A_Co_tasker = () => {
                         style={{ height: 18, width: 14.5 }}></Image>
                 </View>
             </Pressable>
-            <Pressable style={styles.tabStyle}>
+
+            <View style={{ marginTop: 2, height: tap2 ? win.height / 2 : 0, backgroundColor: 'orange' }}></View>
+            <Pressable style={styles.tabStyle} onPress={() => this.tapOnCompleted(!tap3)}>
 
                 <View style={styles.rowStyle}>
                     <Text style={styles.textStyle}>Completed</Text>
@@ -145,6 +178,8 @@ const As_A_Co_tasker = () => {
                 </View>
 
             </Pressable>
+
+            <View style={{ marginTop: 2, height: tap3 ? win.height / 2 : 0, backgroundColor: 'green' }}></View>
 
 
         </View>

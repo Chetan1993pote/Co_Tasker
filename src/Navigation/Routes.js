@@ -35,19 +35,23 @@ const win = Dimensions.get('window');
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-
 function MenuDrawer(){
 
   return (
-    <Drawer.Navigator drawerStyle={{
-      width: win.width
-    }}
-    drawerContent={props => <DrawerContents {...props}/>} >
-     <Stack.Screen name="Tabbar" component={Tabber} options={{ headerShown: false }} />
+    <Drawer.Navigator
 
-      <Drawer.Screen name="HelpCenter" component={HelpCenter} />
-      <Drawer.Screen name="TaskAd" component={TaskAd} />
-      <Drawer.Screen name="PostATask" component={PostATask} />
+    screenOptions={{
+      drawerType:'front',
+      drawerStyle: {
+        width: '80%',
+      },
+
+    }
+  }
+  
+    drawerContent={props => <DrawerContents {...props}/>} >
+     
+     <Stack.Screen name="Tabbar" component={Tabber} options={{ headerShown: false }} />
 
     </Drawer.Navigator>
   )

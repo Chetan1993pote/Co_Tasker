@@ -1,7 +1,6 @@
 import { View,Text, Dimensions,StyleSheet,Image, FlatList, TouchableOpacity,} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { DrawerActions } from '@react-navigation/drawer';
 import AppTheme from '../../../AppTheme';
 
 
@@ -19,7 +18,7 @@ const TabNotifications = () => {
     const navigation = useNavigation();
 
     navigation.setOptions({
-        headerLeft: () => <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+        headerLeft: () => <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
             <Image
                 resizeMode='contain'
                 source={menu}
@@ -48,7 +47,7 @@ const TabNotifications = () => {
         },
         {
             id: '3',
-            userName: 'Deepak Saini',
+            userName: 'Anand Saini',
             desc: 'I want to do everything:find help and earn money on Co-tasker',
             userIcon:user3,
             time:'3 mon'

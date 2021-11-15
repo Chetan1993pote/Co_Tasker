@@ -1,11 +1,24 @@
-import { View,Text ,StyleSheet} from 'react-native';
+import { View,Text ,StyleSheet,Pressable,Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
+var menu = require('../TabIcons/menu.png')
 
 const TabMessagesVC = () => {
 
     const navigation = useNavigation();
+
+    navigation.setOptions({
+        headerLeft: () => <Pressable onPress={() => 
+        navigation.toggleDrawer()}>
+            <Image
+                resizeMode='contain'
+                source={menu}
+                style={{ height: 18, width: 18 ,margin:15}} />
+
+        </Pressable>
+    });
+
 
     return (
         <View style={styles.container}>
