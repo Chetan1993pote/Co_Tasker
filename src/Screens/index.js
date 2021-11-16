@@ -14,7 +14,8 @@ export {default as selectLocation} from './Filter_Tasks/selectLocation';
 export {default as TaskAd} from './Notifications/TaskAd';
 export {default as HelpCenter} from './Notifications/HelpCenter';
 export {default as PostATask} from './Post_A_Task/PostATask';
-
+export {default as AboutCotasker} from './AboutCotasker/AboutCotasker';
+export {default as WebViewScn} from './AboutCotasker/WebViewScn';
 
 
 

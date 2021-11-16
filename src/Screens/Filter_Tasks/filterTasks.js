@@ -34,7 +34,6 @@ const filterTasks = () => {
         navigation.setOptions({
             title: 'Filter Task',
             headerTintColor: 'white',
-            //: 'fullScreenModal',
             headerStyle: {
                 backgroundColor: AppTheme.appThemeColor
             },

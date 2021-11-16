@@ -1,9 +1,9 @@
 import React from 'react';
-import { Dimensions, Image, View, Text, FlatList, ImageBackground, TouchableOpacity, StyleSheet, Settings, Pressable } from 'react-native';
+import { Dimensions, Image, View, Text, FlatList, Linking, ImageBackground, TouchableOpacity, StyleSheet, Settings, Pressable } from 'react-native';
 
 
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { useNavigation ,DrawerActions} from '@react-navigation/native';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 import AppTheme from '../../AppTheme';
 
 const win = Dimensions.get('window');
@@ -29,8 +29,8 @@ function DrawerContents(props) {
                         style={styles.image} />
 
                     <View style={{ flexDirection: 'column', marginLeft: 10 }}>
-                        <Text style={{ fontSize: 20, color: 'white' , fontFamily:AppTheme.semiboldfont}}> Sudhir D </Text>
-                        <Text style={{ fontSize: 15, color: '#ffbf00', marginTop: 3 ,fontFamily:AppTheme.regularfont }}> View profile </Text>
+                        <Text style={{ fontSize: 20, color: 'white', fontFamily: AppTheme.semiboldfont }}> Sudhir D </Text>
+                        <Text style={{ fontSize: 15, color: '#ffbf00', marginTop: 3, fontFamily: AppTheme.regularfont }}> View profile </Text>
 
                     </View>
                 </View>
@@ -40,12 +40,21 @@ function DrawerContents(props) {
 
     actionOnSelectItem = (item, index) => {
         console.log('Selected Item :', item, index);
-
+        navigation.dispatch(DrawerActions.closeDrawer())
         if (index == 5) {
             navigation.navigate('HelpCenter')
-        }
+        } else if (index == 2) {
 
+            Linking.openURL(AppTheme.howitWork)
+                .catch(err => {
+                    console.error("Failed opening page because: ", err)
+                    alert('Failed to open page')
+                })
+        } else if (index == 3) {
+            navigation.navigate('AboutCotasker')
+        }
     }
+
 
     return (
 
@@ -58,8 +67,6 @@ function DrawerContents(props) {
                         source={menu_close}
                         style={{ height: 18, width: 18, alignSelf: 'flex-end', marginTop: 50, marginEnd: 20 }}></Image>
                 </Pressable>
-
-
 
                 <View style={{ flexGrow: 1, marginTop: 15 }}>
                     <FlatList
@@ -80,28 +87,19 @@ function DrawerContents(props) {
                                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginEnd: 20 }}>
                                                 <Text style={styles.textColor}>{item}</Text>
 
-                                             {index === 0 && <Text style={styles.countColor}>{'0 €'}</Text> } 
-
-                                             {index === 1 && <Text style={styles.countColor}>{'0'}</Text>}
+                                                {index === 0 && <Text style={styles.countColor}>{'0 €'}</Text>}
+                                                {index === 1 && <Text style={styles.countColor}>{'0'}</Text>}
 
                                             </View>
                                             :
-
                                             <Text style={styles.textColor}>{item}</Text>
                                         }
-
-
                                     </View>
                                 </View>
-
                             </TouchableOpacity>
                         )}
-
                     ></FlatList>
                 </View>
-
-
-
             </ImageBackground>
         </View>
     )
@@ -120,19 +118,19 @@ const styles = StyleSheet.create({
         borderWidth: 1.5,
         borderColor: '#ffbf00',
     },
-    countColor:{
+    countColor: {
         fontSize: 20,
         color: '#ffbf00',
         fontWeight: '600',
-        fontFamily:AppTheme.boldfont
+        fontFamily: AppTheme.boldfont
 
     },
 
-    textColor:{
+    textColor: {
         fontSize: 18,
         color: 'white',
         fontWeight: '500',
-        fontFamily:AppTheme.semiboldfont
+        fontFamily: AppTheme.semiboldfont
 
 
     }

@@ -27,6 +27,8 @@ import HelpCenter from '../Screens/Notifications/HelpCenter';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import DrawerContents from '../Screens/Drawer_Contents/DrawerContents'
+import AboutCotasker from '../Screens/AboutCotasker/AboutCotasker';
+import WebViewScn from '../Screens/AboutCotasker/WebViewScn';
 
 const win = Dimensions.get('window');
 
@@ -83,6 +85,8 @@ const Routes = () => {
         <Stack.Screen name="TaskAd" component={TaskAd} options={{}} />
         <Stack.Screen name="HelpCenter" component={HelpCenter} options={{}} />
         <Stack.Screen name="PostATask" component={PostATask} options={{}} />
+        <Stack.Screen name="AboutCotasker" component={AboutCotasker} options={{}} />
+        <Stack.Screen name="WebViewScn" component={WebViewScn} options={{}} />
 
 
       </Stack.Navigator>

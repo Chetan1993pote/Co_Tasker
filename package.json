@@ -30,6 +30,7 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
     "react-native-slider-text": "^0.0.10",
+    "react-native-webview": "^11.14.3",
     "redux-form": "^8.3.7"
   },
   "devDependencies": {
@@ -45,5 +46,4 @@
   "jest": {
     "preset": "react-native"
   }
-  
 }

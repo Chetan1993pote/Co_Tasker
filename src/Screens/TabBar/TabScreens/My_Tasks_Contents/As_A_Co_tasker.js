@@ -63,10 +63,10 @@ const As_A_Co_tasker = () => {
 
     tapOnOffers = () => {
         console.log('Offers');
-        setTap1(!tap1) 
+        setTap1(!tap1)
         setTap2(false)
         setTap3(false)
-        
+
 
 
     }
@@ -167,7 +167,11 @@ const As_A_Co_tasker = () => {
                 </View>
             </Pressable>
 
-            <View style={{ marginTop: 2, height: tap2 ? win.height / 2 : 0, backgroundColor: 'orange' }}></View>
+
+            <View style={{ marginTop: 2, height: tap2 ? win.height / 2 : 0, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={styles.noDataText}>No active tasks ⚡</Text>
+
+            </View>
             <Pressable style={styles.tabStyle} onPress={() => this.tapOnCompleted(!tap3)}>
 
                 <View style={styles.rowStyle}>
@@ -179,7 +183,10 @@ const As_A_Co_tasker = () => {
 
             </Pressable>
 
-            <View style={{ marginTop: 2, height: tap3 ? win.height / 2 : 0, backgroundColor: 'green' }}></View>
+            <View style={{ marginTop: 2, height: tap3 ? win.height / 2 : 0, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={styles.noDataText}>No completed tasks yet 💸</Text>
+
+            </View>
 
 
         </View>
@@ -206,6 +213,12 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontFamily: AppTheme.semiboldfont,
         color: 'white'
+    },
+
+    noDataText: {
+        fontSize: 15,
+        fontFamily: AppTheme.semiboldfont,
+        color: '#696969'
     },
 
     rowStyle: {
