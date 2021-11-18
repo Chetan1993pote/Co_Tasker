@@ -52,6 +52,8 @@ function DrawerContents(props) {
                 })
         } else if (index == 3) {
             navigation.navigate('AboutCotasker')
+        }else if (index == 7){
+            navigation.navigate('LoginOptions');
         }
     }
 

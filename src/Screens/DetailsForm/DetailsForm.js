@@ -3,7 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import React, { useState } from 'react';
 import * as rn from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import AppTheme from '../../AppTheme';
 
 var backImg = require('../DetailsForm/icon_back_black.png');
 
@@ -61,36 +62,36 @@ const DetailsForm = () => {
     }
 
     const handleSubmit = async () => {
-         //inputText.preventDefault();
+        //inputText.preventDefault();
         setSubmitted(true);
 
-        if (!values.firstName.trim()){
-            Alert.alert('First Name','Please enter first name')
-        }else if (!values.lastName.trim()){
-            Alert.alert('Last Name','Please enter last name')
-        }else if (!values.city.trim()){
-            Alert.alert('City','Please enter where you live')
-        }else{
+        if (!values.firstName.trim()) {
+            Alert.alert('First Name', 'Please enter first name')
+        } else if (!values.lastName.trim()) {
+            Alert.alert('Last Name', 'Please enter last name')
+        } else if (!values.city.trim()) {
+            Alert.alert('City', 'Please enter where you live')
+        } else {
             setValid(true)
             try {
 
                 let obj = {
-                    fName:values.firstName,
-                    lName:values.lastName,
+                    fName: values.firstName,
+                    lName: values.lastName,
                     cityName: values.city,
-                    phoneNum:values.phone
+                    phoneNum: values.phone
                 }
                 await AsyncStorage.setItem('userInfo', JSON.stringify(obj));
-              
+
                 navigation.navigate('PickIntrest');
-              } catch (e) {
+            } catch (e) {
                 // saving error
                 console.log(e)
-              }
-          
+            }
+
         }
- 
-        
+
+
     }
 
 
@@ -104,97 +105,83 @@ const DetailsForm = () => {
                     resizeMode={'contain'}
                     style={{
                         marginTop: 55,
-                        marginLeft: 35, height: 25, width: 25
+                        marginLeft: 30, height: 25, width: 25
                     }} />
 
             </TouchableOpacity>
 
 
-            <ScrollView style={styles.scrollView}>
+            {/* <ScrollView style={styles.scrollView}> */}
                 <Text style={styles.titleStyle} > Tell us about
                 </Text>
 
                 <Text style={styles.titleStyle2} > yourself
                 </Text>
 
-                <Text style={styles.firstNameTitle} > First Name
-                </Text>
+                <View style={{ flexDirection: 'column', marginTop: 20 }}>
+                    <Text style={styles.nameTitle} > First Name
+                    </Text>
 
-                <rn.TextInput
-                    style={styles.firstNameInputText}
-                    placeholder="First Name"
-                    autoCorrect={false}
-                    autoCompleteType='off'
-                    onChangeText={handleFirstNameChange}
-                    value={values.firstName}
-                    returnKeyType={"next"}
+                    <rn.TextInput
+                        style={styles.inputText}
+                        placeholder="First Name"
+                        autoCorrect={false}
+                        autoCompleteType='off'
+                        onChangeText={handleFirstNameChange}
+                        value={values.firstName}
+                        returnKeyType={"next"} />
+                </View>
 
-                // onEndEditing={() => this.lastName.focus()}
-                />
-                {/* {submitted && valid && !values.firstName ? <Text style={styles.errorMsgStyle} > Please enter first name
-                </Text> : null} */}
-                
-                <Text style={styles.lastNameTitle} > Last Name
-                </Text>
+                <View style={{ flexDirection: 'column', marginTop: 10 }}>
+                <Text style={styles.nameTitle} > Last Name
+                 </Text>
 
-                <rn.TextInput
-                    style={styles.lastNameInputText}
+                       <rn.TextInput
+                    style={styles.inputText}
                     placeholder="Last Name"
                     autoCorrect={false}
                     autoCompleteType='off'
                     onChangeText={handleLastNameChange}
                     value={values.lastName}
-                    returnKeyType={"next"}
-                //ref={(input) => this.lastName = input} 
-                //onEndEditing={() => this.city.focus()}
+                    returnKeyType={"next"} /> 
+                </View>
 
-                />
-                {/* {submitted && valid && !values.lastName ? <Text style={styles.errorMsgStyle} > Please enter last name
-                </Text> : null} */}
+                <View style={{ flexDirection: 'column', marginTop: 10 }}>
+                 <Text style={styles.nameTitle} > Where Are You Located?
+                 </Text>
 
-
-                <Text style={styles.cityNameTitle} > Where Are You Located?
-                </Text>
-
-                <rn.TextInput
-                    style={styles.cityNameInputText}
+                 <rn.TextInput
+                    style={styles.inputText}
                     placeholder="What city do you live in"
                     autoCorrect={false}
                     autoCompleteType='off'
                     onChangeText={handleCityNameChange}
                     value={values.city}
-                    returnKeyType={"next"}
-                //ref={(input) => this.city = input} 
-                //onEndEditing={() => this.phone.focus()}
+                    returnKeyType={"next"} /> 
+                </View>
 
-                />
-                {/* {submitted && valid && !values.city ? <Text style={styles.errorMsgStyle} > Please enter city name
-                </Text> : null} */}
+                <View style={{ flexDirection: 'column', marginTop: 10 }}>
+                <Text style={styles.nameTitle} > Phone Number
+                 </Text>
 
-                <Text style={styles.phoneTitle} > Phone Number (Optional)
-                </Text>
-
-                <rn.TextInput
-                    style={styles.phoneNumInputText}
+                 <rn.TextInput
+                    style={styles.inputText}
                     placeholder="Enter your phone number"
                     autoCorrect={false}
                     autoCompleteType='off'
                     onChangeText={handlePhoneNumChange}
                     value={values.phone}
-                    returnKeyType={"done"}
-                //ref={(input) => this.phone = input} 
-                />
-                {/* {submitted && valid && !values.phone ? <Text style={styles.errorMsgStyle} > Please enter phone number
-                </Text> : null} */}
+                    returnKeyType={"done"} /> 
+                </View>
 
-            </ScrollView>
+            {/* </ScrollView> */}
 
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button}
 
                     onPress={() => {
                         // Alert.alert('text')
-                         handleSubmit()
+                        handleSubmit()
 
                     }}>
 
@@ -226,9 +213,9 @@ const styles = StyleSheet.create({
 
     titleStyle: {
         marginTop: 20,
-        fontSize: 30,
-        color: 'black',
-        fontWeight: 'bold',
+        fontSize: 27,
+        color: AppTheme.blackColor,
+        fontFamily: AppTheme.boldfont,
         marginVertical: 15,
         marginLeft: 25
     },
@@ -236,23 +223,24 @@ const styles = StyleSheet.create({
     titleStyle2: {
         marginLeft: 25,
         alignItems: 'center',
-        fontSize: 30,
-        color: 'black',
-        fontWeight: 'bold'
+        fontSize: 27,
+        color: AppTheme.blackColor,
+        fontFamily: AppTheme.boldfont
     },
 
-    firstNameTitle: {
-        marginTop: 50,
+    nameTitle: {
+        marginTop: 20,
         marginLeft: 29,
-        fontSize: 15,
+        fontSize: 14,
         color: 'grey',
-        fontWeight: 'normal'
+        fontFamily: AppTheme.semiboldfont
 
     },
 
-    firstNameInputText:
+   
+    inputText:
     {
-        // marginTop: 5,
+       
         marginRight: 30,
         borderBottomColor: '#000',
         borderBottomWidth: 0.8,
@@ -261,60 +249,10 @@ const styles = StyleSheet.create({
         paddingLeft: 3
     },
 
-    lastNameTitle: {
-        marginTop: 30,
-        marginLeft: 29,
-        fontSize: 15,
-        color: 'grey',
-        fontWeight: 'normal'
+    
 
-    },
 
-    lastNameInputText:
-    {
-        //marginTop: 0,
-        marginRight: 30,
-        borderBottomColor: '#000',
-        borderBottomWidth: 0.8,
-        height: 40,
-        marginLeft: 30,
-        paddingLeft: 3
-    },
-
-    cityNameTitle: {
-        marginTop: 30,
-        marginLeft: 29,
-        fontSize: 15,
-        color: 'grey',
-        fontWeight: 'normal'
-    },
-
-    cityNameInputText: {
-        marginRight: 30,
-        borderBottomColor: '#000',
-        borderBottomWidth: 0.8,
-        height: 40,
-        marginLeft: 30,
-        paddingLeft: 3
-    },
-
-    phoneTitle: {
-        marginTop: 30,
-        marginLeft: 29,
-        fontSize: 15,
-        color: 'grey',
-        fontWeight: 'normal'
-    },
-
-    phoneNumInputText: {
-        marginRight: 30,
-        borderBottomColor: '#000',
-        borderBottomWidth: 0.8,
-        height: 40,
-        marginLeft: 30,
-        paddingLeft: 3
-    },
-
+   
     buttonContainer: {
 
         justifyContent: 'flex-end',
@@ -329,7 +267,7 @@ const styles = StyleSheet.create({
         paddingVertical: 14,
         justifyContent: 'flex-end',
         width: win.width - 40,
-        backgroundColor: '#ffbf00',
+        backgroundColor: AppTheme.yellowColor,
         borderRadius: 12,
         paddingVertical: 12,
         alignSelf: 'center',
@@ -338,8 +276,8 @@ const styles = StyleSheet.create({
 
     buttonText: {
         color: '#ffffff',
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 19,
+        fontFamily: AppTheme.boldfont,
         textAlign: 'center'
     },
     errorMsgStyle: {

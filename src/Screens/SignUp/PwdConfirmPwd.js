@@ -4,12 +4,15 @@ import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import AppTheme from '../../AppTheme';
 
 
 
 var app_Design = require('../Login/AppDesign.png');
 var welcomeBack = require('../Login/welcomeback.png');
 var backImg = require('../Login/back_white.png');
+var showIcon = require('../../Images/icon_password_hide.png');
+var hideIcon = require('../../Images/icon_password_show.png');
 
 const win = Dimensions.get('window');
 
@@ -17,6 +20,8 @@ const PwdConfirmPwd = () => {
 
     const navigation = useNavigation();
     const [values, setText] = useState({ password: '', confirmPwd: '' });
+    const [isSecureEntry, setIsSecureEntry] = useState(true);
+    const [isSecureEntry2, setIsSecureEntry2] = useState(true);
 
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
@@ -42,14 +47,14 @@ const PwdConfirmPwd = () => {
     const handleRegister = () => {
         //inputText.preventDefault();
         setSubmitted(true);
-        
+
         if (values.password.trim() && values.confirmPwd.trim()) {
             if (values.password == values.confirmPwd) {
                 setValid(true)
-                  navigation.navigate('VerifyEmail');
-               // callAPIforRegisterUser_withEmailpassword(values.confirmPwd)
+                navigation.navigate('VerifyEmail');
+                // callAPIforRegisterUser_withEmailpassword(values.confirmPwd)
 
-            }else{
+            } else {
                 Alert.alert('Passwords do not match')
             }
         }
@@ -83,7 +88,7 @@ const PwdConfirmPwd = () => {
         //         if (response != null) {
         //            // setNews(response.data)
         //            //navigation.navigate('ConfirmPwd');
-                   
+
         //         }
 
         //     })
@@ -106,73 +111,109 @@ const PwdConfirmPwd = () => {
                     <Image source={backImg}
                         resizeMode={'contain'}
                         style={{
-                            marginTop: 55,
-                            marginLeft: 35, height: 25, width: 25
+                            marginTop: 60,
+                            marginLeft: 35, height: 25, width: 24
                         }} />
 
                 </TouchableOpacity>
                 <Text style={styles.titleStyle} > Join Co-Tasker
                 </Text>
 
-                <View style={styles.containerEmail}>
-                    <ImageBackground source={welcomeBack}
-                        resizeMode={'contain'}
-                        style={{ height: win.height, width: win.width }}></ImageBackground>
+                <ImageBackground source={welcomeBack}
+                    resizeMode={'contain'}
+                    style={{ height: win.height, width: win.width }}>
 
-                </View>
 
-                <View style={{ flexDirection: 'column', flexGrow: 1, paddingStart: 25, justifyContent: 'flex-start' }}>
-                    <Text style={styles.passwordTitle} > Enter Password
-                    </Text>
+                    <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.06, marginTop: 190 }}>
+                        <Text style={styles.passwordTitle} > Password </Text>
 
-                    <TextInput
-                        style={styles.inputText}
-                        placeholder="Enter your password"
-                        autoCorrect={false}
-                        onChangeText={handleEnterPwdChange}
-                        value={values.password}
-                        secureTextEntry={true}
-                    />
-                    {submitted && valid && !values.password ? <Text style={styles.errorMsgStyle} > Please enter password
-                    </Text> : null}
+                        <View style={styles.passwordContainer}>
+                            <TextInput
+                                style={styles.inputText}
+                                secureTextEntry={isSecureEntry}
+                                placeholder="Enter your password"
+                                autoCorrect={false}
+                                onChangeText={handleEnterPwdChange}
+                                value={values.password}
+                            />
+                            <View style={{ justifyContent: 'center' }}>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        setIsSecureEntry(!isSecureEntry)
+                                    }}>
+                                    <Image source={isSecureEntry ? showIcon : hideIcon}
+                                        resizeMode={'contain'}
+                                        style={{
+                                            height: 25, width: 22,
+                                        }} />
 
-                    <Text style={styles.confirmPwdTitle} > Confirm Password
-                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <View style={{ marginTop: 20 }}>
 
-                    <TextInput
-                        style={styles.inputText}
-                        placeholder="Confirm your password"
-                        autoCorrect={false}
-                        onChangeText={handleConfirmPwdChange}
-                        value={values.confirmPwd}
-                        secureTextEntry={true}
-                    />
+                            <Text style={styles.passwordTitle} > Confirm Password
+                            </Text>
+                            <View style={styles.passwordContainer}>
+                                <TextInput
+                                    style={styles.inputText}
+                                    secureTextEntry={isSecureEntry2}
+                                    placeholder="Confirm your password"
+                                    autoCorrect={false}
+                                    onChangeText={handleConfirmPwdChange}
+                                    value={values.confirmPwd}
+                                />
+                                <View style={{ justifyContent: 'center' }}>
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            setIsSecureEntry2(!isSecureEntry2)
+                                        }}>
+                                        <Image source={isSecureEntry2 ? showIcon : hideIcon}
+                                            resizeMode={'contain'}
+                                            style={{
+                                                height: 25, width: 22,
+                                            }} />
 
-                    {submitted && valid && !values.confirmPwd ? <Text style={styles.errorMsgStyle} > Please enter confirm password
-                    </Text> : null}
+                                    </TouchableOpacity>
+                                </View>
 
-                    <View style={{ marginHorizontal: win.width * 0.01, flexDirection: 'column', marginTop: 55 }}>
 
-                        <Text style={{ fontSize: 11 ,color:'gray'}}>{'\u25CF'}  At least 8 characters</Text>
-                        <Text style={{ fontSize: 11 ,color:'gray'}}>{'\u25CF'}  A mixture of uppercase and lowercase letters</Text>
-                        <Text style={{ fontSize: 11 ,color:'gray'}}>{'\u25CF'}  A mixture of letters and numbers</Text>
+                            </View>
+
+                        </View>
+
+                        <View style={{ flexDirection: 'column', marginTop: 55 }}>
+
+                            <Text style={styles.validationPoints}>{'\u25CF'}  At least 8 characters</Text>
+                            <Text style={styles.validationPoints}>{'\u25CF'}  A mixture of uppercase and lowercase letters</Text>
+                            <Text style={styles.validationPoints}>{'\u25CF'}  A mixture of letters and numbers</Text>
+
+                        </View>
+                        <View style={{ justifyContent: 'flex-end', marginTop:160 }}>
+
+<TouchableOpacity style={styles.button}
+
+    onPress={() => {
+        handleRegister()
+    }}>
+
+    <Text style={styles.buttonText}>Register</Text></TouchableOpacity>
+</View>
 
                     </View>
 
-                </View>
 
 
-                <TouchableOpacity style={styles.button}
+                    
 
-                    onPress={() => {
-                        handleRegister()
-                    }}>
+                </ImageBackground>
 
-                    <Text style={styles.buttonText}>Register</Text>
-                </TouchableOpacity>
+
 
 
             </ImageBackground>
+
+
 
 
         </View>
@@ -189,8 +230,6 @@ const styles = StyleSheet.create({
 
     containerEmail: {
         flex: 1,
-        marginTop: 20
-
     },
 
     titleStyle: {
@@ -203,9 +242,9 @@ const styles = StyleSheet.create({
     },
 
     passwordTitle: {
-        fontSize: 13,
+        fontSize: 15,
         color: 'grey',
-        fontWeight: 'normal'
+        fontFamily: AppTheme.regularfont
     },
 
     confirmPwdTitle: {
@@ -215,24 +254,34 @@ const styles = StyleSheet.create({
         fontWeight: 'normal'
     },
 
-    inputText:
-    {
+    passwordContainer: {
 
-        marginRight: 30,
-        borderBottomColor: '#000',
-        borderBottomWidth: 0.8,
-        height: 35,
-        paddingLeft: 3
+        flexDirection: 'row',
+        borderBottomWidth: 0.6,
+        borderColor: 'grey',
+        justifyContent: 'center'
     },
 
+    inputText:
+    {
+        flex: 1,
+        fontFamily: AppTheme.regularfont,
+        fontSize: 15,
+        height: 40,
+        justifyContent: 'center'
+    },
+
+    validationPoints: { fontSize: 13, color: 'grey', fontFamily: AppTheme.regularfont },
+
     button: {
-        backgroundColor: '#ffbf00',
+        backgroundColor: AppTheme.yellowColor,
         borderRadius: 12,
         marginBottom: 40,
         paddingVertical: 14,
-        justifyContent: 'flex-end',
+        // justifyContent: 'flex-end',
         alignSelf: 'center',
         width: win.width - 40,
+
     },
 
     buttonText: {

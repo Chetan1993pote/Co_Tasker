@@ -2,6 +2,7 @@ import { View, Text, TouchableWithoutFeedback, StyleSheet, Alert, Image, FlatLis
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import React, { useState } from 'react';
+import AppTheme from '../../AppTheme';
 
 
 var backImg = require('../DetailsForm/icon_back_black.png');
@@ -80,19 +81,19 @@ const PickIntrest = () => {
                     renderItem={({ item, index }) => (
 
                         <TouchableWithoutFeedback onPress={() => this.actionOnRowPick(item, index)}>
-                            <View style={{ flexDirection: 'row'}}>
+                            <View style={{ flexDirection: 'row' }}>
                                 <Image source={(selectedIndex == index) ? selected_Img : unselected_Img}
                                     resizeMode='contain'
                                     style={{ height: 25, width: 25, margin: 20, marginTop: 0 }} />
-                                <View style={{flexDirection:'column'}}>
+                                <View style={{ flexDirection: 'column' }}>
                                     <Text style={{
-                                        fontSize: 16,
-                                        color: (selectedIndex == index) ? '#ffbf00' : 'black',
-                                        fontWeight: 'normal',
+                                        fontSize: 18,
+                                        color: (selectedIndex == index) ? AppTheme.yellowColor : AppTheme.blackColor,
+                                        fontFamily: AppTheme.semiboldfont,
                                     }}>{item.title}</Text>
 
                                     <Text style={styles.descAtribute}
-                                   
+
                                     >{item.desc}</Text>
                                 </View>
                             </View>
@@ -103,18 +104,15 @@ const PickIntrest = () => {
                 ></FlatList>
             </View>
 
+            <TouchableOpacity style={styles.button}
 
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button}
+                onPress={() => {
+                    // Alert.alert('text')
+                    navigation.navigate('Tabbar');
+                }}>
 
-                    onPress={() => {
-                        // Alert.alert('text')
-                        navigation.navigate('Tabber');
-                    }}>
-
-                    <Text style={styles.buttonText}>Submit</Text>
-                </TouchableOpacity>
-            </View>
+                <Text style={styles.buttonText}>Submit</Text>
+            </TouchableOpacity>
 
 
 
@@ -138,19 +136,17 @@ const styles = StyleSheet.create({
     },
 
     containerRadio: {
-
         flexDirection: 'row',
-     
         justifyContent: 'space-evenly',
         marginBottom: 10
     },
 
     descAtribute: {
-        marginVertical:15,
-        fontSize: 14,
+        marginVertical: 15,
+        fontSize: 15,
         color: 'grey',
-        fontWeight: 'normal',
-        paddingRight:90
+        fontFamily: AppTheme.regularfont,
+        paddingRight: 90
     },
 
     seperator: {
@@ -162,36 +158,27 @@ const styles = StyleSheet.create({
 
     titleStyle: {
         marginTop: 20,
-        fontSize: 25,
-        color: 'black',
-        fontWeight: 'bold',
+        fontSize: 27,
+        color: AppTheme.blackColor,
+        fontFamily: AppTheme.boldfont,
         marginVertical: 15,
-        marginLeft: 25
-    },
-
-    titleDesc: {
-        marginTop: 20,
-        fontSize: 14,
-        color: 'grey',
-        fontWeight: 'normal',
         marginLeft: 25
     },
 
     titleStyle2: {
         marginLeft: 25,
         alignItems: 'center',
-        fontSize: 25,
-        color: 'black',
-        fontWeight: 'bold'
+        fontSize: 27,
+        color: AppTheme.blackColor,
+        fontFamily: AppTheme.boldfont
     },
 
-    buttonContainer: {
-
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        marginBottom: 40,
-        flexGrow: 1
-
+    titleDesc: {
+        marginTop: 20,
+        fontSize: 16,
+        color: 'grey',
+        fontFamily: AppTheme.regularfont,
+        marginLeft: 25
     },
 
     button: {
@@ -199,17 +186,18 @@ const styles = StyleSheet.create({
         paddingVertical: 14,
         justifyContent: 'flex-end',
         width: win.width - 40,
-        backgroundColor: '#ffbf00',
+        backgroundColor: AppTheme.yellowColor,
         borderRadius: 12,
         paddingVertical: 12,
         alignSelf: 'center',
+        marginBottom: 40,
 
     },
 
     buttonText: {
         color: '#ffffff',
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 19,
+        fontFamily: AppTheme.boldfont,
         textAlign: 'center'
     },
 });

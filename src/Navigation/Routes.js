@@ -29,6 +29,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerContents from '../Screens/Drawer_Contents/DrawerContents'
 import AboutCotasker from '../Screens/AboutCotasker/AboutCotasker';
 import WebViewScn from '../Screens/AboutCotasker/WebViewScn';
+import ForgotPwdScn from '../Screens/Forgot_Password/ForgotPwdScn';
+import { LoginOptions, ResetPwdVerifyScn } from '../Screens';
 
 const win = Dimensions.get('window');
 
@@ -68,6 +70,10 @@ const Routes = () => {
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
         <Stack.Screen name="PasswordLogin" component={PasswordLogin} options={{ headerShown: false }} />
+        <Stack.Screen name="ForgotPwdScn" component={ForgotPwdScn} options={{ headerShown: false }} />
+        <Stack.Screen name="ResetPwdVerifyScn" component={ResetPwdVerifyScn} options={{ headerShown: false }} />
+        <Stack.Screen name="LoginOptions" component={LoginOptions} options={{ headerShown: false }} />
+
         <Stack.Screen name="VerifyEmail" component={VerifyEmail} options={{ headerShown: false }} />
         <Stack.Screen name="DetailsForm" component={DetailsForm} options={{ headerShown: false }} />
         <Stack.Screen name="CreatePwd" component={CreatePwd} options={{ headerShown: false }} />

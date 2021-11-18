@@ -85,7 +85,7 @@ const Login = () => {
 
                 </View>
 
-                <View style={{ flexDirection: 'column', paddingStart: 25, flexGrow: 1, marginTop: 135 }}>
+                <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.06, marginTop: 120 }}>
                     <Text style={styles.emailTitle} > Email Address
                     </Text>
 
@@ -101,18 +101,18 @@ const Login = () => {
 
                     {/* {submitted && valid && !values.email ? <Text style={styles.errorMsgStyle} > Please enter email address
                     </Text> : null}  */}
+
+                    <TouchableOpacity style={styles.button}
+
+                        onPress={() => {
+                            handleSubmit()
+                        }}>
+
+                        <Text style={styles.buttonText}>Continue</Text>
+                    </TouchableOpacity>
+
+
                 </View>
-
-                <TouchableOpacity style={styles.button}
-
-                    onPress={() => {
-                        handleSubmit()
-                    }}>
-
-                    <Text style={styles.buttonText}>Continue</Text>
-                </TouchableOpacity>
-
-
 
                 <View style={styles.signUpTextCont}>
                     <Text style={styles.signUpTextStyle}>Not a member of Co-Tasker yet?</Text>
@@ -141,10 +141,7 @@ const styles = StyleSheet.create({
     },
 
     containerEmail: {
-
         flex: 1,
-        marginTop: 20
-
     },
 
     titleStyle: {
@@ -168,21 +165,17 @@ const styles = StyleSheet.create({
     inputText:
     {
         fontSize: 16,
-        marginRight: 30,
         borderBottomColor: '#000',
         borderBottomWidth: 0.8,
         height: 40,
-        paddingLeft: 3,
         fontFamily: AppTheme.regularfont
 
     },
 
     button: {
-        marginStart: 20,
-        marginEnd: 20,
         backgroundColor: '#ffbf00',
         borderRadius: 12,
-        marginVertical: 100,
+        marginVertical: win.height * 0.15,
         height: 50,
         justifyContent: 'center'
 

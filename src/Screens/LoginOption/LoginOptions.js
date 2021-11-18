@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         marginVertical: 20,
         paddingVertical: 10,
-        backgroundColor: '#ffbf00',
+        backgroundColor: AppTheme.yellowColor,
         justifyContent: 'flex-end',
     },
 

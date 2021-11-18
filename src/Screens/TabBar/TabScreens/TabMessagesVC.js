@@ -104,7 +104,7 @@ const TabMessagesVC = () => {
         <View style={styles.container}>
             <View style={{ marginTop: 22 }}>
                 <FlatList
-
+                    showsVerticalScrollIndicator={false}
                     data={arr_Data}
                     extraData={this.state}
                     keyExtractor={item => item.id}
