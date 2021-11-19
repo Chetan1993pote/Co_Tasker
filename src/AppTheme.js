@@ -5,6 +5,8 @@ const AppTheme = {
     appThemeColor: '#0E203A',
     yellowColor: '#F6BF48',
     blackColor: '#000000',
+    red_forValidationMsg: '#AF0000',
+    lightYellow:'#FDF2DA',
 
     lightbackgroundColor: "#F5F5F5",
     darkbackgroundColor: "#E9E9E9",

@@ -6,9 +6,8 @@ import AppTheme from '../../AppTheme';
 
 
 var backImg = require('../DetailsForm/icon_back_black.png');
-var unselected_Img = require('../../Screens/ChooseIntrest/unselected.png');
-var selected_Img = require('../../Screens/ChooseIntrest/selected.png');
-
+var unselected_Img = require('../../Images/unselected.png');
+var selected_Img = require('../../Images/selected.png');
 
 const win = Dimensions.get('window');
 

@@ -3,6 +3,10 @@ import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import AppTheme from '../../AppTheme';
+import Video from 'react-native-video';
+
+import videoUrl from '../../Video/Appvideo.mp4';
+
 
 var backImg = require('../Login/back_white.png');
 
@@ -16,6 +20,16 @@ const LoginOptions = () => {
 
     return (
         <View style={styles.container}>
+
+            <Video source={videoUrl}   // Can be a URL or a local file.
+                ref={(ref) => {
+                    this.player = ref
+                }}
+                resizeMode='cover'
+                controls={false}                                      // Store reference
+                onBuffer={this.onBuffer}                // Callback when remote video is buffering
+                onError={this.videoError}               // Callback when video cannot be loaded
+                style={styles.backgroundVideo} />
 
             <TouchableOpacity
                 onPress={() => {
@@ -72,10 +86,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#0f203a'
     },
 
+    backgroundVideo: {
+        flexGrow:1,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+    },
+
     buttonContainer: {
 
         justifyContent: 'flex-end',
-        alignItems:'center',
+        alignItems: 'center',
         marginBottom: 30,
         flexGrow: 1
 
@@ -86,7 +109,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 38,
         color: 'white',
-        fontFamily :AppTheme.extraboldfont
+        fontFamily: AppTheme.extraboldfont
     },
     loginBtn: {
 
@@ -112,7 +135,7 @@ const styles = StyleSheet.create({
     btnText: {
         color: '#ffffff',
         fontSize: 19,
-        fontFamily:AppTheme.boldfont,
+        fontFamily: AppTheme.boldfont,
         textAlign: 'center'
     },
 

@@ -30,7 +30,8 @@ import DrawerContents from '../Screens/Drawer_Contents/DrawerContents'
 import AboutCotasker from '../Screens/AboutCotasker/AboutCotasker';
 import WebViewScn from '../Screens/AboutCotasker/WebViewScn';
 import ForgotPwdScn from '../Screens/Forgot_Password/ForgotPwdScn';
-import { LoginOptions, ResetPwdVerifyScn } from '../Screens';
+import { ChangeLanguageScn, LoginOptions, ResetPwdVerifyScn, SettingsScn } from '../Screens';
+import ChangePwdScn from '../Screens/Change_Password/ChangePwdScn';
 
 const win = Dimensions.get('window');
 
@@ -73,6 +74,8 @@ const Routes = () => {
         <Stack.Screen name="ForgotPwdScn" component={ForgotPwdScn} options={{ headerShown: false }} />
         <Stack.Screen name="ResetPwdVerifyScn" component={ResetPwdVerifyScn} options={{ headerShown: false }} />
         <Stack.Screen name="LoginOptions" component={LoginOptions} options={{ headerShown: false }} />
+        <Stack.Screen name="ChangePwdScn" component={ChangePwdScn} options={{ headerShown: false }} />
+        <Stack.Screen name="ChangeLanguageScn" component={ChangeLanguageScn} options={{ headerShown: true }} />
 
         <Stack.Screen name="VerifyEmail" component={VerifyEmail} options={{ headerShown: false }} />
         <Stack.Screen name="DetailsForm" component={DetailsForm} options={{ headerShown: false }} />
@@ -93,6 +96,7 @@ const Routes = () => {
         <Stack.Screen name="PostATask" component={PostATask} options={{}} />
         <Stack.Screen name="AboutCotasker" component={AboutCotasker} options={{}} />
         <Stack.Screen name="WebViewScn" component={WebViewScn} options={{}} />
+        <Stack.Screen name="SettingsScn" component={SettingsScn} options={{}} />
 
 
       </Stack.Navigator>

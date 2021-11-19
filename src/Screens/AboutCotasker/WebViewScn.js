@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Dimensions, View, ActivityIndicator, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import AppTheme from '../../AppTheme';
 import { WebView } from 'react-native-webview';

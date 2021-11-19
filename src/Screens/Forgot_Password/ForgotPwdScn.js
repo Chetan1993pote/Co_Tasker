@@ -68,7 +68,7 @@ const ForgotPwdScn = () => {
             <Text style={styles.descStyle}>Don't worry! Simply enter your registered email address below to receive instructions about how to reset your password</Text>
 
             <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.08, marginTop: 20 }}>
-                <Text style={styles.emailTitle} > Email Address
+                <Text style={styles.emailTitle} >Email Address
                 </Text>
 
                 <TextInput
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
 
     button: {
 
-        backgroundColor: '#ffbf00',
+        backgroundColor: AppTheme.yellowColor,
         borderRadius: 12,
         paddingVertical: 10,
         marginBottom: 40,

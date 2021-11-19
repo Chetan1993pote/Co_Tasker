@@ -19,6 +19,12 @@ export {default as HelpCenter} from './Notifications/HelpCenter';
 export {default as PostATask} from './Post_A_Task/PostATask';
 export {default as AboutCotasker} from './AboutCotasker/AboutCotasker';
 export {default as WebViewScn} from './AboutCotasker/WebViewScn';
+export {default as SettingsScn} from './Settings/SettingsScn';
+export {default as ChangePwdScn} from './Change_Password/ChangePwdScn';
+export {default as ChangeLanguageScn} from './ChangeLanguage/ChangeLanguageScn';
+
+
+
 
 
 

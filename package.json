@@ -19,6 +19,7 @@
     "@react-navigation/native": "^6.0.5",
     "@react-navigation/native-stack": "^6.2.3",
     "axios": "^0.23.0",
+    "formik": "^2.2.9",
     "radio-buttons-react-native": "^1.0.4",
     "react": "17.0.2",
     "react-native": "0.66.0",
@@ -30,8 +31,10 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.8.0",
     "react-native-slider-text": "^0.0.10",
+    "react-native-video": "^5.2.0",
     "react-native-webview": "^11.14.3",
-    "redux-form": "^8.3.7"
+    "redux-form": "^8.3.7",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "7.15.8",

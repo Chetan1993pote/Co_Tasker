@@ -9,8 +9,8 @@ import AppTheme from '../../AppTheme';
 
 var downArw = require('../TabBar/TabIcons/down_arrow.png');
 var locationPin = require('../TabBar/TabIcons/pinLocation.png');
-var unselected_Img = require('../ChooseIntrest/unselected.png');
-var selected_Img = require('../ChooseIntrest/selected.png');
+var unselected_Img = require('../../Images/unselected.png');
+var selected_Img = require('../../Images/selected.png');
 var backImg = require('../TabBar/TabIcons/back_white.png');
 
 var switch_On = require('../TabBar/TabIcons/switch_On.png');

@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
 import AppTheme from '../../AppTheme';
-
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
 var app_Design = require('./AppDesign.png');
 var welcomeBack = require('./welcomeback.png');
@@ -12,118 +13,107 @@ var backImg = require('../Login/back_white.png');
 
 const win = Dimensions.get('window');
 
+let emailValidationSchema = yup.object().shape({
+    email: yup.string().email('Please enter valid email address').required('Please enter email'),
+});
+
 const Login = () => {
 
     const navigation = useNavigation();
-    const [values, setText] = useState({ email: '' });
+   
 
-    const [submitted, setSubmitted] = useState(false);
-    const [valid, setValid] = useState(false);
-
-    const handleEmailChange = (inputText) => {
-
-        console.log(inputText)
-        setText({
-            ...values,
-            email: inputText,
-        });
-    }
-
-    const handleSubmit = (inputText) => {
-        //inputText.preventDefault();
-        setSubmitted(true);
-        if (values.email) {
-            setValid(true)
-            validate(values.email)
-        } else {
-            Alert.alert('Please enter email')
-        }
-
-    }
-
-
-    const validate = (emailValue) => {
-        console.log(emailValue);
-        let reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (reg.test(emailValue) === false) {
-            Alert.alert("Please enter Valid Email address");
-            return false;
-        }
-        else {
-            // Alert.alert("Email is Correct");
+    const handleSubmitBtnTap = (enteredEmail) =>  {
+        
+        if (enteredEmail != ""){
+            //console.log("email Exists",enteredEmail)
             navigation.navigate('PasswordLogin')
         }
+
     }
 
     return (
         <View style={styles.container}>
 
-            <ImageBackground
-                source={app_Design}
-                style={{ height: '100%', width: '100%' }}>
+            <Formik
+                initialValues={{ email: '' }}
+                validateOnMount={true}
+                onSubmit={values => handleSubmitBtnTap(values.email)}
+                validationSchema={emailValidationSchema}
+            >
+                {({ handleChange, handleBlur, handleSubmit, values, touched, errors, isValid }) => (
 
-                <TouchableOpacity
-                    onPress={() => {
-                        navigation.goBack()
-                    }}>
-                    <Image source={backImg}
-                        resizeMode={'contain'}
-                        style={{
-                            marginTop: 60,
-                            marginLeft: 30, height: 25, width: 25
-                        }} />
+                    <ImageBackground
+                        source={app_Design}
+                        style={{ height: '100%', width: '100%' }}>
 
-                </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => {
+                                navigation.goBack()
+                            }}>
+                            <Image source={backImg}
+                                resizeMode={'contain'}
+                                style={{
+                                    marginTop: 60,
+                                    marginLeft: 30, height: 25, width: 25
+                                }} />
 
-                <Text style={styles.titleStyle} > Welcome Back
-                </Text>
-                <View style={styles.containerEmail}>
-                    <ImageBackground source={welcomeBack}
-                        resizeMode={'contain'}
-                        style={{ height: win.height, width: win.width }}></ImageBackground>
+                        </TouchableOpacity>
 
-
-                </View>
-
-                <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.06, marginTop: 120 }}>
-                    <Text style={styles.emailTitle} > Email Address
-                    </Text>
-
-                    <TextInput
-                        style={styles.inputText}
-                        placeholder="Enter your email address"
-                        autoCapitalize='none'
-                        keyboardType='email-address'
-                        autoCorrect={false}
-                        autoCompleteType='email'
-                        onChangeText={handleEmailChange}
-                        value={values.email} />
-
-                    {/* {submitted && valid && !values.email ? <Text style={styles.errorMsgStyle} > Please enter email address
-                    </Text> : null}  */}
-
-                    <TouchableOpacity style={styles.button}
-
-                        onPress={() => {
-                            handleSubmit()
-                        }}>
-
-                        <Text style={styles.buttonText}>Continue</Text>
-                    </TouchableOpacity>
+                        <Text style={styles.titleStyle} > Welcome Back
+                        </Text>
+                        <View style={styles.containerEmail}>
+                            <ImageBackground source={welcomeBack}
+                                resizeMode={'contain'}
+                                style={{ height: win.height, width: win.width }}></ImageBackground>
 
 
-                </View>
+                        </View>
 
-                <View style={styles.signUpTextCont}>
-                    <Text style={styles.signUpTextStyle}>Not a member of Co-Tasker yet?</Text>
-                    <Pressable onPress={() => navigation.navigate('SignUp')}>
-                        <Text style={styles.registerHere}>Register Here</Text>
+                        <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.06, marginTop: 120 }}>
+                            <Text style={styles.emailTitle} > Email Address
+                            </Text>
+                            <TextInput
+                                style={styles.inputText}
+                                placeholder="Enter your email address"
+                                autoCapitalize='none'
+                                keyboardType='email-address'
+                                autoCorrect={false}
+                                autoCompleteType='email'
+                                onChangeText={handleChange('email')}
+                                onBlur={handleBlur('email')}
+                                value={values.email}
 
-                    </Pressable>
-                </View>
+                            />
+                            {(errors.email && touched.email) &&
+                                <Text style={styles.errors}>{errors.email}</Text>
+                            }
 
-            </ImageBackground>
+                            <TouchableOpacity style={styles.button}
 
+                                onPress={
+                                    handleSubmit
+                                }>
+
+                                <Text style={styles.buttonText}>Continue</Text>
+                            </TouchableOpacity>
+
+
+                        </View>
+
+
+                        <View style={styles.signUpTextCont}>
+                            <Text style={styles.signUpTextStyle}>Not a member of Co-Tasker yet?</Text>
+                            <Pressable onPress={() => navigation.navigate('SignUp')}>
+                                <Text style={styles.registerHere}>Register Here</Text>
+
+                            </Pressable>
+                        </View>
+
+
+
+                    </ImageBackground>
+                )}
+            </Formik>
 
         </View>
 
@@ -161,6 +151,13 @@ const styles = StyleSheet.create({
         fontFamily: AppTheme.regularfont
 
     },
+
+    errors:{
+        color:AppTheme.red_forValidationMsg,
+        fontFamily:AppTheme.regularfont,
+        fontSize:14,
+        textAlign:'right',
+        marginTop:2},
 
     inputText:
     {
@@ -207,16 +204,6 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         fontWeight: 'normal',
         color: 'black',
-    },
-
-    errorMsgStyle: {
-
-        fontSize: 12,
-        color: 'red',
-        textAlign: 'right',
-        marginEnd: 30,
-        paddingTop: 5
-
     },
 
     registerHere: {
