@@ -17,7 +17,9 @@ const TaskAd = () => {
     const navigation = useNavigation();
 
     React.useLayoutEffect(() => {
+        
         navigation.setOptions({
+            
             title: 'Task Ad',
             headerTintColor: 'white',
             headerStyle: {

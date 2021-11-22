@@ -15,7 +15,9 @@ const SettingsScn = () => {
 
     didSelectSettingItem = (item, index) => {
         console.log('Selected Item :', item, index);
-        if (index == 1) {
+        if (index == 0) {
+            navigation.navigate('AccountInfo')
+        }else if (index == 1) {
             navigation.navigate('ChangePwdScn')
         }else if (index == 2) {
             navigation.navigate('ChangeLanguageScn')

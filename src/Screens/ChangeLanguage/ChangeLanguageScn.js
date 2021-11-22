@@ -9,10 +9,7 @@ var backImg = require('../TabBar/TabIcons/back_white.png');
 var ukImg = require('../../Images/unitedkingdom.png');
 var selectedImg = require('../../Images/selected.png');
 var unselected = require('../../Images/unselected.png');
-
-
 var germanyImg = require('../../Images/germany.png');
-
 
 const ChangeLanguageScn = () => {
     const navigation = useNavigation();

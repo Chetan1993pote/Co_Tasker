@@ -7,6 +7,7 @@ const AppTheme = {
     blackColor: '#000000',
     red_forValidationMsg: '#AF0000',
     lightYellow:'#FDF2DA',
+    greenColor:'#21C17A',
 
     lightbackgroundColor: "#F5F5F5",
     darkbackgroundColor: "#E9E9E9",
@@ -22,7 +23,6 @@ const AppTheme = {
     regularfont: "Lato-Regular",
     boldfont: "Lato-Bold",
     semiboldfont: "Lato-Semibold",
-
     italicfont: "Lato-Italic",
 
     //Static URL's

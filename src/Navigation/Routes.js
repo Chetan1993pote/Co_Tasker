@@ -30,8 +30,9 @@ import DrawerContents from '../Screens/Drawer_Contents/DrawerContents'
 import AboutCotasker from '../Screens/AboutCotasker/AboutCotasker';
 import WebViewScn from '../Screens/AboutCotasker/WebViewScn';
 import ForgotPwdScn from '../Screens/Forgot_Password/ForgotPwdScn';
-import { ChangeLanguageScn, LoginOptions, ResetPwdVerifyScn, SettingsScn } from '../Screens';
+import { ChangeLanguageScn, LoginOptions, ResetPwdVerifyScn, SelectCountry, SettingsScn } from '../Screens';
 import ChangePwdScn from '../Screens/Change_Password/ChangePwdScn';
+import AccountInfo from '../Screens/AccountInfo/AccountInfo';
 
 const win = Dimensions.get('window');
 
@@ -84,14 +85,18 @@ const Routes = () => {
         <Stack.Screen name="PickIntrest" component={PickIntrest} options={{ headerShown: false }} />
         <Stack.Screen name="Tabbar" component={MenuDrawer} options={{ headerShown: false }} />
         <Stack.Screen name="ConfirmPwd" component={PwdConfirmPwd} options={{ headerShown: false }} />
-
+        <Stack.Screen name="TaskAd" component={TaskAd} options={{ presentation: 'modal' }} />
+        
+        <Stack.Group screenOptions={{ presentation: 'fullScreenModal'}}>
         <Stack.Screen name="filterTasks" component={filterTasks} options={{}} />
-
         <Stack.Screen name="selectCategory" component={selectCategory} options={{}} />
-
         <Stack.Screen name="selectLocation" component={selectLocation} options={{}} />
+        </Stack.Group>
 
-        <Stack.Screen name="TaskAd" component={TaskAd} options={{}} />
+        <Stack.Screen name="SelectCountry" component={SelectCountry} options={{}} />
+
+        <Stack.Screen name="AccountInfo" component={AccountInfo} options={{}} />
+
         <Stack.Screen name="HelpCenter" component={HelpCenter} options={{}} />
         <Stack.Screen name="PostATask" component={PostATask} options={{}} />
         <Stack.Screen name="AboutCotasker" component={AboutCotasker} options={{}} />

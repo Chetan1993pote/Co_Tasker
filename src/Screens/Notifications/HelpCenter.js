@@ -45,7 +45,7 @@ const HelpCenter = () => {
 
         console.log(text)
         setTextView({
-            ...values,
+            ...value,
             textBox: text,
         });
     }

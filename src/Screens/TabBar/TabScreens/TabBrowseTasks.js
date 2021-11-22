@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList,Pressable } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, Pressable } from 'react-native';
 import React from 'react';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -24,12 +24,12 @@ const TabBrowseTasks = () => {
     const navigation = useNavigation();
 
     navigation.setOptions({
-        headerLeft: () => <Pressable onPress={() => 
-        navigation.toggleDrawer()}>
+        headerLeft: () => <Pressable onPress={() =>
+            navigation.toggleDrawer()}>
             <Image
                 resizeMode='contain'
                 source={menu}
-                style={{ height: 18, width: 18 ,margin:15}} />
+                style={{ height: 18, width: 18, margin: 15 }} />
 
         </Pressable>
     });
@@ -116,7 +116,7 @@ const TabBrowseTasks = () => {
 
     }
 
-    actionOnTab = (item, index) => {
+    actionOnBrowseTab = (item, index) => {
         console.log('Selected Item :', item.id);
         if (item.id == 1) {
             navigation.navigate('filterTasks');
@@ -135,9 +135,7 @@ const TabBrowseTasks = () => {
                     keyExtractor={item => item.id}
 
                     renderItem={({ item, index }) => (
-
-                        <TouchableOpacity onPress={() => this.actionOnTab(item, index)
-
+                        <TouchableOpacity onPress={() => this.actionOnBrowseTab(item, index)
                         } key={item}>
 
                             {item.id == 1 ? <View style={{ borderRadius: 10, backgroundColor: '#ffbf00', padding: 8 }}>
@@ -145,20 +143,14 @@ const TabBrowseTasks = () => {
                                 <Image
                                     resizeMode='contain'
                                     source={filterIcon}
-                                    style={{ height: 20, width: 20 }}
+                                    style={{ height: 17, width: 17 }}
                                 />
 
-                            </View> : <View style={{ borderRadius: 10, backgroundColor: AppTheme.appThemeColor, justifyContent: 'center', marginLeft: 8, padding: 9 }}>
-
-                                <Text style={{ color: 'white', paddingHorizontal: 10 }}>{item.title}</Text>
-
+                            </View> : <View style={{ borderRadius: 10, backgroundColor: AppTheme.appThemeColor, justifyContent: 'center', marginLeft: 6, padding: 8 }}>
+                                <Text style={{ color: 'white', paddingHorizontal: 5 }}>{item.title}</Text>
 
                             </View>
                             }
-
-
-
-
                         </TouchableOpacity>
                     )}
 
@@ -183,8 +175,6 @@ const TabBrowseTasks = () => {
 
                         <TouchableOpacity onPress={() => this.actionOnRowBrowse(item, index)}>
                             <View style={styles.cellContainer}>
-
-
                                 <Image source={item.userIcon}
                                     style={styles.image} />
 
@@ -198,7 +188,6 @@ const TabBrowseTasks = () => {
                                         <Text style={{
                                             alignContent: 'flex-end',
                                             textAlign: 'right',
-
                                             fontSize: 14,
                                             color: AppTheme.appThemeColor,
                                             fontFamily: AppTheme.boldfont,
