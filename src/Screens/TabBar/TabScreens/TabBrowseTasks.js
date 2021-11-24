@@ -23,16 +23,18 @@ const TabBrowseTasks = () => {
 
     const navigation = useNavigation();
 
-    navigation.setOptions({
-        headerLeft: () => <Pressable onPress={() =>
-            navigation.toggleDrawer()}>
-            <Image
-                resizeMode='contain'
-                source={menu}
-                style={{ height: 18, width: 18, margin: 15 }} />
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => <Pressable onPress={() =>
+                navigation.toggleDrawer()}>
+                <Image
+                    resizeMode='contain'
+                    source={menu}
+                    style={{ height: 18, width: 18, margin: 15 }} />
 
-        </Pressable>
-    });
+            </Pressable>
+        });
+    }, [navigation]);
 
 
     const arrHeader_Data = [

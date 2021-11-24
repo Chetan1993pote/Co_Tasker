@@ -1,4 +1,4 @@
-import { View,Text, Dimensions,StyleSheet,Image, FlatList, TouchableOpacity,} from 'react-native';
+import { View, Text, Dimensions, StyleSheet, Image, FlatList, TouchableOpacity, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import AppTheme from '../../../AppTheme';
@@ -16,16 +16,17 @@ const win = Dimensions.get('window');
 const TabNotifications = () => {
 
     const navigation = useNavigation();
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                <Image
+                    resizeMode='contain'
+                    source={menu}
+                    style={{ height: 18, width: 18, margin: 15 }} />
 
-    navigation.setOptions({
-        headerLeft: () => <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-            <Image
-                resizeMode='contain'
-                source={menu}
-                style={{ height: 18, width: 18 ,margin:15}} />
-
-        </TouchableOpacity>
-    });
+            </TouchableOpacity>
+        });
+    }, [navigation]);
 
 
     const [selectedIndex, setSelectedIndex] = useState(0)
@@ -35,30 +36,30 @@ const TabNotifications = () => {
             id: '1',
             userName: 'Deepak Jain',
             desc: 'Drop the AirMaps and AirGoogleMaps directories from... I want to post tasks and find help',
-            userIcon:userImg,
-            time:'1 w'
+            userIcon: userImg,
+            time: '1 w'
         },
         {
             id: '2',
             userName: 'Deepak Jain',
             desc: 'I want to help people,earn money and do it flexible tasks',
-            userIcon:user2,
-            time:'1 mon'
+            userIcon: user2,
+            time: '1 mon'
         },
         {
             id: '3',
             userName: 'Anand Saini',
             desc: 'I want to do everything:find help and earn money on Co-tasker',
-            userIcon:user3,
-            time:'3 mon'
+            userIcon: user3,
+            time: '3 mon'
         },
 
         {
             id: '4',
             userName: 'Sachin kher',
             desc: 'I want to do everything:find help and earn money on Co-tasker',
-            userIcon:user4,
-            time:'2 w'
+            userIcon: user4,
+            time: '2 w'
         },
     ];
 
@@ -73,7 +74,7 @@ const TabNotifications = () => {
 
     return (
         <View style={styles.container}>
-                <View style={styles.tableList}>
+            <View style={styles.tableList}>
                 <FlatList
 
                     data={arr_Data}
@@ -81,32 +82,32 @@ const TabNotifications = () => {
                     keyExtractor={item => item.id}
                     ItemSeparatorComponent={(props) => {
                         console.log('props', props); // here you can access the trailingItem with props.trailingItem
-                        return (<View style={{ height: 0.8, backgroundColor: '#bbbbbb', width: win.width , alignSelf: 'center', marginBottom: 10 }} />);
+                        return (<View style={{ height: 0.8, backgroundColor: '#bbbbbb', width: win.width, alignSelf: 'center', marginBottom: 10 }} />);
                     }}
 
                     renderItem={({ item, index }) => (
 
                         <TouchableOpacity onPress={() => this.actionOnRowNotification(item, index)}>
-                               <><Text style={{
-                                        fontSize: 13,
-                                        marginEnd:15,
-                                        alignSelf:'flex-end',
-                                        color:'gray',
-                                        fontFamily: AppTheme.regularfont
-                                    }}>{item.time}</Text></> 
+                            <><Text style={{
+                                fontSize: 13,
+                                marginEnd: 15,
+                                alignSelf: 'flex-end',
+                                color: 'gray',
+                                fontFamily: AppTheme.regularfont
+                            }}>{item.time}</Text></>
                             <View style={styles.cellContainer}>
                                 <Image source={item.userIcon}
-                                    
+
                                     style={styles.image} />
-                                <View style={{flexDirection:'column',marginHorizontal:win.width * 0.02}}>
+                                <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.02 }}>
                                     <Text style={{
                                         fontSize: 16,
-                                        color:'black',
+                                        color: 'black',
                                         fontFamily: AppTheme.semiboldfont,
                                     }}>{item.userName}</Text>
 
                                     <Text style={styles.descAtribute}
-                                   
+
                                     >{item.desc}</Text>
                                 </View>
                             </View>
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         backgroundColor: 'white',
-        justifyContent:'center'
+        justifyContent: 'center'
     },
 
     tableList: {
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginVertical: 5,
         //margin: win.width * 0.03,
-       flexDirection:'row'
+        flexDirection: 'row'
 
     },
 
@@ -156,14 +157,14 @@ const styles = StyleSheet.create({
     },
 
     descAtribute: {
-        marginVertical:win.height * 0.003,
+        marginVertical: win.height * 0.003,
         fontSize: 14,
         color: 'grey',
         fontFamily: AppTheme.regularfont,
-        marginRight:70
-        
+        marginRight: 70
+
     },
 
-  
+
 
 });

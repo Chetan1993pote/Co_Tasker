@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity,Pressable, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, Pressable, Alert } from 'react-native';
 import React, { useState } from 'react';
 import AppTheme from '../../../AppTheme';
 import As_A_Client from './My_Tasks_Contents/As_A_Client';
@@ -14,16 +14,18 @@ const TabMyTasksVC = () => {
 
     const navigation = useNavigation();
 
-    navigation.setOptions({
-        headerLeft: () => <Pressable onPress={() => 
-        navigation.toggleDrawer()}>
-            <Image
-                resizeMode='contain'
-                source={menu}
-                style={{ height: 18, width: 18 ,margin:15}} />
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => <Pressable onPress={() =>
+                navigation.toggleDrawer()}>
+                <Image
+                    resizeMode='contain'
+                    source={menu}
+                    style={{ height: 18, width: 18, margin: 15 }} />
 
-        </Pressable>
-    });
+            </Pressable>
+        });
+    }, [navigation]);
 
     const [selected, setSelected] = useState('0')
 

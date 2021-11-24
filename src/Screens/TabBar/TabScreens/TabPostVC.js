@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
-import { View, Text, Dimensions, FlatList, Image, StyleSheet,TouchableOpacity,Alert } from 'react-native';
+import { View, Text, Dimensions, FlatList, Image, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import AppTheme from '../../../AppTheme';
-
 
 var menu = require('../TabIcons/menu.png')
 
@@ -17,17 +16,19 @@ const TabPostVC = () => {
     const navigation = useNavigation();
     const [arr_News, setNews] = useState([]);
 
-    navigation.setOptions({
-        headerLeft: () => <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-            <Image
-                resizeMode='contain'
-                source={menu}
-                style={{ height: 18, width: 18 ,margin:15}} />
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                <Image
+                    resizeMode='contain'
+                    source={menu}
+                    style={{ height: 18, width: 18, margin: 15 }} />
 
-        </TouchableOpacity>
-    });
+            </TouchableOpacity>
+        });
+    }, [navigation]);
 
-  
+
     const data = [
 
         { title: 'Translation', imgIcon: 'https://co-tasker.s3.eu-central-1.amazonaws.com/category_image/Translation' },
@@ -84,7 +85,7 @@ const TabPostVC = () => {
     };
 
     actionOnRowTap = (item, index) => {
-      
+
         navigation.navigate('PostATask')
 
     }
@@ -99,10 +100,10 @@ const TabPostVC = () => {
 
                 ListHeaderComponent={ListHeader}
 
-                renderItem={({ item ,index}) => (
+                renderItem={({ item, index }) => (
 
-                    <TouchableOpacity style={{ flexDirection: 'row', flexWrap: 'wrap' }} 
-                    onPress={() => this.actionOnRowTap(item, index)}>
+                    <TouchableOpacity style={{ flexDirection: 'row', flexWrap: 'wrap' }}
+                        onPress={() => this.actionOnRowTap(item, index)}>
                         <View style={styles.viewContainer}>
                             <View style={{ flexDirection: 'column', flexWrap: 'wrap', alignItems: 'center' }}>
                                 <View style={{ backgroundColor: AppTheme.appThemeColor, height: 88, width: 88, borderRadius: 44, alignItems: 'center', justifyContent: 'center' }}>

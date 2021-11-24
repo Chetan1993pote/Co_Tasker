@@ -18,22 +18,24 @@ const TabMessagesVC = () => {
 
     const navigation = useNavigation();
 
-    navigation.setOptions({
-        headerLeft: () => <Pressable onPress={() =>
-            navigation.toggleDrawer()}>
-            <Image
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => <Pressable onPress={() =>
+                navigation.toggleDrawer()}>
+                <Image
+                    resizeMode='contain'
+                    source={menu}
+                    style={{ height: 18, width: 18, margin: 15 }} />
+
+            </Pressable>,
+            headerRight: () => <Image
                 resizeMode='contain'
-                source={menu}
-                style={{ height: 18, width: 18, margin: 15 }} />
+                source={searchIcon}
+                style={{ height: 18, width: 18, marginRight: 15 }}
+            />
 
-        </Pressable>,
-        headerRight: () => <Image
-            resizeMode='contain'
-            source={searchIcon}
-            style={{ height: 18, width: 18, marginRight: 15 }}
-        />
-
-    });
+        });
+    }, [navigation]);
 
     const arr_Data = [
         {
@@ -115,25 +117,25 @@ const TabMessagesVC = () => {
                             <View style={styles.cellContainer}>
                                 <Image source={item.imgIcon}
                                     style={styles.image} />
-                                <View style={{ marginVertical: win.height * 0.02, justifyContent: 'space-between', flexGrow: 1, marginHorizontal: win.width * 0.03  }}>
+                                <View style={{ marginVertical: win.height * 0.02, justifyContent: 'space-between', flexGrow: 1, marginHorizontal: win.width * 0.03 }}>
 
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', flexGrow: 1,marginVertical:win.height * 0.006}}>
-                                    <Text style={{
-                                        fontSize: 16,
-                                        color: AppTheme.blackColor,
-                                        fontFamily: AppTheme.semiboldfont,
-                                    }}>{item.name}</Text>
-                                    <Text style={{
-                                        alignContent: 'flex-end',
-                                        textAlign: 'right',
-                                        fontSize: 14,
-                                        color: 'grey',
-                                        fontFamily: AppTheme.regularfont,
-                                    }}>{item.date}</Text>
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', flexGrow: 1, marginVertical: win.height * 0.006 }}>
+                                        <Text style={{
+                                            fontSize: 16,
+                                            color: AppTheme.blackColor,
+                                            fontFamily: AppTheme.semiboldfont,
+                                        }}>{item.name}</Text>
+                                        <Text style={{
+                                            alignContent: 'flex-end',
+                                            textAlign: 'right',
+                                            fontSize: 14,
+                                            color: 'grey',
+                                            fontFamily: AppTheme.regularfont,
+                                        }}>{item.date}</Text>
 
-                                    
-                                </View>
-                                <Text style={{
+
+                                    </View>
+                                    <Text style={{
                                         fontSize: 14,
                                         color: 'grey',
                                         fontFamily: AppTheme.regularfont,
@@ -170,21 +172,17 @@ const styles = StyleSheet.create({
         shadowRadius: 0.1,
         flexDirection: 'row',
         alignItems: 'center',
-       
 
     },
 
     image: {
 
         marginLeft: 15,
-        width:60,
+        width: 60,
         height: 60,
         borderRadius: 60 / 2,
         borderWidth: 0.8,
         borderColor: AppTheme.appThemeColor
     },
-
-
-
 
 });

@@ -57,7 +57,7 @@ function MenuDrawer(){
   
     drawerContent={props => <DrawerContents {...props}/>} >
      
-     <Stack.Screen name="Tabbar" component={Tabber} options={{ headerShown: false }} />
+     <Stack.Screen name="DashBoard" component={Tabber} options={{ headerShown: false }} />
 
     </Drawer.Navigator>
   )
