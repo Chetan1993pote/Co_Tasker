@@ -5,12 +5,13 @@ import { Dimensions } from 'react-native';
 import AppTheme from '../../AppTheme';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import KeyboardAvoidingView from 'react-native/Libraries/Components/Keyboard/KeyboardAvoidingView';
 
 var app_Design = require('./AppDesign.png');
 var welcomeBack = require('./welcomeback.png');
 var backImg = require('../Login/back_white.png');
 
-
+const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
 const win = Dimensions.get('window');
 
 let emailValidationSchema = yup.object().shape({
@@ -20,11 +21,11 @@ let emailValidationSchema = yup.object().shape({
 const Login = () => {
 
     const navigation = useNavigation();
-   
 
-    const handleSubmitBtnTap = (enteredEmail) =>  {
-        
-        if (enteredEmail != ""){
+
+    const handleSubmitBtnTap = (enteredEmail) => {
+
+        if (enteredEmail != "") {
             //console.log("email Exists",enteredEmail)
             navigation.navigate('PasswordLogin')
         }
@@ -32,46 +33,51 @@ const Login = () => {
     }
 
     return (
-        <View style={styles.container}>
 
-            <Formik
-                initialValues={{ email: '' }}
-                validateOnMount={true}
-                onSubmit={values => handleSubmitBtnTap(values.email)}
-                validationSchema={emailValidationSchema}
-            >
-                {({ handleChange, handleBlur, handleSubmit, values, touched, errors, isValid }) => (
 
-                    <ImageBackground
-                        source={app_Design}
-                        style={{ height: '100%', width: '100%' }}>
+        <Formik
+            initialValues={{ email: '' }}
+            validateOnMount={true}
+            onSubmit={values => handleSubmitBtnTap(values.email)}
+            validationSchema={emailValidationSchema}
+        >
 
-                        <TouchableOpacity
-                            onPress={() => {
-                                navigation.goBack()
-                            }}>
-                            <Image source={backImg}
-                                resizeMode={'contain'}
-                                style={{
-                                    marginTop: 60,
-                                    marginLeft: 30, height: 25, width: 25
-                                }} />
+            {({ handleChange, handleBlur, handleSubmit, values, touched, errors, isValid }) => (
 
-                        </TouchableOpacity>
+                <ImageBackground
+                    source={app_Design}
+                    style={{ height: '100%', width: '100%' }}>
 
-                        <Text style={styles.titleStyle} > Welcome Back
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.goBack()
+                        }}>
+                        <Image source={backImg}
+                            resizeMode={'contain'}
+                            style={{
+                                marginTop: 55,
+                                marginLeft: 30, height: 25, width: 25
+                            }} />
+
+                    </TouchableOpacity>
+
+                    <Text style={styles.titleStyle} > Welcome Back
+                    </Text>
+                    <View style={styles.containerEmail}>
+                        <ImageBackground source={welcomeBack}
+                            resizeMode={'contain'}
+                            style={{ height: win.height, width: win.width }}></ImageBackground>
+
+
+                    </View>
+
+                    <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.06, marginTop: 10 }}>
+                        <Text style={styles.emailTitle} > Email Address
                         </Text>
-                        <View style={styles.containerEmail}>
-                            <ImageBackground source={welcomeBack}
-                                resizeMode={'contain'}
-                                style={{ height: win.height, width: win.width }}></ImageBackground>
 
-
-                        </View>
-
-                        <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.06, marginTop: 120 }}>
-                            <Text style={styles.emailTitle} > Email Address
-                            </Text>
+                        <KeyboardAvoidingView
+                            behavior={Platform.OS === "ios" ? "padding" : null}
+                            keyboardVerticalOffset={Platform.OS === "ios" ? 200 : 0}>
                             <TextInput
                                 style={styles.inputText}
                                 placeholder="Enter your email address"
@@ -84,38 +90,41 @@ const Login = () => {
                                 value={values.email}
 
                             />
-                            {(errors.email && touched.email) &&
-                                <Text style={styles.errors}>{errors.email}</Text>
-                            }
+                        </KeyboardAvoidingView>
 
-                            <TouchableOpacity style={styles.button}
+                        {(errors.email && touched.email) &&
+                            <Text style={styles.errors}>{errors.email}</Text>
+                        }
 
-                                onPress={
-                                    handleSubmit
-                                }>
+                        <TouchableOpacity style={styles.button}
 
-                                <Text style={styles.buttonText}>Continue</Text>
-                            </TouchableOpacity>
+                            onPress={
+                                handleSubmit
+                            }>
 
-
-                        </View>
-
-
-                        <View style={styles.signUpTextCont}>
-                            <Text style={styles.signUpTextStyle}>Not a member of Co-Tasker yet?</Text>
-                            <Pressable onPress={() => navigation.navigate('SignUp')}>
-                                <Text style={styles.registerHere}>Register Here</Text>
-
-                            </Pressable>
-                        </View>
+                            <Text style={styles.buttonText}>Continue</Text>
+                        </TouchableOpacity>
 
 
+                    </View>
 
-                    </ImageBackground>
-                )}
-            </Formik>
 
-        </View>
+                    <View style={styles.signUpTextCont}>
+                        <Text style={styles.signUpTextStyle}>Not a member of Co-Tasker yet?</Text>
+                        <Pressable onPress={() => navigation.navigate('SignUp')}>
+                            <Text style={styles.registerHere}>Register Here</Text>
+
+                        </Pressable>
+                    </View>
+
+
+
+                </ImageBackground>
+
+            )}
+
+        </Formik>
+
 
 
     );
@@ -126,9 +135,6 @@ const Login = () => {
 export default Login;
 
 const styles = StyleSheet.create({
-    container: {
-        flexGrow: 1,
-    },
 
     containerEmail: {
         flex: 1,
@@ -152,12 +158,13 @@ const styles = StyleSheet.create({
 
     },
 
-    errors:{
-        color:AppTheme.red_forValidationMsg,
-        fontFamily:AppTheme.regularfont,
-        fontSize:14,
-        textAlign:'right',
-        marginTop:2},
+    errors: {
+        color: AppTheme.red_forValidationMsg,
+        fontFamily: AppTheme.regularfont,
+        fontSize: 14,
+        textAlign: 'right',
+        marginTop: 2
+    },
 
     inputText:
     {
@@ -172,15 +179,15 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#ffbf00',
         borderRadius: 12,
-        marginVertical: win.height * 0.15,
-        height: 50,
+        marginTop: 100,
+        height: 40,
         justifyContent: 'center'
 
     },
 
     buttonText: {
         color: '#ffffff',
-        fontSize: 19,
+        fontSize: 18,
         fontFamily: AppTheme.boldfont,
         textAlign: 'center',
     },

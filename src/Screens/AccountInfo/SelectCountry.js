@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     inputText:
     {
         marginHorizontal: win.width * 0.02,
-        height: 30,
+        height: 40,
         fontFamily: AppTheme.regularfont,
         fontSize: 16,
 

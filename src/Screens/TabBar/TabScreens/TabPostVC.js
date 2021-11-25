@@ -78,8 +78,8 @@ const TabPostVC = () => {
         //View to set in Header
         return (
             <View style={{ margin: 20, flexDirection: 'column', marginVertical: 10 }}>
-                <Text style={{ fontSize: 18, fontWeight: '600' }}> Good Afternoon Sudhir, </Text>
-                <Text style={{ fontSize: 15, fontWeight: '600', marginTop: 5 }}> What do you need help with? </Text>
+                <Text style={{ fontSize: 19, fontFamily: AppTheme.boldfont }}> Good Afternoon Sudhir, </Text>
+                <Text style={{ fontSize: 18, fontFamily: AppTheme.semiboldfont, marginTop: 5 }}> What do you need help with? </Text>
             </View>
         );
     };
@@ -134,10 +134,10 @@ const styles = StyleSheet.create({
     },
 
     viewContainer: {
-
-        height: win.width / numColumns,
+        height: win.width / 2.8,
         width: win.width / numColumns,
-        alignItems: 'center'
+        justifyContent: 'center',
+        alignItems:'center'
     },
 
     image: {
@@ -148,9 +148,9 @@ const styles = StyleSheet.create({
     titleStyle: {
 
         marginTop: 5,
-        fontSize: 13,
+        fontSize: 14,
         color: '#696969',
-        fontWeight: 'normal',
+        fontFamily: AppTheme.regularfont,
         alignSelf: 'center',
         textAlign: 'center'
 

@@ -7,6 +7,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 
+
 var app_Design = require('../Login/AppDesign.png');
 var welcomeBack = require('../Login/welcomeback.png');
 var backImg = require('../Login/back_white.png');
@@ -60,8 +61,8 @@ const PasswordLogin = () => {
                         <Image source={backImg}
                             resizeMode={'contain'}
                             style={{
-                                marginTop: 60,
-                                marginLeft: 35, height: 25, width: 25
+                                marginTop: 55,
+                                marginLeft: 30, height: 25, width: 25
                             }} />
 
                     </TouchableOpacity>
@@ -71,10 +72,11 @@ const PasswordLogin = () => {
                     <View style={styles.containerEmail}>
                         <ImageBackground source={welcomeBack}
                             resizeMode={'contain'}
-                            style={{ height: win.height, width: win.width }}></ImageBackground>
+                            style={{ height: win.height, width: win.width }}>
+                            </ImageBackground>
+                            
                     </View>
-
-                    <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.06, marginTop: 200, flexGrow: 100 }}>
+                    <View style={{ flexDirection: 'column', marginHorizontal: win.width * 0.06, marginTop: -120,justifyContent:'flex-start',flexGrow:1}}>
                         <Text style={styles.passwordTitle} > Enter Password
                         </Text>
                         <View style={styles.passwordContainer}>
@@ -139,7 +141,6 @@ const styles = StyleSheet.create({
 
     containerEmail: {
         flex: 1,
-
     },
 
     titleStyle: {
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
         fontFamily: AppTheme.regularfont,
         fontSize: 16,
         height: 40,
-        justifyContent: 'center'
+       // justifyContent: 'center'
     },
 
     button: {
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
         backgroundColor: AppTheme.yellowColor,
         borderRadius: 12,
         paddingVertical: 12,
-        marginBottom: 40,
+        marginBottom: 30,
         justifyContent: 'flex-end',
         marginHorizontal: win.width * 0.06
 

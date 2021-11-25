@@ -1,3 +1,4 @@
 {
-    "editor.links": false
+    "editor.links": false,
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
