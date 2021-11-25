@@ -22,6 +22,9 @@ const SettingsScn = () => {
         }else if (index == 2) {
             navigation.navigate('ChangeLanguageScn')
 
+        }else if (index == 3) {
+            navigation.navigate('NotifListing')
+
         }
 
     }

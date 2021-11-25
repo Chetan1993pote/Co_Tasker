@@ -30,7 +30,7 @@ import DrawerContents from '../Screens/Drawer_Contents/DrawerContents'
 import AboutCotasker from '../Screens/AboutCotasker/AboutCotasker';
 import WebViewScn from '../Screens/AboutCotasker/WebViewScn';
 import ForgotPwdScn from '../Screens/Forgot_Password/ForgotPwdScn';
-import { ChangeLanguageScn, LoginOptions, ResetPwdVerifyScn, SelectCountry, SettingsScn } from '../Screens';
+import { ChangeLanguageScn, LoginOptions, NotifListing, ResetPwdVerifyScn, SelectCountry, SettingsScn } from '../Screens';
 import ChangePwdScn from '../Screens/Change_Password/ChangePwdScn';
 import AccountInfo from '../Screens/AccountInfo/AccountInfo';
 
@@ -94,6 +94,7 @@ const Routes = () => {
         </Stack.Group>
 
         <Stack.Screen name="SelectCountry" component={SelectCountry} options={{}} />
+        <Stack.Screen name="NotifListing" component={NotifListing} options={{}} />
 
         <Stack.Screen name="AccountInfo" component={AccountInfo} options={{}} />
 

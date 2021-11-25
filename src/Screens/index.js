@@ -24,6 +24,7 @@ export {default as ChangePwdScn} from './Change_Password/ChangePwdScn';
 export {default as ChangeLanguageScn} from './ChangeLanguage/ChangeLanguageScn';
 export {default as AccountInfo} from './AccountInfo/AccountInfo';
 export {default as SelectCountry} from './AccountInfo/SelectCountry';
+export {default as NotifListing} from './NotificationsSettings/NotifListing';
 
 
 
